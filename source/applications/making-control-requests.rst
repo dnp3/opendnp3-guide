@@ -1,7 +1,7 @@
 Making control requests
 =======================
 
-Application code can **_issue_** a control request using the **_CommandProcessor_** interface provided by the Master interface. You can learn about the different control types and operation modes [[here | Control types and modes]].
+Application code can *issue* a control request using the *CommandProcessor* interface provided by the Master interface. You can learn about the different control types and operation modes in :ref:`control-types-and-modes`
 
 .. code-block:: java
 
@@ -14,7 +14,7 @@ Application code can **_issue_** a control request using the **_CommandProcessor
    }
 
 
-This interface has a method signature for every control and operating mode pair. In C++ you provide a callback lambda for the result, and in C# and Java a **_future_** of type CommandStatus is returned. A future is an interface that represents the eventual value of the operation. You may either synchronously block for the result of the operation or asynchronously listen. The C# example below issues a CROB using the SBO operation mode and then calls Await() on the future to block the current thread until the control requests is complete:
+This interface has a method signature for every control and operating mode pair. In C++ you provide a callback lambda for the result, and in C# and Java a *future* of type CommandStatus is returned. A future is an interface that represents the eventual value of the operation. You may either synchronously block for the result of the operation or asynchronously listen. The C# example below issues a CROB using the SBO operation mode and then calls Await() on the future to block the current thread until the control requests is complete:
 
 .. code-block:: csharp
 

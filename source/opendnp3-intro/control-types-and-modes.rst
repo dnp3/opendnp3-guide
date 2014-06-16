@@ -1,3 +1,5 @@
+.. _control-types-and-modes:
+
 Control types and modes
 =======================
 

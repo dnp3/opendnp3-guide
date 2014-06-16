@@ -5,14 +5,13 @@ OpenDNP3 can be run on a variety of embedded systems. You'll need a cross compil
 
 If you're unfamiliar with cross compiling in general, I'd recommend getting an embedded Linux book. 
 
-Raspberry Pi
-------------
+**Raspberry Pi**
 
-The [Raspberry Pi](http://www.raspberrypi.org/) is a great platform to start learning about cross-compiling. You can compile OpenDNP3 on the Pi itself, but since it's a fairly large library, you'll probably want to cross-compile.
+The `Raspberry Pi <http://www.raspberrypi.org/>`_ is a great platform to start learning about cross-compiling. You can compile OpenDNP3 on the Pi itself, but since it's a fairly large library, you'll probably want to cross-compile.
 
-Lots of different tool-chains will work, but [this guide](http://www.kitware.com/blog/home/post/426) can show you how to build one yourself using crosstool-ng. It can build crosstool chains for a variety of platforms like ARM, powerPC, etc. After you have a working toolchain, test it with some trivial example apps before proceeding with cross-compiling OpenDNP3.
+Lots of different tool-chains will work, but `this guide <http://www.kitware.com/blog/home/post/426>`_ can show you how to build one yourself using crosstool-ng. It can build crosstool chains for a variety of platforms like ARM, powerPC, etc. After you have a working toolchain, test it with some trivial example apps before proceeding with cross-compiling OpenDNP3.
 
-The first step is to build boost for the Pi. Follow the directions [here](http://www.boost.org/boost-build2/doc/html/bbv2/tasks/crosscompile.html).  Remember, you only need Boost::System and Boost::Test.
+The first step is to build boost for the Pi. Follow the directions `here <http://www.boost.org/boost-build2/doc/html/bbv2/tasks/crosscompile.html>`_.  Remember, you only need Boost::System and Boost::Test.
 
 With ARM libraries for Boost, you're ready to use autotools to cross-compile. My invocation of configure looked like:
 

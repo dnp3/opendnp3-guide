@@ -1,5 +1,6 @@
-Building on linux
-=================
+===================
+Building on Linux
+===================
 
 The build process on Linux should be very familiar. To start either clone the git repository or download an unpack a tarball from the landing page.
 
@@ -31,8 +32,9 @@ This will produce and run an executable called dnp3test that uses boost::unit_te
 
 Once you have the library installed, you may also want to check out the demo programs. They use a separate autotools instance in cpp/demos. The reason this is done this way is so that during development the demos can be used a test that the main toolchain is properly installing the right libraries and headers.
 
-Building with converage
------------------------
+=======================
+Code coverage with GCC
+=======================
 
 .. code-block:: bash
 

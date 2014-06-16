@@ -1,5 +1,6 @@
-Building on windows 
-===================
+=====================
+Building on Windows 
+=====================
 
 If you've installed boost and set the three environment variables BOOST_INCLUDE, BOOST_LIB, and JAVA_HOME (optional) as described [[here|Prerequisites-on-windows]] the solution file should build without incident.
 

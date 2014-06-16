@@ -1,8 +1,8 @@
 Project layout
 ==============
 
-The main directories are organized by language
------------------------------------------------
+**The main directories are organized by language**
+
 
 .. code-block:: java
 
@@ -23,8 +23,8 @@ The main directories are organized by language
      /DNP3CLROutstationDemo // example outstation application in C#
 
 
-Minor directories
-------------------
+**Minor directories**
+
 .. code-block:: java
 
    /config                  // visual studio property sheets mostly

@@ -13,10 +13,11 @@ Java support is accomplished via a technology called Java Native Interface (JNI)
 
 There are two components to the java bindings. The java part will look and feel just like the Java that you're used to.  Once you've built the C++ java wrapper library, you can built and install this Jar with maven:
 
-```java
-> cd java
-> mvn install
-```
+.. code-block:: bash
+
+  > cd java
+  > mvn install
+
 This step will run the java tests and install the JAR into your local mvn repo.
 
 With the Jar and C++ libraries installed you can now reference the opendnp3 java library within a maven POM:

@@ -1,23 +1,22 @@
-Prerequisites on linux
-======================
+========================
+Prerequisites on Linux
+========================
 
-Content
----------
-ADD an index here!!!
+**g++ 4.6.x**
 
-g++ 4.6.x
----------
 The reason the compiler support required is so cutting edge is because of C++11. This was done primarily to reduce the required pieces of Boost. Installation may vary from platform to platform.
 
-Ubuntu 12.04
-^^^^^^^^^^^^
+
+**Ubuntu 12.04**
+
+
 .. code-block:: bash
 
    $ sudo apt-get install g++
 
 
-Fedora18
-^^^^^^^^
+**Fedora18**
+
 
 Use the package manager to install gcc and gcc-c++ or:-
 
@@ -27,35 +26,34 @@ Use the package manager to install gcc and gcc-c++ or:-
 
 Will install or update the compilers or indicate that they are already installed and latest version.
 
-GNU autotools
--------------
+**GNU autotools**
+
 Most developers already have this installed, but here are some platform specific hints.
 
-Ubuntu 12.04
-^^^^^^^^^^^^
+**Ubuntu 12.04**
+
 
 .. code-block:: bash
 
    $ sudo apt-get install autoconf libtool
 
-Fedora18
-^^^^^^^^
+**Fedora18**
+
 Use the package manager to install autoconf, m4, libtool and automake, or:-
 
 .. code-block:: bash
 
    $ sudo yum install autoconf m4 libtool automake
 
-Boost
------
+**Boost**
+
 Most linux distros have packages for at least 1.50.0.
 
 .. code-block:: bash
 
    $ sudo apt-get install liboost-1.50-all-dev
 
-Fedora18
-^^^^^^^^
+**Fedora18**
 
 Use the package manager to install boost, or:-
 
