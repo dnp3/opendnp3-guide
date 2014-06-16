@@ -1,5 +1,5 @@
 =========================
-Introduction to opendnp3
+Opendnp3 Introduction
 =========================
 
 OpenDNP3 is a portable, scalable, and rigorously tested implementation of the DNP3 written in C++. The library 

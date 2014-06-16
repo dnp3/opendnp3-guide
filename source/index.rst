@@ -10,14 +10,13 @@
 
 Documentation for the 1.1.x branch of `opendnp3`_. No new features are added to this branch. We recommend all user migrate to the 2.0.x branch.
 
-You may not redistribute or republish this documentation in any form without express written permission.
+You may not redistribute this documentation in any form without express written consent.
 
 Authors: J Adam Crain, Pablo Giudice
 
 
 .. links for the page
 .. _milestones page: https://github.com/automatak/dnp3/issues/milestones
-.. _Google Group: https://groups.google.com/forum/#!forum/automatak-dnp3
 
 ====================
 Table of Contents
@@ -34,15 +33,4 @@ Table of Contents
    embedded/embedded-systems
    bindings/java/index
    applications/writing-applications
-   
 
-**Call for contributors**
-
-There are many ways you can contribute:
-
-* Be a good user. Report bugs and request features.
-* Learn the library and add features or fix bugs.
-* Contribute documentation. Either in-code, wiki, or standalone.
-
-
-Join the `Google Group`_ and express your interest!
