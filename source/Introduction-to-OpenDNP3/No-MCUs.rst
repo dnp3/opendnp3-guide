@@ -1,0 +1,6 @@
+No MCUs
+=========
+
+Micro-controllers (MCUs) were not a target during the early development of OpenDNP3. The library was originally developed for a specific purpose in 2006 to target this [embedded Linux platform](http://www.embeddedarm.com/products/board-detail.php?product=TS-7250). The portability of the codebase can be primarily attributed to the excellent [ASIO](http://think-async.com/) library.
+
+The market has implementations designed to run on MCUs.  The fact is, however, that implementations written in C for an MCU are not always best for platforms with an operating system. For a long time C and MCUs were the only choice for embedded electronics because of constrained hardware and slowly evolving standards for embedded computing. Linux and the open-source / hardware movement have definitively changed the landscape in embedded computing. Bare metal MCUs will have a long lifetime in many applications including hard real-time, however, Linux and ARM will continue to capture more and more market share.  Many companies these days are taking a hierarchical approach to embedded systems whereby real-time control is allocated to an MCU / DSP and higher-level functions such as external communications are the responsibility of an ARM with Linux.
