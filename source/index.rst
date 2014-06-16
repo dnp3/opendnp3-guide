@@ -6,32 +6,41 @@
 
 .. image:: img/opendnp3.png
 
-Documentation for the 1.1.x branch of opendnp3. We won't be adding new features, but we will fix bugs if they are deemed critical.
+.. _opendnp3: http://www.automatak.com/opendnp3
+
+Documentation for the 1.1.x branch of `opendnp3`_. No new features are added to this branch. We recommend all user migrate to the 2.0.x branch.
+
+You may not redistribute or republish this documentation in any form without express written permission.
+
+Authors: J Adam Crain, Pablo Giudice
+
 
 .. links for the page
 .. _milestones page: https://github.com/automatak/dnp3/issues/milestones
 .. _Google Group: https://groups.google.com/forum/#!forum/automatak-dnp3
 
-Contents:
----------
+====================
+Table of Contents
+====================
+
 .. toctree::
    :maxdepth: 1
 
-   dnp3-intro/dnp3-intro
-   opendnp3-intro/opendnp3-intro
-   project-layout
+   dnp3-intro/index
+   opendnp3-intro/index
+   layout/index
    building/index
-   development-process
+   contributing/index
    embedded/embedded-systems
    bindings/java/index
    applications/writing-applications
    
 
-Call for contributors
----------------------
+**Call for contributors**
+
 There are many ways you can contribute:
 
-* Just be a good user. Report bugs and request features.
+* Be a good user. Report bugs and request features.
 * Learn the library and add features or fix bugs.
 * Contribute documentation. Either in-code, wiki, or standalone.
 

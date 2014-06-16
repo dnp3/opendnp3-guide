@@ -1,4 +1,5 @@
-Development process
+===================
+Formatting C++
 ===================
 
 We'll document the "how to contribute" stuff here.
