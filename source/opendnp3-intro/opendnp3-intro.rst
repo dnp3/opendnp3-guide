@@ -1,5 +1,6 @@
-Introduction to OpenDNP3
-========================
+=========================
+Introduction to opendnp3
+=========================
 
 OpenDNP3 is a portable, scalable, and rigorously tested implementation of the DNP3 written in C++. The library 
 is optimized for massively parallel front end processor implementations and slave device simulations, although it performs very well on embedded linux as well. Idiomatic bindings are available for the Microsoft CLR family of languages (C#, VB.NET, F#, etc) and JVM-based languages (Java, Scala, Clojure, etc).
@@ -10,9 +11,10 @@ OpenDNP3 is very different from proprietary implementations. The biggest differe
 
 
 .. toctree::
-   :maxdepth: 2
+  :maxdepth: 2
+  
+  scalable-architecture
+  control-types-and-modes
+  no-microcontrollers
+  where-is-the-super-loop
 
-   control-types-and-modes
-   no-mcus
-   scalable-architecture
-   where-is-the-super-loop

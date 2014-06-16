@@ -6,33 +6,24 @@
 
 .. image:: img/opendnp3.png
 
-There are currently two release branches:
-
-* 1.1.x is the stable branch.
-
-We won't be adding new features, but we will fix bugs if they are deemed critical.
+Documentation for the 1.1.x branch of opendnp3. We won't be adding new features, but we will fix bugs if they are deemed critical.
 
 .. links for the page
 .. _milestones page: https://github.com/automatak/dnp3/issues/milestones
 .. _Google Group: https://groups.google.com/forum/#!forum/automatak-dnp3
 
-* 2.0.x is the development branch. Changes are happening to the -APIs. For a feature roadmap, check out the `milestones page`_.
-
-
 Contents:
 ---------
 .. toctree::
-   :maxdepth: 3
-   :glob:
+   :maxdepth: 1
 
-   intro-to-dnp3/dnp3-intro
-   intro-to-opendnp3/opendnp3-intro
+   dnp3-intro/dnp3-intro
+   opendnp3-intro/opendnp3-intro
    project-layout
-   prerequisites/prerequisites
-   building/*
+   building/index
    development-process
-   embedded-systems
-   java/java-support
+   embedded/embedded-systems
+   bindings/java/index
    applications/writing-applications
    
 
