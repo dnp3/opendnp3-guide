@@ -8,12 +8,12 @@ Content
 .. toctree::
    :maxdepth: 2
    
-   Creating-a-master
-   Creating-an-outstation
-   Creating-channels
-   DNP3Manager-and-the-Thread-Pool
-   Loading-measurements
-   Making-control-requests
-   Monitoring-channels
-   Monitoring-communication-health
+   creating-a-master
+   creating-an-outstation
+   creating-channels
+   manager-and-the-thread-pool
+   loading-measurements
+   making-control-requests
+   monitoring-channels
+   monitoring-communication-health
 

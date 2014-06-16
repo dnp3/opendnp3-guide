@@ -6,8 +6,8 @@ Content
 .. toctree::
    :maxdepth: 2
 
-   Prerequisites-on-Linux
-   Prerequisites-on-windows
+   prerequisites-on-linux
+   prerequisites-on-windows
 
 ## C++11
 

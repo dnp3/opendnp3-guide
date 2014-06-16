@@ -5,8 +5,8 @@ Java Support
    :maxdepth: 2
    :glob:
 
-   Deploying-the-.dll-on-windows
-   Deploying-the-.so-on-linux   
+   deploying-the-dll-on-windows
+   deploying-the-so-on-linux   
 
 
 Java support is accomplished via a technology called Java Native Interface (JNI). You don't really need to know anything about JNI to use the library from Java, but it is good to understand a little about what's going on so you can properly build and deploy it.

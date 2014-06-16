@@ -1,7 +1,8 @@
-.. Automatak DNP3 Help documentation master file, created by
-   sphinx-quickstart on Wed Jun 11 11:44:34 2014.
+.. Created by sphinx-quickstart on Wed Jun 11 11:44:34 2014.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
+
+|
 
 .. image:: img/opendnp3.png
 
@@ -24,15 +25,15 @@ Contents:
    :maxdepth: 3
    :glob:
 
-   Introduction-to-DNP3/Introduction-to-DNP3
-   Introduction-to-OpenDNP3/Introduction-to-OpenDNP3
-   Project-layout
-   Prerequisites/Prerequisites
-   Building/*
-   Development-Process
-   Embedded-systems
-   Java/Java-Support
-   writing-applications/Writing-applications
+   intro-to-dnp3/dnp3-intro
+   intro-to-opendnp3/opendnp3-intro
+   project-layout
+   prerequisites/prerequisites
+   building/*
+   development-process
+   embedded-systems
+   java/java-support
+   applications/writing-applications
    
 
 Call for contributors

@@ -12,7 +12,7 @@ OpenDNP3 is very different from proprietary implementations. The biggest differe
 .. toctree::
    :maxdepth: 2
 
-   Control-types-and-modes
-   No-MCUs
-   Scalable-architecture
-   Where's-the-super-loop
+   control-types-and-modes
+   no-mcus
+   scalable-architecture
+   where-is-the-super-loop
