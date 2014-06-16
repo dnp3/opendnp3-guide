@@ -16,9 +16,10 @@ The first step is to build boost for the Pi. Follow the directions [here](http:/
 
 With ARM libraries for Boost, you're ready to use autotools to cross-compile. My invocation of configure looked like:
 
-.. code-bloc:: bash
+.. code-block:: bash
 
-   env CPPFLAGS="-I/home/jadamcrain/x-tools/arm-unknown-linux-gnueabi/include" ./configure --host=arm-unknown-linux-gnueabi --build=i686-pc-linux-gnu --with-boost-libdir=/home/jadamcrain/x-tools/arm-unknown-linux-gnueabi/lib LDFLAGS="-lpthread" CXXFLAGS=-Os
+   env CPPFLAGS="-I/home/jadamcrain/x-tools/arm-unknown-linux-gnueabi/include" ./configure --host=arm-unknown-linux-gnueabi 
+   --build=i686-pc-linux-gnu --with-boost-libdir=/home/jadamcrain/x-tools/arm-unknown-linux-gnueabi/lib LDFLAGS="-lpthread" CXXFLAGS=-Os
 
 
 You need to then copy your compiled Boost libraries and OpenDNP3 over to the PI using SCP or Filezilla (I personally prefer this). 

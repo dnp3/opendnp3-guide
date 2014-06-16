@@ -40,6 +40,7 @@ Binding a listener is done idiomatically for each language. You may bind a state
 
 
 .. code-block:: csharp
+
    // c# using a lambda
    channel.AddStateListener(state => Console.WriteLine("state: " + state));
 
