@@ -20,14 +20,15 @@ Table of Contents
 ====================
 
 .. toctree::
-   :maxdepth: 10
+  :maxdepth: 10
 
-   dnp3-intro/index
-   opendnp3-intro/index
-   layout/index
-   building/index
-   applications/index
-   embedded/index
-   bindings/index
-   contributing/index
+  faq/index
+  dnp3-intro/index
+  opendnp3-intro/index
+  layout/index
+  building/index
+  applications/index
+  embedded/index
+  bindings/index
+  contributing/index
 
