@@ -6,17 +6,14 @@
 
 .. image:: img/opendnp3.png
 
+.. links for the page
 .. _opendnp3: http://www.automatak.com/opendnp3
 
-Documentation for the 1.1.x branch of `opendnp3`_. No new features are added to this branch. We recommend all user migrate to the 2.0.x branch.
+Documentation for the 2.0.0-RC1 release of `opendnp3`_.
 
 You may not redistribute this documentation in any form without express written consent.
 
 Authors: J Adam Crain, Pablo Giudice
-
-
-.. links for the page
-.. _milestones page: https://github.com/automatak/dnp3/issues/milestones
 
 ====================
 Table of Contents
