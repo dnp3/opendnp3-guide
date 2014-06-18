@@ -1,7 +1,8 @@
 .. _control-types-and-modes:
 
+=========================
 Control types and modes
-=======================
+=========================
 
 A Control is a term used to refer to a command sent from a master to an outstation. DNP3 provides for a number of control types including Control Relay Output Blocks (CROB) and integer / floating point encodings for Analog Outputs.
 

@@ -1,4 +1,6 @@
-DNP3 Manager and the Thread Pool
+
+================================
+Manager and the Thread Pool
 ================================
 
 Programs, regardless of how complex, need an instance of the manager class. It's the starting point for adding communication channels, tapping into the logging sub-system, etc. The manager class is given a number when it is constructed. This parameter tells the stack how many threads to allocate to its thread pool. Even though the underlying stack is completely asynchronous and uses all non-blocking calls, the thread pool allows the stack to scale up and stay responsive. Even when a callback to users code is slow, the other connections keep on doing work. Here are the simplest possible programs that instantiate a manager instance. The rest of the tutorials will assume you have this basic infrastructure.

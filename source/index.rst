@@ -9,7 +9,7 @@
 .. links for the page
 .. _opendnp3: http://www.automatak.com/opendnp3
 
-Documentation for the 2.0.0-RC1 release of `opendnp3`_.
+The Definitive Guide to `opendnp3`_ 2.0.0-RC1
 
 You may not redistribute this documentation in any form without express written consent.
 

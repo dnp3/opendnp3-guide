@@ -9,11 +9,12 @@ Content
 .. toctree::
    :maxdepth: 2
    
+   thread-pool
+   creating-channels   
    creating-a-master
-   creating-an-outstation
-   creating-channels
-   manager-and-the-thread-pool
+   creating-an-outstation      
    loading-measurements
+   control-types
    making-control-requests
    monitoring-channels
    monitoring-communication-health
