@@ -12,10 +12,14 @@ This is the official documentation source to the [opendnp3 project](www.automata
 
 It uses the [Sphinx](http://sphinx-doc.org/) documentation platform.
 
-## Building
+## Setup and Building
 
+To build the documentation you'll need a working version of Sphinx. Follow the installation direction [here](http://sphinx-doc.org/latest/install.html) for your platform.
 
-To build the documentation you'll need a working version of Sphinx. Follow the installation direction [here](http://sphinx-doc.org/latest/install.html) for your platform. After installing Sphinx just type:
+It also uses the [graphviz](http://www.graphviz.org/) Sphinx extension. The "dot" program needs to be on your PATH so Sphinx can run it. 
+On Windows, the graphviz bin directory must be manually added to the PATH.
+
+With Sphinx and graphviz installed:
 		
 ```
 make html

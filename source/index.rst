@@ -13,7 +13,10 @@ Documentation for the 2.0.0-RC1 release of `opendnp3`_.
 
 You may not redistribute this documentation in any form without express written consent.
 
-Authors: J Adam Crain, Pablo Giudice
+Authors:
+
+* Adam Crain (Automatak)
+* Pablo Giudice
 
 ====================
 Table of Contents

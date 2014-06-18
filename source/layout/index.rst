@@ -1,8 +1,20 @@
-Project layout
-==============
+
+============================
+Project Components & Layout
+============================
+
+Opendnp3 has a modular architecture to allow it to adapt to a number of platforms and languages.
+The following graph show the major modules (libraries and applications) that make up the opendnp3 project.
+
+* **Ellipses** represent a system library or 3rd party library
+* **Rectangles** represent a library in the opendnp3 project
+* **Greyed** components can be run on microcontrollers without an OS
+* **Diamonds** represent executable programs / firmware
+* **Dashed** components are abstract, i.e. things you have to write yourself
+
+.. graphviz:: modules.dot
 
 **The main directories are organized by language**
-
 
 .. code-block:: java
 
