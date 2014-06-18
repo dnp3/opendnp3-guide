@@ -1,6 +1,6 @@
 digraph foo {	
 	
-	cxx [label="C++11 compiler", shape = ellipse, style = filled, fillcolor = grey];
+	cxx [label="C++11 compiler", shape = plaintext];
 	cstdlib [label="C standard lib", shape=ellipse, style = filled, fillcolor = grey];
 
 	openpal [label="openpal", shape=rectange, style = filled, fillcolor = grey];

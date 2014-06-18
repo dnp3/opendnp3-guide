@@ -6,9 +6,11 @@ Project Components & Layout
 Opendnp3 has a modular architecture to allow it to adapt to a number of platforms and languages.
 The following graph show the major modules (libraries and applications) that make up the opendnp3 project.
 
-* **Ellipses** represent a system library or 3rd party library
+* **Arrows** represent a depency, i.e. "A depends on B" or "A requires B"
+* **Plain-text** nodes represent toolchain requirements
+* **Ellipses** represent a system or 3rd party library
 * **Rectangles** represent a library in the opendnp3 project
-* **Greyed** components can be run on microcontrollers without an OS
+* **Greyed** components can be used with microcontrollers without an OS
 * **Diamonds** represent executable programs / firmware
 * **Dashed** components are abstract, i.e. things you have to write yourself
 
