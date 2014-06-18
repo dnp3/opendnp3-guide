@@ -1,10 +1,17 @@
 
 ============================
-Project Components & Layout
+Components
 ============================
 
-Opendnp3 has a modular architecture to allow it to adapt to a number of platforms and languages.
-The following graph show the major modules (libraries and applications) that make up the opendnp3 project.
+Opendnp3 has a modular architecture to allow it to adapt to a number of platforms and languages. The following graph show the major modules (libraries and applications) that make up the opendnp3 project. Descriptions of each module are provided below the graph.
+
+**Related Topics**
+
+.. toctree::  
+
+  directories
+
+**Key**
 
 * **Arrows** represent a depency, i.e. "A depends on B" or "A requires B"
 * **Plain-text** nodes represent toolchain requirements
@@ -16,33 +23,20 @@ The following graph show the major modules (libraries and applications) that mak
 
 .. graphviz:: modules.dot
 
-**The main directories are organized by language**
+**openpal**
 
-.. code-block:: java
+PAL stands for Platform Abstraction Layer. It provides a number of abstract services that can be used to build protocol stacks in a platform independent fashion. There is nothing DNP3-specific about openpal. It could be used to build other protocol stacks. These services include:
 
-   /cpp                     // root for all c++ source code
-     /include/opendnp3      // public headers
-     /src/opendnp3          // private part of the core library and implementation
-     /tests                 // tests of the core library
-     /demos                 // simple master and outstation example projects
-   /java                    // root for Java bindings and Maven pom.xml
-     /cpp                   // where JNI bindings and adapters live
-     /api                   // java-doced api in pure java
-     /bindings              // classes with native methods and adapter code
-     /example               // java master / outstation examples
-   /clr                     // Microsoft .NET wrappers
-     /DNP3CLRInterface      // pure C# interfaces
-     /DNP3CLRAdapter        // C++ CLR adapter code
-     /DNP3CLRMasterDemo     // example master application in C#
-     /DNP3CLROutstationDemo // example outstation application in C#
+* Abstract communication channels (IPhysicalLayer)
+* Abstract executor (IExecutor) that provides a way to post events, get monotonic timestamps, and start/canel software timers
 
+Openpal also provides buffer wrappers (read/write), statically-allocated container types, big/litte endian parsers for various integer/float types. Any opendnp3 program must have a concrete implementation of the PAL to execute. The library has no dependencies on STL, dynamic allocation, or the C++ standard library. It is suitable for deeply embedded systems.
 
-**Minor directories**
+**opendnp3**
 
-.. code-block:: java
+This is the core dnp3 library providing implementations of both outstation and masters. It uses the interfaces provided in openpal, and is therefore platform independent. It has the same characteristics as openpal and can run on microcontroller platforms with a C++11 compiler.
 
-   /config                  // visual studio property sheets mostly
-   /scripts                 // install scripts for Boost if you MUST
-   /m4                      // autotools macros
-   /profile                 // device profile documents (not up-to-date)
+**asiopal**
+
+An implementation of the PAL for platforms with an operating systems. It uses ASIO to provide cross platform networking and serial port support. Each instance of IExecutor is on it's own "strand" allowing this PAL to transparently run via a thread pool. This is the component that gives opendnp3 such great scalability on multi-core systems.
 
