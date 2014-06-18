@@ -1,7 +1,7 @@
 Creating a master
 =================
 
-A master in OpenDNP3 is a component that communicates with a single outstation via a communication channel. You may see this term used in other places to refer to a collection of such components communicating with multiple outstations. When more than one master is bound to a single communication channel, it is called a multidrop configuration. This refers to the way in which an RS-485 serial network is chained from device to device. Opendnp3 will let you add multiple masters / outstations to any communication channel, regardless of he underlying transport. You could even bind a master to a TCP server and reverse the normal connection direction. Opendnp3 doesn't care.
+A master in Opendnp3 is a component that communicates with a single outstation via a communication channel. You may see this term used in other places to refer to a collection of such components communicating with multiple outstations. When more than one master is bound to a single communication channel, it is called a multidrop configuration. This refers to the way in which an RS-485 serial network is chained from device to device. Opendnp3 will let you add multiple masters / outstations to any communication channel, regardless of he underlying transport. You could even bind a master to a TCP server and reverse the normal connection direction. Opendnp3 doesn't care.
 
 To add a master to a communication channel you call the *AddMaster* method on the channel interface:
 
