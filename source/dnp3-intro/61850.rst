@@ -1,0 +1,9 @@
+========================
+Compared to IEC 61850
+========================
+
+IEC61850 is an international standard for utility automation, whereas DNP3 is mostly deployed in North America and Australia.  When comparing the two, it is only useful to compare the telemetry / SCADA portions of 61850, as 61850 is actually a number of different related protocols and standards. Major differences include:
+
+* IEC61850 includes standard object models as a layer above MMS. This has advantages and disadvantages. It enforces that vendors model equipment in the same way and this can reduce error prone configuration. The disadvantage is that it is not generic enough for all types of equipment. The accompanying standards that define how things like windmills are modeled have always lagged the core substation models. IEC61850 object models will not always be standardized in the face of innovation. As equipment on the power system evolves, the models must be updated and changed. DNP3 on the other hand doesn't make you model your device in any particular way. This can be bad for standardization, but makes it very flexible for use in any application.
+
+* IEC61850 telemetry is ONLY suitable for transport over reliable connections like TCP. It does not define any error checking, instead preferring to rely on standard networking technologies. DNP3 can be used over a large cross-section of unreliable networks. 
