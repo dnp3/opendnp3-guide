@@ -19,5 +19,7 @@ If you need dedicated commercial support, custom integration services, or compli
 .. toctree::
   :maxdepth: 2
     
+  platforms
   scalable
-  platforms  
+  testing
+  

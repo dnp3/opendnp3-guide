@@ -33,10 +33,7 @@ Yes, both are functional. The many differences are recorded in the `change log`_
 
 **The project is written in C++ but there are bindings for Java and C#. Which languages/IDEs/Operating System do you encourage to use when developing an opendnp3 application?**
 
-1. In theory, you can build the C++ library on any OS that is supported by `ASIO`_. We know that Windows, Linux, and OSX work.
-2. For Windows, we recommend Visual Studio 2013 Express Edition. It's also likely MinGW will work. All other platforms just use the autotools build and the editor of your choice.
-3. The .NET bindings require Visual Studio. They will not run under Mono because of the mixed-mode assembly and lack of a C++/CLI compiler.
-4. The Java bindings have not yet been ported to the 2.0.x branch. When they are ported you can build them using Maven. We recommend developing with IntelliJ.
+This information is covered in the :ref:`platforms-label` section.
 
 
 
