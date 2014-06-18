@@ -12,7 +12,7 @@ If the one thread is ever blocked, other connections are dead in the water.
 
 .. image:: /img/no-blocking.gif
 
-**Event-driven & asynchronous I/O**
+**Event-driven, asynchronous, and multi-core**
 
 Opendnp3 borrows a design pattern from modern web servers: a purely asynchronous programming model driven by a thread pool.
 Opendnp3 uses 100% event based I/O taking advantage of your OS's best socket multiplexing abstractions.

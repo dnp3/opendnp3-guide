@@ -6,9 +6,9 @@ Building
 	:maxdepth: 1
 	
 	prerequisites
-	prerequisites-on-linux
-	prerequisites-on-windows
-   	building-on-linux
-	building-on-windows
+	prerequisites-linux
+	prerequisites-windows
+   	building-linux
+	building-windows
 
 
