@@ -28,7 +28,7 @@ Opendnp3 has a modular architecture to allow it to adapt to a number of platform
 PAL stands for Platform Abstraction Layer. It provides a number of abstract services that can be used to build protocol stacks in a platform independent fashion. There is nothing DNP3-specific about openpal. It could be used to build other protocol stacks. These services include:
 
 * Abstract communication channels (IPhysicalLayer)
-* Abstract executor (IExecutor) that provides a way to post events, get monotonic timestamps, and start/canel software timers
+* Abstract executor (IExecutor) that provides a way to post events, get timestamps, and start/cancel software timers
 
 Openpal also provides buffer wrappers (read/write), statically-allocated container types, big/litte endian parsers for various integer/float types. Any opendnp3 program must have a concrete implementation of the PAL to execute. The library has no dependencies on STL, dynamic allocation, or the C++ standard library. It is suitable for deeply embedded systems.
 
@@ -39,4 +39,21 @@ This is the core dnp3 library providing implementations of both outstation and m
 **asiopal**
 
 An implementation of the PAL for platforms with an operating systems. It uses ASIO to provide cross platform networking and serial port support. Each instance of IExecutor is on it's own "strand" allowing this PAL to transparently run via a thread pool. This is the component that gives opendnp3 such great scalability on multi-core systems.
+
+**asiodnp3**
+
+This library presents a high-level interface to opendnp3 based on components of the asiopal. Almost every project running on an operating system should use the this library as its entry point. The C++ demos are built based on this library.
+
+**.NET Bindings**
+
+This is actually 2 libraries, a pure C# library of interfaces and a mixed-mode assemly written in C++/CLI. Together they comprise the .NET bindings and with an interface that roughly mirrors asiodnp3 but with more idiomatic .NET semantics.
+
+**Java Bindings**
+
+This is actually 2 libraries, a pure Java library (build with Maven) of interfaces and a JNI-based shared library that implements the native functions. Together they comprise the Java bindings and have an interface that roughly mirrors asiodnp3 but with more idiomatic Java semantics.
+
+**Test Harness**
+
+This is a standalone winforms application written in C#. It provides functionality similar to the test harnesses from TMW & ASE. It has a modular architecture that can be extended to write device simulators. It serves the dual purpose of providing a useful tool to the community and demoing the capabilities of the underlying library.
+
 
