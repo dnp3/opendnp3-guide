@@ -8,6 +8,18 @@ Frequently Asked Questions
 .. _Apache Version 2: http://www.apache.org/licenses/LICENSE-2.0.html
 .. _ASIO: http://think-async.com/Asio/asio-1.10.2/doc/asio/using.html
 
+**Which is the license for the library? Can I use it on closed source projects?**
+
+All source code in the main repository is licensed under the `Apache Version 2`_. You may use the library in closed-source derivative works, however, you must still honor the minimal requirements of the license. For example, when you redistribute your derivative work it must contain a copy of the license and a notification.
+
+**Has opendnp3 been tested for compliance?**
+
+The outstation is tested using the latest level 2 conformance procedures before every release. This involves our own tools and at least one 3rd party test harness. Be advised that only devices (products) are suitable for listing as "compliant" on the DNP.org website. Automatak offers compliance testing on your product as a service, or you can use a 3rd party. Self-testing will soon be disallowed by the DNP user group.
+
+**Which DNP3-compliant systems has been opendnp3 been shown to work with?**
+
+Too many to name, but the list includes products from SEL, GE, ABB, Novatech, and Alstom. We have also used the simulation tools from TMW and ASE. Opendnp3 users have found and reported
+non-conformant behavior in 3rd party implementations much more frequently than issues in the opendnp3 stack.
 
 **Which are the differences between the 1.1.x and the 2.0.x series? Are both completely functional DNP3 implementations?**
 
@@ -19,10 +31,6 @@ Yes, both are functional. The many differences are recorded in the `change log`_
 * The tests have been ported to Catch++
 * The library has a faster and safer application layer parsing mechanism
 
-**Which is the license for the library? Can I use it on closed source projects?**
-
-All source code in the main repository is licensed under the `Apache Version 2`_. You may use the library in closed-source derivative works, however, you must still honor the minimal requirements of the license. For example, when you redistribute your derivative work it must contain a copy of the license and a notification.
-
 **The project is written in C++ but there are bindings for Java and C#. Which languages/IDEs/Operating System do you encourage to use when developing an opendnp3 application?**
 
 1. In theory, you can build the C++ library on any OS that is supported by `ASIO`_. We know that Windows, Linux, and OSX work.
@@ -30,14 +38,7 @@ All source code in the main repository is licensed under the `Apache Version 2`_
 3. The .NET bindings require Visual Studio. They will not run under Mono because of the mixed-mode assembly and lack of a C++/CLI compiler.
 4. The Java bindings have not yet been ported to the 2.0.x branch. When they are ported you can build them using Maven. We recommend developing with IntelliJ.
 
-**Has opendnp3 been tested for compliance?**
 
-The outstation is tested using the latest level 2 conformance procedures before every release. This involves our own tools and at least one 3rd party test harness. Be advised that only devices (products) are suitable for listing as "compliant" on the DNP.org website. Automatak offers compliance testing on your product as a service, or you can use a 3rd party. Self-testing will soon be disallowed by the DNP user group.
-
-**Which DNP3-compliant systems has been opendnp3 been shown to work with?**
-
-Too many to name, but the list includes products from SEL, GE, ABB, Novatech, and Alstom. We have also used the simulation tools from TMW and ASE. Opendnp3 users have found and reported
-non-conformant behavior in 3rd party implementations much more frequently than issues in the opendnp3 stack.
 
 
 

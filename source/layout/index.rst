@@ -3,7 +3,7 @@
 Components
 ============================
 
-Opendnp3 has a modular architecture to allow it to adapt to a number of platforms and languages. The following graph show the major modules (libraries and applications) that make up the opendnp3 project. Descriptions of each module are provided below the graph.
+Opendnp3 has a modular architecture to allow it to adapt to a number of platforms and languages. The following graph show the major modules that comprise the opendnp3 project. Descriptions of each module are provided below the graph.
 
 **Related Topics**
 

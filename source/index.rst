@@ -11,7 +11,7 @@
 
 The Definitive Guide to `opendnp3`_ 2.0.0-RC1
 
-You may not redistribute this documentation in any form without express written consent.
+You may not redistribute this documentation in any form without written consent.
 
 Authors:
 
