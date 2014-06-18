@@ -27,4 +27,3 @@ make html
 		
 Documentation will be written to the /build folder.
 
-This is a test
