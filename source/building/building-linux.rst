@@ -21,6 +21,14 @@ To build the unit tests:
   
    $ make check
 
+**Configuring for Clang**
+
+Using Clang  is identical, except with the following argument in the configure step.
+
+.. code-block:: bash
+
+  $ ./configure CXX='clang++' CXXFLAGS='-std=c++11 -stdlib=libc++'
+
 **Code coverage with GCC/GCOV/LCOV**
 
 .. code-block:: bash
