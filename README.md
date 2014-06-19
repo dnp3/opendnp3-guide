@@ -27,12 +27,18 @@ make html
 		
 Documentation will be written to the /build folder.
 
+## Building PDFs (optional)
 
-### Building the pdf file
+By default, PDF builds are disabled. To enable them, change the following lines in your conf.py
 
-Additionally to sphinx and graphviz, you'll need to install rst2pdf.
+```
+extensions = ['sphinx.ext.todo', 'sphinx.ext.graphviz',  'rst2pdf.pdfbuilder']
+#extensions = ['sphinx.ext.todo', 'sphinx.ext.graphviz']
+```
 
-#### Installing rst2pdf on windows
+You'll also need to install rst2pdf. Instruction are provided for Windows.
+
+### Installing rst2pdf on windows
 The basic installation guid was [here] (http://khuntronak.blogspot.in/2013/04/how-to-install-rst2pdf-tool-on-windows.html)
 
 * Download rst2pdf source from [Google Code] (https://code.google.com/p/rst2pdf/downloads/list)
