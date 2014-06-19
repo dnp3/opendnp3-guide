@@ -1,5 +1,8 @@
-Monitoring Channels
-===================
+
+======================================
+Monitoring channels
+======================================
+
 Most of the time your communication channel is open and actively running dnp3 traffic. Sometimes, however, things can go wrong with your network or you have mis-configured your connection. The communication channel interface offers a way to monitor the state of channel. These states are represented by an enumeration:
 
 .. code-block:: cpp

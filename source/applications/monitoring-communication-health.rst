@@ -1,5 +1,7 @@
-Monitoring Communication health
-===============================
+
+======================================
+Monitoring communication health
+======================================
 
 Most of the time your master or outstation is communicating just fine with the outside world. Sometimes, however, there are conformance issues or mis-configurations that cause the two sides not to communicate. The most common case for this is when the link layer addresses are not set correctly. Opendnp3 provides a coarse communication health callback for the stack that is different from the channel.
 

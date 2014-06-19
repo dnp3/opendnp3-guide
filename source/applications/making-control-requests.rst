@@ -1,5 +1,7 @@
+
+======================================
 Making control requests
-=======================
+======================================
 
 Application code can *issue* a control request using the *CommandProcessor* interface provided by the Master interface. You can learn about the different control types and operation modes in :ref:`control-types-and-modes`
 

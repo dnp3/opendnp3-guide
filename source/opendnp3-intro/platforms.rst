@@ -1,7 +1,7 @@
 .. _platforms-label:
 
 =================================
-Supported Platforms
+Supported platforms
 =================================
 
 The core opendnp3 library is platform-neutral C++11.  It can target all major operating systems and a number of bare-metal microcontrollers.
