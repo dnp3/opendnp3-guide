@@ -1,7 +1,7 @@
 .. _testing-label:
 
 =================================
-Emphasis on Testing
+Emphasis on testing
 =================================
 
 Opendnp3 aims to be a correct, robust, secure, and conformant implementation of the standard. To meet these goals, we do the following types of testing an analysis.

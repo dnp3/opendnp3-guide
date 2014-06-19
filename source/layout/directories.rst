@@ -1,35 +1,44 @@
 
 ============================
-Diretory Structure
+Diretory structure
 ============================
 
-**The main directories are organized by language**
+**The main directories are organized by language and then by category**
 
 .. code-block:: java
 
-   /cpp                     // root for all c++ source code
-     /include/opendnp3      // public headers
-     /src/opendnp3          // private part of the core library and implementation
-     /tests                 // tests of the core library
-     /demos                 // simple master and outstation example projects
-   /java                    // root for Java bindings and Maven pom.xml
-     /cpp                   // where JNI bindings and adapters live
-     /api                   // java-doced api in pure java
-     /bindings              // classes with native methods and adapter code
-     /example               // java master / outstation examples
-   /clr                     // Microsoft .NET wrappers
-     /DNP3CLRInterface      // pure C# interfaces
-     /DNP3CLRAdapter        // C++ CLR adapter code
-     /DNP3CLRMasterDemo     // example master application in C#
-     /DNP3CLROutstationDemo // example outstation application in C#
+   /cpp                     // root for all C++ source code
+     /libs                  
+       /openpal             // library of interfaces for the PAL, data structures, parsers
+       /opendnp3            // core dnp3 library
+       /asiopal             // implementation of the PAL using ASIO
+       /asiodnp3            // dnp3 wrapper library for operating systems
+     /examples              
+       /master              // demo master application
+       /outstation          // demo outstation application
+     /tests                 
+       /openpaltests        // tests cases for openpal
+       /opendnp3tests       // test cases for opendnp3, asiopal, and asiodnp3
+       /apdufuzzer          // an 'in-memory' fuzzer for the APDU parser
+       /catch               // a redistribution of the Catch testing library
 
+   /dotnet                  // Microsoft .NET wrappers and applications
+     /bindings
+       /CLRInterface        // pure C# interfaces for dnp3 (assembly)
+       /CLRAdapter          // C++/CLI adapter code (mixed-mode assembly)
+     /examples
+       /master              // example master application in C#
+       /outstation          // example outstation application in C#
+     /simulator             
+       /Simulator           // Graphical Winform DNP3 Test Harness
+       /SimulatorAPI        // API for writing simulator modules
 
-**Minor directories**
+**other directories**
 
 .. code-block:: java
 
-   /config                  // visual studio property sheets mostly
-   /scripts                 // install scripts for Boost if you MUST
+   /config                  // visual studio property sheets, astyle config, doxygen config   
    /m4                      // autotools macros
-   /profile                 // device profile documents (not up-to-date)
+   /generation              // code generator for app objects, parsers, and enums (C++/C#/Java)
+   /profile                 // device profile document (needs work)
 
