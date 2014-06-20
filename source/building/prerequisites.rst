@@ -4,7 +4,7 @@ Prerequisites (all plaforms)
 
 **C++11**
 
-The core library written in C++, but makes use of lightweight C++11 features. This makes the code more compact, easier to understand, and easier to maintain. 
+The core library is written in a lightweight subset of C++11. This makes the code more compact, easier to understand, and easier to maintain. 
 You'll need a C++11 compiler like G++, Clang, or MSVC++.
 
 **Standalone ASIO**

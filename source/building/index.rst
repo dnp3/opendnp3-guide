@@ -2,8 +2,7 @@
 Building
 ===================
 
-.. toctree::
-	:maxdepth: 1
+.. toctree::	
 	
 	prerequisites
 	prerequisites-linux
