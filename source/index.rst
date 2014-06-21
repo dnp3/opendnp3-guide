@@ -8,6 +8,7 @@
 
 .. links for the page
 .. _opendnp3: http://www.automatak.com/opendnp3
+.. _Google Group: 
 
 The Definitive Guide to `opendnp3`_ 2.0.0-RC1
 
@@ -15,8 +16,12 @@ You may not redistribute this documentation in any form without written consent.
 
 Authors:
 
-* Adam Crain (Automatak)
+* Adam Crain
 * Pablo Giudice
+
+Join the `Google Group <http://groups.google.com/group/automatak-dnp3>`_ to post questions and receive updates. Help there is provided on a "as time permits" basis.
+
+If you need dedicated commercial support, custom integration services, or compliance/security testing contact `Automatak <http://www.automatak.com>`_.
 
 ====================
 Table of Contents
@@ -31,7 +36,8 @@ Table of Contents
   layout/index
   building/index
   applications/index
-  embedded/index
+  pal-impl/index
+  embedded/index  
   bindings/index
   contributing/index
 

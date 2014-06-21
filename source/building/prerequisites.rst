@@ -9,7 +9,7 @@ You'll need a C++11 compiler like G++, Clang, or MSVC++.
 
 **Standalone ASIO**
 
-You'll need the header-only (non-BOOST) version of `ASIO <http://think-async.com/>` >= 1.10.2.  
+You'll need the header-only (non-BOOST) version of `ASIO <http://think-async.com/>`_ >= 1.10.1.  
 Create an environment variable called ASIO_HOME and point it to your install location if it isn't installed into your build path automatically.
 
 .. code-block:: bash

@@ -8,12 +8,6 @@ The library has been in use production since 2006. This fork is maintained and s
 
 Opendnp3 is very different from proprietary implementations. The biggest difference is the user has free access to the entire source code for the library and the associated tools like test-sets. You are free to experiment, change the code, etc, and can be as involved as you care to be in the future of the code-base. You have access to a community of experts whose collective experience and advice you can tap.
 
-**Getting Help**
-
-There is a very active `mailing list <http://groups.google.com/group/automatak-dnp3>`_ that you can join, post questions, ann monitor for updates. Help here is provided pro-bono by the community.
-
-If you need dedicated commercial support, custom integration services, or compliance/security testing contact `Automatak <http://www.automatak.com>`_.
-
 **Intro Topics**
 
 .. toctree::
