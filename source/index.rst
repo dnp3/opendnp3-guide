@@ -8,7 +8,6 @@
 
 .. links for the page
 .. _opendnp3: http://www.automatak.com/opendnp3
-.. _Google Group: 
 
 The Definitive Guide to `opendnp3`_ 2.0.0-RC1
 
@@ -28,8 +27,7 @@ Table of Contents
 ====================
 
 .. toctree::
-  :maxdepth: 10
-
+  
   faq/index
   dnp3-intro/index
   opendnp3-intro/index
