@@ -23,25 +23,4 @@ These platforms are overkill, however, as the library will run on much more limi
 **Microcontrollers without an OS**
 
 If you are willing to write a Platform Abstraction Layer (PAL), opendnp3 will run on a microcontroller. 
-The project includes Atmel Studio solution demos for the following targets and attributes.
-
-* Arduino Mega (Atmega2560)
-
-  * Uses ~50% of progmem and ~50% SRAM (pre-execution)
-
-  * APDU buffer size reduced to 249 bytes
-
-  * logging stripped
-
-  * DNP3 over serial only
-
-* Arduino Due (AT91SAM3X8E)
-
-  * Uses ~30% of progmem and < 10% of the 96KB SRAM
-
-  * Full APDU buffer sizes (2K)
-
-  * logging intact and output to 2nd USART
-
-  * DNP3 over serial only
-
+Check out the *embedded* section for examples.
