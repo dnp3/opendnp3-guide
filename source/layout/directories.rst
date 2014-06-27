@@ -33,6 +33,9 @@ Diretory structure
        /Simulator           // Graphical Winform DNP3 Test Harness
        /SimulatorAPI        // API for writing simulator modules
 
+    /embedded               // Examples of microcontroller applications
+      /atmelavr             // Outstation on atmega2560 (Arduino Mega)
+
 **other directories**
 
 .. code-block:: java
