@@ -1,6 +1,10 @@
-===================
-Creating channels
-===================
+=======================
+Communication channels
+=======================
+
+.. toctree::
+
+  monitoring-channels
 
 The opendnp3 library uses an abstract communication channels to send and receive bytes "over the wire". Opendnp3 supports TCP client/server and serial communications currently, but UDP and TLS encrypted TCP may be added in the future.
 

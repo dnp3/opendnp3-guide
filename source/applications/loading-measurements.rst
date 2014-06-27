@@ -3,6 +3,8 @@
 Loading measurements
 ======================================
 
+**TODO - This section needs a rewrite for 2.0.x**
+
 Measurement loading also uses *IDataObserver*, but in the opposite direction. Instead of receiving measurements, you'll be making the calls. You can obtain this interface from the interface you got when you created your outstation:
 
 .. code-block:: cpp

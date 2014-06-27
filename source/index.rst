@@ -33,6 +33,7 @@ Table of Contents
   opendnp3-intro/index
   layout/index
   building/index
+  mapping/index
   applications/index
   pal-impl/index
   embedded/index  
