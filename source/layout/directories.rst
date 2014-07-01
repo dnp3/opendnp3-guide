@@ -1,6 +1,6 @@
 
 ============================
-Diretory structure
+Directory structure
 ============================
 
 **The main directories are organized by language and then by category**
