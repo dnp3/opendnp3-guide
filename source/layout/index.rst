@@ -46,7 +46,7 @@ This library presents a high-level interface to opendnp3 based on components of 
 
 **.NET Bindings**
 
-This is actually 2 libraries, a pure C# library of interfaces and a mixed-mode assemly written in C++/CLI. Together they comprise the .NET bindings and with an interface that roughly mirrors asiodnp3 but with more idiomatic .NET semantics.
+This is actually 2 libraries, a pure C# library of interfaces and a mixed-mode assembly written in C++/CLI. Together they comprise the .NET bindings and with an interface that roughly mirrors asiodnp3 but with more idiomatic .NET semantics.
 
 **Java Bindings**
 

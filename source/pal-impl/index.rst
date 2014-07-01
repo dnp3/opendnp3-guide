@@ -1,5 +1,5 @@
 ================================
-Platform Abtraction Layer (PAL)
+Platform Abstraction Layer (PAL)
 ================================
 
 Opendnp3 uses a Platform Abstraction Layer (PAL) to maintain portability. The PAL provides a number of services in the form of interfaces. The openpal library combines these interfaces with a number of utility classes useful for writing protocol stacks including serialization routines, statically allocated container types, and a general purpose logging facility. The openpal library has the following directory structure.

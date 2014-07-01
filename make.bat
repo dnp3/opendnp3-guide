@@ -195,4 +195,13 @@ results in %BUILDDIR%/doctest/output.txt.
 	goto end
 )
 
+if "%1" == "spelling" (
+	%SPHINXBUILD% -b spelling %ALLSPHINXOPTS% %BUILDDIR%/spelling
+	if errorlevel 1 exit /b 1
+	echo.
+	echo.Build finished. The spell check result is in %BUILDDIR%/spelling.
+	goto end
+)
+
+
 :end

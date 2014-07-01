@@ -12,10 +12,10 @@ AnalogOutputs (aka set-points) represent a discrete integer or continuous floati
 
 * AnalogOutputInt32 - 32-bit signed integer, Group 41 Variation 1
 * AnalogOutputInt16 - 16-bit signed integer, Group 41 Variation 2
-* AnalogOutputFloat32 - 32-bit single presicion floating point, Group 41 Variation 3
-* AnalogOutputDouble64 - 64-bit double presicion floating point, Group 41 Variation 4
+* AnalogOutputFloat32 - 32-bit single precision floating point, Group 41 Variation 3
+* AnalogOutputDouble64 - 64-bit double precision floating point, Group 41 Variation 4
 
-Independent of the control type you are requesting, is the mode of operation. DNP3 provdes 3 modes of operation:
+Independent of the control type you are requesting, is the mode of operation. DNP3 provides 3 modes of operation:
 
 * SelectBeforeOperate (SBO) - In this mode, the master sends two separate requests to the outstation with a SELECT function code followed by an OPERATE function code and identical data payloads. The outstation responds to each request. The master waits for the select response before operating. This is a safety precaution to avoid erroneous operations. It is somewhat antiquated over today's IP networks, but is still quite common in production.
 

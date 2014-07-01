@@ -36,7 +36,19 @@ extensions = ['sphinx.ext.todo', 'sphinx.ext.graphviz',  'rst2pdf.pdfbuilder']
 #extensions = ['sphinx.ext.todo', 'sphinx.ext.graphviz']
 ```
 
-You'll also need to install rst2pdf. Instruction are provided for Windows.
+## Spell checking (optional)
+
+Spell checking is performed with sphinxcontrib.spelling. Instructions are provided on the project [homepage] (http://sphinxcontrib-spelling.readthedocs.org/en/latest/install.html).
+
+By default, spell check is disabled. To enable it, change the following lines in your conf.py
+
+```
+# extensions = ['sphinx.ext.todo', 'sphinx.ext.graphviz',  'rst2pdf.pdfbuilder']
+# extensions = ['sphinx.ext.todo', 'sphinx.ext.graphviz']
+extensions = ['sphinx.ext.todo', 'sphinx.ext.graphviz', 'sphinxcontrib.spelling']
+
+```
+
 
 ### Installing rst2pdf on windows
 The basic installation guid was [here] (http://khuntronak.blogspot.in/2013/04/how-to-install-rst2pdf-tool-on-windows.html)

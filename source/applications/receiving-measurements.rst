@@ -4,7 +4,7 @@ Receiving measurements
 
 **Seqence of Events (SOE)**
 
-The primary purpose of DNP3 is deliver a sequence of events (measurement history) from outstation to master. When creating a master, you must supply an instance of the *ISOEHandler* interface. The *PrintingSOEHandler* singleton provided above simply prints all measurements received to the console. The instance provided by your application will do something more interesting like loading to a database, handing off to a protcol translation routine, or simply logging to file.
+The primary purpose of DNP3 is deliver a sequence of events (measurement history) from outstation to master. When creating a master, you must supply an instance of the *ISOEHandler* interface. The *PrintingSOEHandler* singleton provided above simply prints all measurements received to the console. The instance provided by your application will do something more interesting like loading to a database, handing off to a protocol translation routine, or simply logging to file.
 
 .. code-block:: cpp
 

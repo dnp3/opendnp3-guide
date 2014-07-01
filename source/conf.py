@@ -27,6 +27,7 @@ import sys, os
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 # extensions = ['sphinx.ext.todo', 'sphinx.ext.graphviz',  'rst2pdf.pdfbuilder']
 extensions = ['sphinx.ext.todo', 'sphinx.ext.graphviz']
+#extensions = ['sphinx.ext.todo', 'sphinx.ext.graphviz', 'sphinxcontrib.spelling']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -315,3 +316,9 @@ pdf_toc_depth = 9999
 pdf_use_numbered_links = False
 # Background images fitting mode
 pdf_fit_background_mode = 'scale'
+
+# -- Options spellcheck (sphinxcontrib-spelling)--------------------------------------------------
+#language & locale
+spelling_lang='en_US'
+#words that should be considered as correct despite not being in the official dictionary
+spelling_word_list_filename='wordlist.txt'

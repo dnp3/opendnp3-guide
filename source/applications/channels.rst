@@ -24,7 +24,7 @@ The methods for adding a server channel or a serial port are very similar. Refer
 
 **Exponential Backoff**
 
-All channels specify two timing paramters for the minimum and maximum connection retry times. The channels use an exponential backoff strategy to retries. If you don't want exponential backoff, just set the minimum and maximum to the same value.
+All channels specify two timing parameters for the minimum and maximum connection retry times. The channels use an exponential backoff strategy to retries. If you don't want exponential backoff, just set the minimum and maximum to the same value.
 
 For instance if you set the minimum to *TimeDuration::Seconds(3)* and the maximum to *TimeDuration::Seconds(40)* a series of failed connections would have the following time gaps between attempts.
 
