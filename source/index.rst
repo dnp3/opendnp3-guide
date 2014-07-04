@@ -39,4 +39,4 @@ Table of Contents
   embedded/index  
   bindings/index
   contributing/index
-
+  tutorials/index

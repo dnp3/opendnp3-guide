@@ -1,0 +1,117 @@
+==========================================================
+How to create a new opendnp3 project in Visual Studio 2013
+==========================================================
+
+.. image:: /img/tutorials/new-project-visual-studio-13/vstudio2013logo_100.png
+   :align: center
+
+This is a tutorial on how to create a new visual studio 2013 project using the opendnp3 library. During the tutorial I'll be using Visual Studio 2013, but it should be very similar for older (or even newer) versions of this IDE. 
+
+First of all I'll assume that you have a copy of opendnp3 source files and you have installed the opendnp3 libraries and header files on your computer. If not, please read this (link!) before.
+I'll also assume that the following environment variable is set on your system.
+
+.. code-block:: bash
+	
+	%OPENDNP3_DIR% 
+	
+Now, let's create our new project. If you already know how to do it, you can skip a few steps. 
+
+First, we go to File - New - Project
+
+.. image:: /img/tutorials/new-project-visual-studio-13/01a.new-project.png
+   :align: center
+
+Then we pick a name and a destination folder. Let's choose opendnp3-test as an example.
+
+.. image:: /img/tutorials/new-project-visual-studio-13/01b.name.png
+   :align: center
+   :width: 600px
+   
+We hit continue...
+
+.. image:: /img/tutorials/new-project-visual-studio-13/01c.continue.png
+   :align: center
+   :width: 600px
+
+Then check the options as shown in the next image. Check the "empty project" solution in order to have a clean project to start from.
+
+.. image:: /img/tutorials/new-project-visual-studio-13/01d.settings.png
+   :align: center
+   :width: 600px
+
+Then we copy the demo files from the opendnp3 source code folder to our newly created folder.
+
+.. image:: /img/tutorials/new-project-visual-studio-13/02.copy.png
+   :align: center
+   :width: 600px
+   
+Now, the files are correctly placed but won't appear on the solution. We first go to 
+
+.. image:: /img/tutorials/new-project-visual-studio-13/03.show.png
+   :align: center
+   
+We now need to include all those files to our project. So select all the files, right click and then "Include in project". 
+
+.. image:: /img/tutorials/new-project-visual-studio-13/03.include.png
+   :align: center
+
+Congratulations! Your project is *almost* ready to build. 
+
+We just need to tell the compiler and the linker where did we save our opendnp3 library files.
+
+
+Configuring the compiler
+------------------------
+Right click on the project name, then Properties.
+On the left side, go to Configuration Properties > C/C++ > General
+and edit the "Additional Include Directories" property with these values:
+
+.. code-block:: bash
+
+   $(BOOST_HOME)
+   $(ASIO_HOME)
+   $(OPENDNP3_DIR)\opendnp3-include
+   
+   
+.. image:: /img/tutorials/new-project-visual-studio-13/04a.compiler.png
+   :align: center
+   :width: 600px
+   
+.. image:: /img/tutorials/new-project-visual-studio-13/04b.compiler.png
+   :align: center  
+
+   
+Configuring the linker
+----------------------
+
+Right click on the project name, then Properties.
+On the left side, go to Configuration Properties > Linker > General
+and edit the "Additional Include Directories" property with these values: 
+
+.. code-block:: bash
+
+   $(BOOST_LIB)
+   $(OPENDNP3_DIR)\opendnp3-lib  
+   
+.. image:: /img/tutorials/new-project-visual-studio-13/05a.linker.png
+   :align: center
+   :width: 600px
+   
+.. image:: /img/tutorials/new-project-visual-studio-13/05b.linker.png
+   :align: center
+   
+
+Now edit input > Additional dependencies  as follows:
+
+.. code-block:: bash
+
+   asiodnp3.lib
+   asiopal.lib
+   opendnp3.lib
+   openpal.lib
+  
+.. image:: /img/tutorials/new-project-visual-studio-13/05d.linker.png
+   :align: center
+   
+.. image:: /img/tutorials/new-project-visual-studio-13/05c.linker.png
+   :align: center
