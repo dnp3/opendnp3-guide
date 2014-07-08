@@ -1,0 +1,22 @@
+=========== ======================================================
+|Install_1| **Title:** tutorial_visual_studio_2013_.
+
+            *Compatibility:* > |opendnp3_2.0.0|
+            
+            *Author:* |PabloGiudice|
+            
+            *Difficulty:* Low 
+            
+            You will learn how to create a new opendnp3 project in your computer.
+            
+=========== ======================================================
+
+.. |Install_1| image:: /img/tutorials/new-project-visual-studio-13/vstudio2013logo_100.png
+                 :width:  90pt
+
+.. tabularcolumns:: m{100pt} m{300pt}
+
+.. |PabloGiudice| replace:: Pablo Giudice
+.. |AdamCrain| replace:: Adam Crain
+.. |opendnp3_1.0.0| replace:: openDNP3 1.0.0 
+.. |opendnp3_2.0.0| replace:: openDNP3 2.0.0
