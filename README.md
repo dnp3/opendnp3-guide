@@ -8,7 +8,7 @@ This is a work in progress for the upcoming 2.0.x  release. Don't mistake this a
 
 ## About
 
-This is the official documentation source to the [opendnp3 project](www.automatak.com/opendnp3).
+This is the official documentation source to the [opendnp3 project](http://www.automatak.com/opendnp3).
 
 It uses the [Sphinx](http://sphinx-doc.org/) documentation platform.
 
