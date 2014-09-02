@@ -17,7 +17,7 @@ Opendnp3 has a modular architecture to allow it to adapt to a number of platform
 * **Plain-text** nodes represent toolchain requirements
 * **Ellipses** represent a system or 3rd party library
 * **Rectangles** represent a library in the opendnp3 project
-* **Greyed** components can be used with microcontrollers without an OS
+* **Greyed** components may be usable on certain microcontrollers without an OS
 * **Diamonds** represent executable programs / firmware
 * **Dashed** components are abstract, i.e. things you have to write yourself
 
@@ -30,11 +30,12 @@ PAL stands for Platform Abstraction Layer. It provides a number of abstract serv
 * Abstract communication channels (IPhysicalLayer)
 * Abstract executor (IExecutor) that provides a way to post events, get timestamps, and start/cancel software timers
 
-Openpal also provides buffer wrappers (read/write), statically-allocated container types, big/litte endian parsers for various integer/float types. Any opendnp3 program must have a concrete implementation of the PAL to execute. The library has no dependencies on STL, dynamic allocation, or the C++ standard library. It is suitable for deeply embedded systems.
+Openpal also provides buffer wrappers (read/write), fixed-size container types, big/litte endian parsers for various integer/float types. Any opendnp3 program must have a concrete implementation of the PAL to execute. The library has no dependencies on STL, dynamic allocation, or the C++ standard library. It is suitable for deeply embedded systems.
 
 **opendnp3**
 
-This is the core dnp3 library providing implementations of both outstation and masters. It uses the interfaces provided in openpal, and is therefore platform independent. It has the same characteristics as openpal and can run on microcontroller platforms with a C++11 compiler.
+This is the core dnp3 library providing implementations of both outstation and masters. It uses the interfaces provided in openpal, and is therefore platform independent. 
+The outstation part of the library can run on certain microcontroller platforms with a C++11 compiler.
 
 **asiopal**
 
@@ -49,6 +50,8 @@ This library presents a high-level interface to opendnp3 based on components of 
 This is actually 2 libraries, a pure C# library of interfaces and a mixed-mode assembly written in C++/CLI. Together they comprise the .NET bindings and with an interface that roughly mirrors asiodnp3 but with more idiomatic .NET semantics.
 
 **Java Bindings**
+
+Note: the Java bindings have not yet been ported from 1.1.x to 2.0.x.
 
 This is actually 2 libraries, a pure Java library (build with Maven) of interfaces and a JNI-based shared library that implements the native functions. Together they comprise the Java bindings and have an interface that roughly mirrors asiodnp3 but with more idiomatic Java semantics.
 

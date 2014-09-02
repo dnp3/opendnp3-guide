@@ -1,7 +1,8 @@
 .. _tutorial_visual_studio_2013:
-==========================================================
+
+===========================================================
 How to create a new opendnp3 project in Visual Studio 2013
-==========================================================
+===========================================================
  
 This is a tutorial on how to create a new visual studio 2013 project using the opendnp3 library. During the tutorial I'll be using Visual Studio 2013, but it should be very similar for older (or even newer) versions of this IDE. 
 

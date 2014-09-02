@@ -6,7 +6,7 @@ Emphasis on testing
 
 Opendnp3 aims to be a correct, robust, secure, and conformant implementation of the standard. To meet these goals, we do the following types of testing an analysis.
 
-* **Unit testing** is the cornerstone of opendnp3. The unit test suite allows us to refactor with confidence. We follow the "write the test to prove the bug exists" approach to debugging and regression prevention. The test suite has over 400 individual tests for the core libraries.
+* **Unit testing** is the cornerstone of opendnp3. We follow the "write the test to prove the bug exists" approach to debugging and regression prevention. The test suite has over 400 individual tests for the core libraries.
 
 * **Conformance testing** is a type of functional testing used to ensure we are compliant to the DNP3 standard. We have our own tools (external in Scala) that implement the test proceedures and we use at least one third-part test harness prior to every major release.
 
