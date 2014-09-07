@@ -14,6 +14,7 @@ Opendnp3 users have free access to the entire source code for the library and th
   :maxdepth: 2
     
   platforms
+  subsets
   scalable
   testing
   

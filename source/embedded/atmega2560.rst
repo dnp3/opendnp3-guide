@@ -17,22 +17,15 @@ The example project is located in the **./embedded/atmelavr** subdirectory of th
 
 The program is a good example of implementing the PAL for a microntroller. 
 
-* Level 3 outstation with unsolicited support
-* All static memory allocation
+* Level 2 (nearly level 3) outstation with unsolicited support
+* Dynamic memory allocation only during initialization
 * Interrupt-driven hardware timer with a 10ms period to multiplexes the software timers
 * Interrupt-driven non-blocking USART tx/tx 
 * Makes use of the AVR's light sleep mode between interrupts
-* Max APDU rx/t/x sizes turned down to 249 bytes (-DOPENDNP3_MAX_TX_APDU_SIZE=249, -DOPENDNP3_MAX_RX_APDU_SIZE=249)
+* Max APDU rx/t/x sizes turned down to 249 bytes
 * Logging stripped to reduce size (-DOPENPAL_STRIP_LOGGING)
 
-Once built, you'll get the following output:
-
-.. code-block:: bash
-
-   Program Memory Usage 	:	137826 bytes   52.6 % Full
-   Data Memory Usage 		:	4179 bytes     51.0 % Full
-
-The demo doesn't do very much. It assigns a toggling binary value to one of five binary inputs every few seconds.
+The demo doesn't do very much. It assigns a toggling binary value to one of five binary inputs every few seconds and reports the free amount of RAM.
 
 You can also send LATCH_ON / LATCH_OFF control relay output block to index 0 and the board will set the PORTB LED.
 

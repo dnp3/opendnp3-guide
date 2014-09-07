@@ -22,5 +22,4 @@ These platforms are overkill, however, as the library will run on much more limi
 
 **Microcontrollers without an OS**
 
-If you are willing to write a Platform Abstraction Layer (PAL, sometimes called a HAL elsewhere), opendnp3 will run on a microcontroller. 
-Check out the *embedded* section for examples.
+If you are willing to write a Platform Abstraction Layer (PAL, sometimes called a HAL elsewhere), opendnp3 might run on a microcontroller. Check out the *embedded* section for examples.

@@ -32,8 +32,7 @@ Table of Contents
   
   faq/index
   dnp3-intro/index
-  opendnp3-intro/index
-  support/index
+  opendnp3-intro/index  
   layout/index
   building/index
   mapping/index
