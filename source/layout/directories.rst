@@ -20,7 +20,7 @@ Directory structure
        /openpaltests        // tests cases for openpal
        /opendnp3tests       // test cases for opendnp3, asiopal, and asiodnp3
        /apdufuzzer          // an 'in-memory' fuzzer for the APDU parser
-       /catch               // a redistribution of the Catch testing library
+       /catch               // a redistribution of the Catch C++ unit testing framework
 
    /dotnet                  // Microsoft .NET wrappers and applications
      /bindings
@@ -29,11 +29,10 @@ Directory structure
      /examples
        /master              // example master application in C#
        /outstation          // example outstation application in C#
-     /simulator             
-       /Simulator           // Graphical Winform DNP3 Test Harness
-       /SimulatorAPI        // API for writing simulator modules
+     /Simulator             // parent directory for the graphical simulator
+       /...                 // subdirectories of the simulator component undocumted at this time
 
-    /embedded               // Examples of microcontroller applications
+    /embedded               // Examples of microcontroller ports
       /atmelavr             // Outstation on atmega2560 (Arduino Mega)
 
 **other directories**
