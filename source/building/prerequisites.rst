@@ -9,9 +9,16 @@ You'll need a C++11 compiler like G++, Clang, or MSVC++.
 
 **Standalone ASIO**
 
-You'll need the header-only (non-BOOST) version of `ASIO <http://think-async.com/>`_ >= 1.10.2.  
+You'll need the header-only (non-BOOST) version of `ASIO <http://think-async.com/>`_.  To ensure compatiblity, please use a release tag. Opendnp3 has been tested against:
+
+* ASIO 1.10.1
+* ASIO 1.10.2
+* ASIO 1.10.3
+
 Create an environment variable called ASIO_HOME and point it to the include sudirectory of the ASIO distribution, e.g.:
 
 .. code-block:: bash
 
   ASIO_HOME = <path to 'include' directory of ASIO>
+
+This will allow your build system to find the ASIO header files.
