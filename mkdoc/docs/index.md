@@ -1,6 +1,6 @@
 # Introduction
 
-Welcome to opendnp3, a portable and rigorously tested implementation of the DNP3 protocol (aka IEEE-1815).
+Welcome to opendnp3, a portable, rigorously-tested, Apache-licensed implementation of the DNP3 protocol (aka IEEE-1815).
 
 ### Important Links
 
@@ -13,10 +13,3 @@ Welcome to opendnp3, a portable and rigorously tested implementation of the DNP3
 If you need dedicated commercial support, custom integration services, or compliance/security testing contact [Automatak](http://www.automatak.com).
 
 If the library does not contain a feature that you need for your device or application, please consider sponsoring the addition.
-
-### Authors
-
-This guide contains contributions from the following authors:
-
-* Adam Crain
-* Pablo Giudice

@@ -3,6 +3,7 @@ site_favicon: 'img/favicon.ico'
 copyright: 'Copyright Automatak LLC 2015'
 site_description: 'dnp3 scada opendnp3 library documentation'
 repo_url: https://github.com/automatak/dnp3
+theme: cosmo
 
 pages:
 - Home: 'index.md'
@@ -11,3 +12,6 @@ pages:
   - 'Requirements': 'build/requirements.md'
   - 'CMake': 'build/cmake.md'
   - 'Linux': 'build/linux.md'
+  - 'Windows': 'build/windows.md'
+- API:
+  - 'Architecture': 'api/threading.md'
