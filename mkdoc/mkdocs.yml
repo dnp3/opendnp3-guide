@@ -1,1 +1,13 @@
-site_name: opendnp3 guide
+site_name: opendnp3
+site_favicon: 'img/favicon.ico'
+copyright: 'Copyright Automatak LLC 2015'
+site_description: 'dnp3 scada opendnp3 library documentation'
+repo_url: https://github.com/automatak/dnp3
+
+pages:
+- Home: 'index.md'
+- DNP3: 'dnp3/dnp3.md'
+- Build:
+  - 'Requirements': 'build/requirements.md'
+  - 'CMake': 'build/cmake.md'
+  - 'Linux': 'build/linux.md'

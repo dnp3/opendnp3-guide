@@ -1,17 +1,22 @@
-# Welcome to MkDocs
+# Introduction
 
-For full documentation visit [mkdocs.org](http://mkdocs.org).
+Welcome to opendnp3, a portable and rigorously tested implementation of the DNP3 protocol (aka IEEE-1815).
 
-## Commands
+### Important Links
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+* [Github Repository](https://www.github.com/automatak/dnp3) - You'll find the tagged releases here as well as the development branches.
 
-## Project layout
+* [Google Group](http://groups.google.com/group/automatak-dnp3) - Please post questions and receive updates. Help there is provided on a "as time permits" basis.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+### Support
+
+If you need dedicated commercial support, custom integration services, or compliance/security testing contact [Automatak](http://www.automatak.com).
+
+If the library does not contain a feature that you need for your device or application, please consider sponsoring the addition.
+
+### Authors
+
+This guide contains contributions from the following authors:
+
+* Adam Crain
+* Pablo Giudice
