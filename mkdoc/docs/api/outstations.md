@@ -53,7 +53,50 @@ unimportant changes are not reported. Opendnp3 supports deadbanding via database
 
 ### ICommandHandler
 
-When the outstation receives a control request...
+When the outstation receives a control request, it dispatches individual commands in the message to the ICommandhandler interface
+supplied when the outstation was added to the channel.
 
+```
+class ICommandHandler : public ITransactable
+{
+	virtual CommandStatus Select(const ControlRelayOutputBlock& command, uint16_t index) = 0;
+	virtual CommandStatus Operate(const ControlRelayOutputBlock& command, uint16_t index) = 0;
+	/// ... additional methods for the 4 types of analog outputs - Group 41Var[1-4]
+}
+```
 
+You'll notice that the interface is _transactable_ meaning that it has Start()/End() methods just like the _ISOEHandler_ interface in the master. ASDUs
+can contain multiple controls in a single object header, and possibly multiple headers. The Start()/End() methods tell you when an ASDU containing
+commands begins and ends. Many applications probably don't care, but this knowledge is there if you need it for some reason.
 
+The _Select_ operation shouldn't actually perform the command. Think of it as a question along the lines of _"Is this operation supported?"_. 
+_Select-Before-Operate_ (SBO) is an artifact of the days before the SCADA community really trusted CRCs. It's  a 2-pass control scheme where the 
+outstation verifies that the select/operate are identical. It was intended as an additional protection against data corruption on noisy networks.
+
+The _Operate_ method could really be from a successul SBO sequence or from a _DirectOperate_ or _DirectOperateNoAck_ request. You don't really need to know because the
+DNP3 spec says you have to support all modes.
+
+### CommandStatus
+
+You must immediately return a _CommandStatus_ enumeration value in response to each callback. This callback should never block.
+
+```c++
+enum class CommandStatus : uint8_t
+{
+  /// command was accepted, initiated, or queued
+  SUCCESS = 0,
+  /// command timed out before completing
+  TIMEOUT = 1,
+  /// command requires being selected before operate, configuration issue
+  NO_SELECT = 2,
+  /// more values ...
+}
+```
+
+The enumeration contains about ~18 different values, and you should refer to 1815 or the code comments for a description of each. In general,
+you'll be choosing _SUCCESS_ or some kind of error code.
+
+It's important to understand that _SUCCESS_ doesn't imply that the command was synchronously executed. It really just means that the command
+was received and queued. Some devices can synchronously process a command, e.g. quickly writing to memory mapped I/O, but you'd never 
+want to block in a gateway application to perform a downstream Modbus transaction. You'd pass the control of to another thread or queue the operation
+in some way for subsequent processing.
