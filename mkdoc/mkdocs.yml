@@ -10,7 +10,8 @@ pages:
 - DNP3: 'dnp3/dnp3.md'
 - Build:
   - 'Requirements': 'build/requirements.md'
-  - 'CMake': 'build/cmake.md'
+  - 'Libraries': 'build/libraries.md'
+  - 'CMake': 'build/cmake.md'  
   - 'Linux': 'build/linux.md'
   - 'Windows': 'build/windows.md'
 - API:

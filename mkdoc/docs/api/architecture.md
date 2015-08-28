@@ -1,4 +1,4 @@
-### Object Hierarchy
+### DNP3Manager
 
 All opendnp3 programs begin by creating a _DNP3Manager_.  Creating this object allocates a thread pool used
 to process events and callbacks to user code.
@@ -7,6 +7,10 @@ to process events and callbacks to user code.
 // Create a root DNP3 manager with a single thread
 DNP3Manager manager(1);
 ```
+
+If you're familiar with using ASIO in other contexts, than it should be no surprise that the DNP3Manager owns an _asio::io_context_.
+It also has a thread pool for calling _asio::io_context::run()_, but this is an internal detail that most opendnp3 programmers do
+not need to know to use the stack.
 
 How many threads you allocate to your thread pool can be a subtle matter. On simple systems like a small outstation that only
 talks to a single master, one thread is sufficient. For masters that may talk to hundreds or thousands of outstations, you'll
