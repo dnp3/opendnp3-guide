@@ -68,9 +68,3 @@ User code, however, may need to worry about multi-threading. If you hand the sam
 potentially receive callbacks from multiple threads simultaneously on the same interface.
 
 ![threading](../img/threading.svg)
-
-<!---
-When writing a program that uses opendnp3, you'll be forced to implement a number of callback interfaces.  Much of this
-is driven by the fact that opendnp3 uses asynchronous I/O to achieve a scale-able design. For instance, when using
-the master API, you begin an operation and then receive a callback sometime later indicating if the operation succeeded or failed.
--->

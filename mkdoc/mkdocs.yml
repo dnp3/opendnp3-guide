@@ -18,3 +18,4 @@ pages:
 - API:
   - 'Architecture': 'api/architecture.md'
   - 'Logging': 'api/logging.md'
+  - 'Channels': 'api/channels.md'
