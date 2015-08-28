@@ -41,11 +41,22 @@ To build the secure authentication extensions... (experimental)
 > cmake ../dnp3 -DSECAUTH=ON
 ```
 
-### CMake Options
+### Build Options
 
 Most of command-line options you can feed to CMake to generate your build environment are platform-independent.  This documentation can't tell you everything that
 CMake can do. We only document some of the more common flags here for your convienence. All of the following examples assume an out-of-source build folder in a 
 sibling directory to the opendnp3 distribution.
+
+**Static vs Dynamic Linking**
+
+You can switch between building static or dynamic linking using the STATICLIBS flag. Note that this flag is provided by the project and is not a CMake flag.
+
+On Windows, static libs are the default. On Linux, dynamic libs are the default.
+
+```
+> cmake ../dnp3 STATICLIBS=ON	# build static libraries
+> cmake ../dnp3 STATICLIBS=OFF	# build dynamic libraries
+```
 
 **Debug vs Release**
 
