@@ -19,3 +19,4 @@ pages:
   - 'Architecture': 'api/architecture.md'
   - 'Logging': 'api/logging.md'
   - 'Channels': 'api/channels.md'
+  - 'Masters': 'api/masters.md'
