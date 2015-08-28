@@ -31,8 +31,7 @@ from [ShiningLight](https://slproweb.com/products/Win32OpenSSL.html).
 Building the .NET bindings currently requires linking to openssl. As a result, you need to create and install an opendnp3 build 
 with SEC_AUTH=ON set when creating the SLN.
 
-The .NET bindings use a separate SLN located in the 'dotnet' folder (bindings.sln). They treat the C++ libraries as if they were a
-depenency. There are a few environment variables you need to define so that the SLN can find opendnp3.
+The .NET bindings use a separate SLN located in the 'dotnet' folder (bindings.sln). They treat the C++ libraries as if they were a dependency. There are a few environment variables you need to define so that the SLN can find opendnp3.
 
 * OPENDNP3_DIR - The directory where opendnp3 was installed, e.g. your argument to CMAKE_INSTALL_PREFIX
 * OSSL_LIB32_DIR - The directory where the 32-bit openssl libraries are installed, e.g. C:\OpenSSL-Win32\lib\VC\static

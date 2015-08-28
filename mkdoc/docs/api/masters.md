@@ -2,7 +2,7 @@
 
 A master in opendnp3 is a component that communicates with a single outstation via a communication channel. You may see this term used in other places to refer to a 
 collection of such components communicating with multiple outstations. When more than one master is bound to a single communication channel, it is called a 
-_multidrop configuration_.  This refers to the way in which an RS-485 serial network is chained from device to device. Opendnp3 will let you add multiple 
+_multi-drop configuration_.  This refers to the way in which an RS-485 serial network is chained from device to device. Opendnp3 will let you add multiple 
 masters / outstations to any communication channel, regardless of he underlying transport. You could even bind a master to a TCP server and reverse the 
 normal connection direction.
 
@@ -72,7 +72,7 @@ There's also a wealth of information in the _HeaderInfo_ object including:
 
 * The specific group/variation associated with this ASDU header
 * The QualifierCode associated with this header
-* An enumeration describing the validity of the timestamp for convienence to the programmer.
+* An enumeration describing the validity of the time-stamp for convenience to the programmer.
 * The index of the header within the ASDU
 
 **Remember that the callbacks for the ISOEHandler methods come from the thread-pool.** Depending on the number of sessions, you may not
@@ -108,7 +108,7 @@ Each of the dozen or so fields in this struct control certain automated behavior
 for complete descriptions. This struct controls behaviors like:
 
 * The default response timeout
-* Whether to perform unsolcited disable/enable on startup
+* Whether to perform unsolicited disable/enable on start-up
 * Whether to perform automatic time synchronization if requested
 * The maximum Tx/Rx ASDU size which always default to 2K as per the DNP3 specification
 
@@ -124,5 +124,5 @@ on the master. Refer to the code documentation for specifics. Some examples are:
 ### Cleaning Up
 
 Masters are automatically destroyed when their channel is shutdown or when the underlying DNP3Manager is destroyed. If you want to clean them up 
-manually w/o deallocated the underlying channel, you can call Shutdown(). When you do this the IMaster pointer is deleted so don't use it after being
+manually w/o de-allocated the underlying channel, you can call Shutdown(). When you do this the IMaster pointer is deleted so don't use it after being
 shutdown!

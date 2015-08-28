@@ -73,7 +73,7 @@ The _Select_ operation shouldn't actually perform the command. Think of it as a 
 _Select-Before-Operate_ (SBO) is an artifact of the days before the SCADA community really trusted CRCs. It's  a 2-pass control scheme where the 
 outstation verifies that the select/operate are identical. It was intended as an additional protection against data corruption on noisy networks.
 
-The _Operate_ method could really be from a successul SBO sequence or from a _DirectOperate_ or _DirectOperateNoAck_ request. You don't really need to know because the
+The _Operate_ method could really be from a successful SBO sequence or from a _DirectOperate_ or _DirectOperateNoAck_ request. You don't really need to know because the
 DNP3 spec says you have to support all modes.
 
 ### CommandStatus

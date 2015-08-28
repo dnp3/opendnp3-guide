@@ -24,7 +24,7 @@ DNP3Manager manager(std::hardware_concurrency());
 **You should avoid blocking the stack during callbacks** made to user code.  This advice is especially critical for large systems where
 the number of communication channels (Nc) greatly outnumbers the number of threads in the pool (Nt). If all of your threads are blocked 
 then other channels can't do useful work like sending control requests to the field. If you must design your system to do some blocking,
-you can migigate this problem by scaling the number of threads in the pool as a multiple of the number of cores.
+you can mitigate this problem by scaling the number of threads in the pool as a multiple of the number of cores.
 
 ```c++
 // Create a root DNP3 manager with twice as many threads as logical processors

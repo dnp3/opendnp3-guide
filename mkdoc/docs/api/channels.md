@@ -23,8 +23,8 @@ The API for creating TCPServer channels or Serial channels is very similar. Just
 
 ### Exponential backoff
 
-All channels specify two timing parameters for the minimum and maximum connection retry times. The channels use an exponential backoff strategy for retries. If you don't want
-exponential backoff, just set the minimum and maximum to the same value for a consistent delay. Exponential-backoff really only makes sense for initiating TCP connections.
+All channels specify two timing parameters for the minimum and maximum connection retry times. The channels use an exponential back-off strategy for retries. If you don't want
+exponential back-off, just set the minimum and maximum to the same value for a consistent delay. Exponential back-off really only makes sense for initiating TCP connections.
 
 For instance if you set the minimum to *TimeDuration::Seconds(3)* and the maximum to *TimeDuration::Seconds(40)* a series of failed connections would have the following 
 time gaps between attempts.
@@ -33,8 +33,7 @@ time gaps between attempts.
 
 ### Monitoring channels
 
-Most of the time your communication channel is open and passing dnp3 traffic back and forth. Sometimes, however, things can go wrong with your network or you have mis-configured 
-your connection. The communication channel interface offers a way to monitor the state of channel. These states are represented by an enumeration:
+Most of the time your communication channel is open and passing dnp3 traffic back and forth. Sometimes, however, things can go wrong with your network or you have mis-configured your connection. The communication channel interface offers a way to monitor the state of channel. These states are represented by an enumeration:
 
 ```c++
 enum class ChannelState : uint8_t

@@ -44,7 +44,7 @@ To build the secure authentication extensions... (experimental)
 ### Build Options
 
 Most of command-line options you can feed to CMake to generate your build environment are platform-independent.  This documentation can't tell you everything that
-CMake can do. We only document some of the more common flags here for your convienence. All of the following examples assume an out-of-source build folder in a 
+CMake can do. We only document some of the more common flags here for your convenience. All of the following examples assume an out-of-source build folder in a 
 sibling directory to the opendnp3 distribution.
 
 **Static vs Dynamic Linking**
@@ -69,7 +69,7 @@ Note that on windows, the generated SLN contains debug and release build targets
 
 **Non-default generators**
 
-By default, cmake will pick a generator to use if you don't tell it which one. You can see a list of all available generators using the help flag.
+By default, CMake will pick a generator to use if you don't tell it which one. You can see a list of all available generators using the help flag.
 ```sh
 > cmake --help
 ```
@@ -82,7 +82,7 @@ You can then specify a specific generator, i.e.
 
 The default install prefix probably won't be right for your platform. You can configure it using CMAKE_INSTALL_PREFIX.
 
-On debian-based systems this should probably be:
+On Debian-based systems this should probably be:
 ```sh
 > cmake ../dnp3 -DCMAKE_INSTALL_PREFIX=/usr
 ```
@@ -94,7 +94,7 @@ On windows, you might put your libraries and headers somewhere like:
 
 ### Building on Linux
 
-On linux, the easiest way to use CMake is just to let it create a makefile for you. You can then use this makefile in the same way you normally would.
+On Linux, the easiest way to use CMake is just to let it create a makefile for you. You can then use this makefile in the same way you normally would.
 ```sh
 > cmake ../dnp3 <options>
 > make

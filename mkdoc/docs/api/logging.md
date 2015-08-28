@@ -18,7 +18,7 @@ to a worker thread to write the message to disk.
 ### Individual loggers
 
 Each channel has its own _Logger_ whose log level can be individually configured and adjusted at run-time. This allows you increase the log-level of a particular channel, without 
-receiving full protocol analysis for every channel and grinding the system to a halt. You specifiy the initial log level for each channel when it is created. You can adjust it
+receiving full protocol analysis for every channel and grinding the system to a halt. You specify the initial log level for each channel when it is created. You can adjust it
 during execute by calling _IChannel::SetLogFilters_.
 
 ### Log levels
