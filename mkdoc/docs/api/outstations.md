@@ -29,5 +29,31 @@ IOutstation* outstation = channel->AddOutstation(
 );
 
 outstation->Enable();
-
 ```
+
+### MeasUpdate
+
+When a new measurement is read from an input or a new value is received from a downstream protocol, you need to update the corresponding
+value in the outstaion. This is accomplished with the _MeasUpdate_ helper class.
+
+
+```c++
+// start a measurement update transaction
+MeasUpdate tx(outstation);
+tx.Update(Counter(123), 0);		// change a counter value at index 0
+tx.Update(Analog(-7.4), 8);		// change an analog value at index 8
+```
+
+The update is applied to the outstation when the _MeasUpdate_ instance destructs. This means that the update is atomic.
+All of the updated values are applied to the outstation database and event buffers at the same time.
+
+The outstation automatically decides if these update produce _events_. If the value or measurment _flags_ haven't changed, an event is never produced.
+How events are detected are defined within the DNP3 standard, and varies from type to type. Analogs and counters can use _deadbands_ to ensure that
+unimportant changes are not reported. Opendnp3 supports deadbanding via database configuration covered in a section below.
+
+### ICommandHandler
+
+When the outstation receives a control request...
+
+
+
