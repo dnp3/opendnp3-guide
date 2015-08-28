@@ -27,6 +27,10 @@ IMaster* pMaster = pClient->AddMaster(
 	asiodnp3::DefaultMasterApplication::Instance(),		// IMasterApplication - interface
 	stackConfig											// static stack configuration
 );
+
+// enable the master - you can also Disable() it or Shutdown() permanently
+pMaster->Enable();
+
 ```
 
 ### ISOEHandler
@@ -71,6 +75,11 @@ There's also a wealth of information in the _HeaderInfo_ object including:
 * An enumeration describing the validity of the timestamp for convienence to the programmer.
 * The index of the header within the ASDU
 
+**Remember that the callbacks for the ISOEHandler methods come from the thread-pool.** Depending on the number of sessions, you may not
+want to block the stack in these callbacks. You might consider allocating some kind of object that is passed to a worker thread
+to actually write the data to disk/database.
+
+
 ### IMasterApplication
 
 The 3rd parameter in the call to _AddMaster(...)_ is a user-defined interface called _IMasterApplication_. It contains
@@ -103,3 +112,17 @@ for complete descriptions. This struct controls behaviors like:
 * Whether to perform automatic time synchronization if requested
 * The maximum Tx/Rx ASDU size which always default to 2K as per the DNP3 specification
 
+### IMaster
+
+When you added a master to the channel, the channel returned an _IMaster_ interface. This interface provides all access to a number of operations
+on the master. Refer to the code documentation for specifics. Some examples are:
+
+* Add periodic scans to the master like exception (Class 1/2/3) and integrity scans (Class 1/2/3/0)
+* Scanning for specific ranges or event counts
+* The _ICommandProcessor_ sub-interface allow you to do _SelectBeforeOperate_ and _DirectOperate_ requests w/ CROBs and Analog Outputs
+
+### Cleaning Up
+
+Masters are automatically destroyed when their channel is shutdown or when the underlying DNP3Manager is destroyed. If you want to clean them up 
+manually w/o deallocated the underlying channel, you can call Shutdown(). When you do this the IMaster pointer is deleted so don't use it after being
+shutdown!
