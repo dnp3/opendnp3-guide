@@ -4,9 +4,9 @@ A master in opendnp3 is a component that communicates with a single outstation v
 collection of such components communicating with multiple outstations. When more than one master is bound to a single communication channel, it is called a 
 _multidrop configuration_.  This refers to the way in which an RS-485 serial network is chained from device to device. Opendnp3 will let you add multiple 
 masters / outstations to any communication channel, regardless of he underlying transport. You could even bind a master to a TCP server and reverse the 
-normal connection direction. Just like the honey badger, opendnp3 doesn't care.
+normal connection direction.
 
-To add a master to a communication channel you call the *AddMaster* method on the channel interface:
+To add a master to a communication channel you call the *AddMaster(...)* method on the channel interface:
 
 ```c++
 // Contains static configuration for the master, and transport/link layers
@@ -70,4 +70,36 @@ There's also a wealth of information in the _HeaderInfo_ object including:
 * The QualifierCode associated with this header
 * An enumeration describing the validity of the timestamp for convienence to the programmer.
 * The index of the header within the ASDU
+
+### IMasterApplication
+
+The 3rd parameter in the call to _AddMaster(...)_ is a user-defined interface called _IMasterApplication_. It contains
+inherits from two sub-interfaces _ILinkListener_ and _IUTCTimeSource_ as well as adding a number of methods that are
+master specific.
+
+You can see all the methods you can override in the code documentation, but the most important ones are:
+
+* _void IOnReceiveIIN(const IINField& iin)_ - Notifies you whenever an ASDU is received containing an internal indication field
+ (IIN field). This allow you to log and react to specific error bits returned by the device.
+
+* _void OnTaskComplete(const TaskInfo& info)_ - Tell you about tasks that are built into the master succeeding/failing. This callback
+is usually used to assess the "health" of the session.
+
+The ILinkListener interface is also used on IOutstationApplication and is described in its own section.
+
+### MasterStackConfig
+
+The final parameter passed into _AddMaster(...)_ is configuration struct that consists of link-layer configuration
+information and static configuration that defines that masters behavior. The link-layer config is also used for outstations,
+and is described in its own section.
+
+### MasterParams
+
+Each of the dozen or so fields in this struct control certain automated behaviors within the master. Refer to the code documentation
+for complete descriptions. This struct controls behaviors like:
+
+* The default response timeout
+* Whether to perform unsolcited disable/enable on startup
+* Whether to perform automatic time synchronization if requested
+* The maximum Tx/Rx ASDU size which always default to 2K as per the DNP3 specification
 
