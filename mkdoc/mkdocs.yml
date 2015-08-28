@@ -8,6 +8,7 @@ theme: cosmo
 pages:
 - Home: 'index.md'
 - DNP3: 'dnp3/dnp3.md'
+- Features: 'features/features.md'
 - Build:
   - 'Requirements': 'build/requirements.md'
   - 'Libraries': 'build/libraries.md'
