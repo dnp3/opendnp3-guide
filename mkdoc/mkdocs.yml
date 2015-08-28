@@ -1,4 +1,4 @@
-site_name: opendnp3
+site_name: opendnp3 2.1.0
 site_favicon: 'img/favicon.ico'
 copyright: 'Copyright Automatak LLC 2015'
 site_description: 'dnp3 scada opendnp3 library documentation'
@@ -7,7 +7,6 @@ theme: cosmo
 
 pages:
 - Home: 'index.md'
-- DNP3: 'dnp3/dnp3.md'
 - Features: 'features/features.md'
 - Build:
   - 'Requirements': 'build/requirements.md'
