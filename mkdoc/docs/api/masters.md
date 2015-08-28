@@ -21,15 +21,15 @@ stackConfig.master.disableUnsolOnStartup = true;
 stackConfig.link.LocalAddr = 1;
 stackConfig.link.RemoteAddr = 10;
    
-IMaster* pMaster = pClient->AddMaster(
+IMaster* master = channel->AddMaster(
 	"master",											// alias for logging
-	PrintingSOEHandler::Inst(),							// ISOEHandler - interface
-	asiodnp3::DefaultMasterApplication::Instance(),		// IMasterApplication - interface
+	PrintingSOEHandler::Instance(),						// ISOEHandler (interface)
+	asiodnp3::DefaultMasterApplication::Instance(),		// IMasterApplication (interface)
 	stackConfig											// static stack configuration
 );
 
 // enable the master - you can also Disable() it or Shutdown() permanently
-pMaster->Enable();
+master->Enable();
 
 ```
 
