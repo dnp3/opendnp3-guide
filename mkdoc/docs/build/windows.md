@@ -28,6 +28,20 @@ from [ShiningLight](https://slproweb.com/products/Win32OpenSSL.html).
 
 ### .NET Bindings
 
+By far, the easiest way to use the .NET bindings is just to install the Nuget package we publish:
+
+```sh
+PM> Install-Package opendnp3
+```
+
+or to allow pre-release versions:
+
+```sh
+PM> Install-Package opendnp3 -Pre
+```
+
+**Manually building**
+
 Building the .NET bindings currently requires linking to openssl. As a result, you need to create and install an opendnp3 build 
 with SEC_AUTH=ON set when creating the SLN.
 

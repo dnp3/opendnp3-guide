@@ -20,5 +20,6 @@ pages:
   - 'Channels': 'api/channels.md'
   - 'Masters': 'api/masters.md'
   - 'Outstations': 'api/outstations.md'
-- Contributing: 
+- Troubleshooting: 'troubleshooting/troubleshooting.md'
+- Contributing:
   - 'Common Tasks': 'contributing/tasks.md'
