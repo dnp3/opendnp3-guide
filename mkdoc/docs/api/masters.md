@@ -182,8 +182,7 @@ auto callback = [](const ICommandTaskResult& result) -> void
 };
 ```
 
-The example above prints the summary value for the task, and information about the success for failure of each of the commands you specified in your CommandSet. Since we sent 4 individual command values, the handler would print something
-like:
+The example above prints the summary value for the task, and information about the success or failure of each of the commands you specified in the CommandSet. Since we sent 4 individual command values, the handler would print something the following on a fully successful response:
 
 ```sh
 Summary: SUCCESS
@@ -207,8 +206,7 @@ Refer to the Doxygen docs for detailed information about each enum type:
 
 * TaskCompletion - The summary value for the task
 * CommandPointState - The various result states for each command point.
-* CommandStatus - The command status enumeration defined in the spec. Note that this is only valid for some values
-of CommandPointState.
+* CommandStatus - The command status enumeration defined in the spec. Only valid for some states.
 
 ### Cleaning Up
 
