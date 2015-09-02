@@ -1,9 +1,0 @@
-===================
-Debugging
-===================
-
-.. toctree::	
-		
-	debugging-windows
-
-
