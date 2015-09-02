@@ -39,7 +39,7 @@ Note the 2nd parameter in the call to _AddMaster(...)_. This is the user-defined
 that the master has received from the outstation. SOE stands for _Sequence of Events_. SOE is a common term in SCADA circles
 that is synonymous with "the order in which things happened".
 
-```
+```c++
 class ISOEHandler : public ITransactable
 {
 public:
@@ -120,6 +120,82 @@ on the master. Refer to the code documentation for specifics. Some examples are:
 * Add periodic scans to the master like exception (Class 1/2/3) and integrity scans (Class 1/2/3/0)
 * Scanning for specific ranges or event counts
 * The _ICommandProcessor_ sub-interface allow you to do _SelectBeforeOperate_ and _DirectOperate_ requests w/ CROBs and Analog Outputs
+
+### ICommandProcessor
+
+This is a sub-interface that allows you to perform _select-before-operate_ and _direct-operate_ commands. Opendnp3 supports multiple commands per request on both the master and the outstation.
+
+To issue a command, you must build a _CommandSet_, which is a collection of headers.
+
+```c++
+CommandSet commands;
+```
+
+The easiest way to define a headers is to use initializer_lists.
+
+```c++
+ControlRelayOutputBlock crob(ControlCode::LATCH_ON);
+AnalogOutputInt16(7);
+AnalogOutputInt16 ao2(9);
+
+/// Issue a LATCH_ON to indices 0 and 1 
+commands.Add<ControlRelayOutputBlock>({ WithIndex(crob, 0), WithIndex(crob, 1) });
+/// Send value 7 to index 3 and the value 9 to index 4
+commands.Add<AnalogOutputInt16>({ WithIndex(ao1, 3), WithIndex(ao2, 4) });
+```
+
+You pass the command set into the master using one of the ICommandProcessor methods.
+
+```c++
+pMaster->SelectAndOperate(std::move(commands), callback);	
+```
+
+But what is the **callback**? It's just a lambda expression or std::function that accepts _ICommandTaskResult_
+as its single argument.
+
+```
+auto callback = [](const ICommandTaskResult& result) -> void
+{			
+	std::cout << "Summary: " << TaskCompletionToString(result.summary) << std::endl;
+	auto print = [](const CommandPointResult& res)
+	{
+		std::cout 
+			<< "Header: " << res.headerIndex
+			<< " Index: " << res.index
+			<< " State: " << CommandPointStateToString(res.state)
+			<< " Status: " << CommandStatusToString(res.status);
+	};
+	result.ForeachItem(print);
+};
+```
+
+The example above prints the summary value for the task, and information about the success for failure of each of the commands you specified in your CommandSet. Since we sent 4 individual command values, the handler would print something
+like:
+
+```sh
+Summary: SUCCESS
+Header: 0 Index: 0 State: SUCCESS Status: SUCCESS
+Header: 0 Index: 1 State: SUCCESS Status: SUCCESS
+Header: 1 Index: 3 State: SUCCESS Status: SUCCESS
+Header: 1 Index: 4 State: SUCCESS Status: SUCCESS
+```
+
+You always get an entry for every command you specified, even if there's no response at all because the connection is down.
+
+```sh
+Summary: FAILURE_NO_COMMS
+Header: 0 Index: 0 State: INIT Status: UNDEFINED
+Header: 0 Index: 1 State: INIT Status: UNDEFINED
+Header: 1 Index: 3 State: INIT Status: UNDEFINED
+Header: 1 Index: 4 State: INIT Status: UNDEFINED
+```
+
+Refer to the Doxygen docs for detailed information about each enum type:
+
+* TaskCompletion - The summary value for the task
+* CommandPointState - The various result states for each command point.
+* CommandStatus - The command status enumeration defined in the spec. Note that this is only valid for some values
+of CommandPointState.
 
 ### Cleaning Up
 
