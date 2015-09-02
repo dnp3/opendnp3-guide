@@ -123,25 +123,38 @@ on the master. Refer to the code documentation for specifics. Some examples are:
 
 ### ICommandProcessor
 
-This is a sub-interface that allows you to perform _select-before-operate_ and _direct-operate_ commands. Opendnp3 supports multiple commands per request on both the master and the outstation.
+This is a sub-interface that allows you to perform _select-before-operate_ and _direct-operate_ commands.
 
-To issue a command, you must build a _CommandSet_, which is a collection of headers.
+```c++
+class ICommandProcessor
+{
+public:
+	virtual void SelectAndOperate(...params...) = 0;	
+	virtual void DirectOperate(...params...) = 0;	
+};
+```
+
+Opendnp3 supports multiple commands per request on both the master and the outstation. To issue a command, you must 
+build a _CommandSet_, which is a collection of headers.
 
 ```c++
 CommandSet commands;
 ```
 
-The easiest way to define a headers is to use initializer_lists.
+The easiest way to define headers is to use initializer_lists, but you can also create a specific header type 
+and then add entries in a loop.
 
 ```c++
+// CROB to be sent to two indices
 ControlRelayOutputBlock crob(ControlCode::LATCH_ON);
-AnalogOutputInt16(7);
-AnalogOutputInt16 ao2(9);
 
-/// Issue a LATCH_ON to indices 0 and 1 
+// Use initializer list to create a header in a single call - Send LATCH_ON to indices 0 and 1 
 commands.Add<ControlRelayOutputBlock>({ WithIndex(crob, 0), WithIndex(crob, 1) });
-/// Send value 7 to index 3 and the value 9 to index 4
-commands.Add<AnalogOutputInt16>({ WithIndex(ao1, 3), WithIndex(ao2, 4) });
+
+/// Add two analog outputs to the set using the header method
+auto header = commands.StartHeader<AnalogOutputInt16>();
+header.Add(AnalogOutputInt16(7), 3);
+header.Add(AnalogOutputInt16(9), 4);
 ```
 
 You pass the command set into the master using one of the ICommandProcessor methods.
