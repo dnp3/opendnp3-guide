@@ -134,8 +134,8 @@ public:
 };
 ```
 
-Opendnp3 supports multiple commands per request on both the master and the outstation. To issue a command, you must 
-build a _CommandSet_, which is a collection of headers.
+Opendnp3 supports multiple commands per request on both the master and the outstation, however, for convenience there are overloaded
+methods to issue a single command of each type . You can use these overloads or build a _CommandSet_, which is a collection of headers.
 
 ```c++
 CommandSet commands;
@@ -192,7 +192,17 @@ Header: 1 Index: 3 State: SUCCESS Status: SUCCESS
 Header: 1 Index: 4 State: SUCCESS Status: SUCCESS
 ```
 
-You always get an entry for every command you specified, even if there's no response at all because the connection is down.
+**Imporant:** Even if the summary _TaskCompletion_ value is SUCCESS, this doesn't mean that every command you sent was successful. It just means that the master got back some response that was parsed successfully. You must check the result for each command you sent individually. DNP3 allows for truncated responses if the outstation doesn't understand everything you sent. A possible response might be:
+
+```sh
+Summary: SUCCESS
+Header: 0 Index: 0 State: SUCCESS Status: SUCCESS
+Header: 0 Index: 1 State: SUCCESS Status: SUCCESS
+Header: 1 Index: 3 State: SUCCESS Status: NOT_SUPPORTED
+Header: 1 Index: 4 State: INIT Status: UNDEFINED
+```
+
+Note that you **always** get an entry for every command you specified, even if there's no response at all because the connection is down.
 
 ```sh
 Summary: FAILURE_NO_COMMS
@@ -207,6 +217,8 @@ Refer to the Doxygen docs for detailed information about each enum type:
 * TaskCompletion - The summary value for the task
 * CommandPointState - The various result states for each command point.
 * CommandStatus - The command status enumeration defined in the spec. Only valid for some states.
+
+
 
 ### Cleaning Up
 
