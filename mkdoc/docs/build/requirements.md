@@ -10,7 +10,7 @@ of this documentation.
 
 The following compilers are known to work.
 
-* MSVC++ (Ships w/ Visual Studio 2013)
+* MSVC++ - Visual Studio 2013 and above
 * g++ >= 4.8.x 
 * clang >= 3.3 
 

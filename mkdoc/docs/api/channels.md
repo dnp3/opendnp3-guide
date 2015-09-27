@@ -11,8 +11,7 @@ or master session and enable it. Here's an example of how you go about adding a 
 IChannel* channel = manager.AddTCPClient(
   "tcpclient",                // alias used in log messages
   levels::NORMAL,             // bitfield used to filter what gets logged
-  TimeDuration::Seconds(2),   // minimum delay for connection rety
-  TimeDuration::Minutes(1),   // maximum delay for connection rety
+  ChannelRetry::Default(),	  // determines how connections will be retried
   "127.0.0.1",                // host name (DNS resolved) or ip address of remote endpoint
   "0.0.0.0",				  // adapter on which to attempt the connection (any adapter)
   20000						  // port remote endpoint is listening on
@@ -21,9 +20,9 @@ IChannel* channel = manager.AddTCPClient(
 
 The API for creating TCPServer channels or Serial channels is very similar. Just refer to the code documentation.
 
-### Exponential backoff
+### _ChannelRetry_ and exponential backoff
 
-All channels specify two timing parameters for the minimum and maximum connection retry times. The channels use an exponential back-off strategy for retries. If you don't want
+The _ChannelRetry_ configuration specifies two timing parameters for the minimum and maximum connection retry times using an exponential back-off strategy. If you don't want
 exponential back-off, just set the minimum and maximum to the same value for a consistent delay. Exponential back-off really only makes sense for initiating TCP connections.
 
 For instance if you set the minimum to *TimeDuration::Seconds(3)* and the maximum to *TimeDuration::Seconds(40)* a series of failed connections would have the following 

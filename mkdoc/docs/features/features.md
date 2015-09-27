@@ -12,6 +12,19 @@ much of this as it automatically picks the most efficient event loop (select, kq
 * Zero-copy / zero-allocation parsing. When parsing an application layer message, the parser doesn't create a full 
 Abstract Syntax Tree (AST). Instead, it loops over the message in much the same way that a streaming XML parser does.
 
+### Robustness & Security
+
+The principal developers who work on opendnp3 have lead the charge in the industry in terms of [security testing DNP3](https://www.automatak.com/robus).
+You won't find a more reliable implementation of the protocol anywhere, even if you pay for it. Our commitment to a high-quality 
+project.
+
+* We have an exhaustive unit test suite in excess of 80% coverage
+* We perform fuzzing using the [Aegis](https://www.automatak.com/aegis) smart fuzzer as well as [AFL](http://http://lcamtuf.coredump.cx/afl/).
+* We do [automated static analysis](https://www.automatak.com/jenkins) using Coverity and cppcheck
+
+We provide integrated TLS support that makes opendnp3 an ideal solution for integrating with real-time markets programs like
+[PJM Jetstream](http://www.pjm.com/markets-and-operations/etools/jetstream.aspx).
+
 ### Compliance
 
 IEEE-1815 defines 4 subset levels (1,2,3,4) that consist of the objects and function codes that must be supported by master and 

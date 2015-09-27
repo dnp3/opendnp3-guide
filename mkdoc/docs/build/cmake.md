@@ -10,35 +10,49 @@ One of the more attractive parts of CMake is that it supports [out-of-source bui
 
 ### Locating ASIO
 
-On all platforms, CMake uses the user-defined environment variable ASIO_HOME to locate the ASIO headers. This variable needs to point to the include sub-folder of the ASIO distribution
-which contains 'asio.hpp'.
+The include sub-folder of the ASIO distribution (the folder that contains 'asio.hpp') needs to be on your include path, but there are several ways you can do this. 
+You can choose the option that makes the most sense your particular build environment. CMake will try the following things in order to  locate your ASIO headers. 
+
+**Look to see if the variable ASIO_HOME was deinfed via the cmake command line. If it is, the value will be added as an include path to the compiler.**
+
+```sh
+> cmake ../dnp3 -DASIO_HOME=C:\libs\asio-asio-1-10-6\asio\include
+```
+**Otherwise, it will check to see if it is defined as an environment variable. If it is, the value will be added as an include path to the compiler**
 
 For instance, on Windows you might define your enviroment variable to look like this.
 ```sh
 ASIO_HOME=C:\libs\asio-asio-1-10-6\asio\include
 ```
-
 On Ubuntu Linux, you might add a line to ~/.bashrc as follows:
 ```sh
 export ASIO_HOME=~/asio-asio-1-10-6/asio/include
 ```
 
+**Lastly, cmake will just assume the headers are installed on the system. No checks are performed, so the build will fail is this isn't true**
+
 ### Optional Components
 
-In addition to all of the options built in to CMake, the opendnp3 CMakeLists.txt provides a few options you can use to simplify configuring your build. A default configuration
-only builds the core opendnp3 libraries.
+By default, cmake will not build tests, demos, TLS support, or the experimental secure authentication extensions. You can enable each optional component individually by specifying
+them on the command line:
 
-To build the example programs...
 ```sh
-> cmake ../dnp3 -DDEMO=ON
+> cmake ../dnp3 -D<option>=ON
 ```
-To build the tests...
+
+| Option Name    | Comments                                          |
+| -------------- | ------------------------------------------------- |
+| DEMO           | build the example programs                        |
+| TEST           | build the unit test suites                        |
+| DNP3_TLS       | build support for TLS channels (requires openssl) |
+| SECAUTH        | build support for SA (requires openssl)           |
+| FULL           | build ALL optional components                     |
+
+
+
+For example, to build the demos including TLS support:
 ```sh
-> cmake ../dnp3 -DTEST=ON
-```
-To build the secure authentication extensions... (experimental)
-```sh
-> cmake ../dnp3 -DSECAUTH=ON
+> cmake ../dnp3 -DDEMO=ON -DDNP3_TLS=ON
 ```
 
 ### Build Options
