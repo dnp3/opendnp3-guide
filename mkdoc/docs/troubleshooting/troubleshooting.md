@@ -16,3 +16,9 @@ These packages can be found from Microsoft by searching for "visual studio c++ r
 
 You might also see this error because CLRAdapter can't find openssl (libeay32.dll / libssl32.dll) if your bindings didn't have
 these linked statically. The solution is to make sure openssl is installed in the correct system location.
+
+**Master or Outstation doesn't detect an ethernet cable being unplugged**
+
+There is no way through the standard socket API to detect this, other than trying to write data to the socket. This means that if
+master or outstation sessions are quiescent (meaning that they don't write data periodically), you should be using the link-layer
+[keep-alive feature](../api/linklayer.md#keep-alives) to ensure that dead/hung connections are appropriately detected.

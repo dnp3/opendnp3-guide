@@ -18,6 +18,7 @@ pages:
   - 'Architecture': 'api/architecture.md'
   - 'Logging': 'api/logging.md'
   - 'Channels': 'api/channels.md'
+  - 'Link-Layer': 'api/linklayer.md'
   - 'Masters': 'api/masters.md'
   - 'Outstations': 'api/outstations.md'
 - Troubleshooting: 'troubleshooting/troubleshooting.md'
