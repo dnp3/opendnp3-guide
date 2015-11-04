@@ -60,7 +60,7 @@ supplied when the outstation was added to the channel.
 class ICommandHandler : public ITransactable
 {
 	virtual CommandStatus Select(const ControlRelayOutputBlock& command, uint16_t index) = 0;
-	virtual CommandStatus Operate(const ControlRelayOutputBlock& command, uint16_t index) = 0;
+	virtual CommandStatus Operate(const ControlRelayOutputBlock& command, uint16_t index, OperateType opType) = 0;
 	/// ... additional methods for the 4 types of analog outputs - Group 41Var[1-4]
 }
 ```
@@ -70,11 +70,24 @@ can contain multiple controls in a single object header, and possibly multiple h
 commands begins and ends. Many applications probably don't care, but this knowledge is there if you need it for some reason.
 
 The _Select_ operation shouldn't actually perform the command. Think of it as a question along the lines of _"Is this operation supported?"_. 
-_Select-Before-Operate_ (SBO) is an artifact of the days before the SCADA community really trusted CRCs. It's  a 2-pass control scheme where the 
+_Select-Before-Operate_ (SBO) is an artifact of the days before the SCADA community really trusted CRCs. It's a 2-pass control scheme where the 
 outstation verifies that the select/operate are identical. It was intended as an additional protection against data corruption on noisy networks.
 
-The _Operate_ method could really be from a successful SBO sequence or from a _DirectOperate_ or _DirectOperateNoAck_ request. You don't really need to know because the
-DNP3 spec says you have to support all modes.
+The _Operate_ method is called from a successful SBO sequence or from a _DirectOperate_ or _DirectOperateNoAck_ request. Many applications don't care how the 
+request came in, but the _OperateType optype_ parameter provides an enumeration that can be used to reject certain operations or to forward the same mode downstream in 
+gateway applications.
+
+```
+enum class OperateType : uint8_t
+{
+  /// The outstation received a valid prior SELECT followed by OPERATE
+  SelectBeforeOperate = 0x0,
+  /// The outstation received a direct operate request
+  DirectOperate = 0x1,
+  /// The outstation received a direct operate no ack request
+  DirectOperateNoAck = 0x2
+};
+```
 
 ### CommandStatus
 
