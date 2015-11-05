@@ -5,7 +5,7 @@ proprietary implementations of the protocol when it comes to large systems like 
 concurrent sessions. There are a couple of reasons for this.
 
 * Opendnp3 uses 100% non-blocking I/O and a thread-pool. There's no wasted context switching and thread-thrashing that plagues 
-thread-per-session systems.  The system also automatically shares sessions across the thread pool so that no artificial is
+thread-per-session systems.  The system also automatically shares sessions across the thread pool so that no artificial sharding is
 required. Opendnp3 generally scales right up to your operating system limits.  We have the ASIO architecture to thank for
 much of this as it automatically picks the most efficient event loop (select, kqueue, epoll, etc) for your platform.
 
