@@ -151,8 +151,9 @@ ControlRelayOutputBlock crob(ControlCode::LATCH_ON);
 // Use initializer list to create a header in a single call - Send LATCH_ON to indices 0 and 1 
 commands.Add<ControlRelayOutputBlock>({ WithIndex(crob, 0), WithIndex(crob, 1) });
 
-/// Add two analog outputs to the set using the header method
-auto header = commands.StartHeader<AnalogOutputInt16>();
+/// Add two analog outputs to the set using the header method. 
+/// Note that the 'header' is captured as a reference.
+auto& header = commands.StartHeader<AnalogOutputInt16>();
 header.Add(AnalogOutputInt16(7), 3);
 header.Add(AnalogOutputInt16(9), 4);
 ```
