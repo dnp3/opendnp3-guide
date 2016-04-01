@@ -10,8 +10,8 @@ One of the more attractive parts of CMake is that it supports [out-of-source bui
 
 ### Locating ASIO
 
-The include sub-folder of the ASIO distribution (the folder that contains 'asio.hpp') needs to be on your include path, but there are several ways you can do this. 
-You can choose the option that makes the most sense your particular build environment. CMake will try the following things in order to  locate your ASIO headers. 
+The include sub-folder of the ASIO distribution (the folder that contains 'asio.hpp') needs to be on your include path, but there are several ways you can do this.
+You can choose the option that makes the most sense your particular build environment. CMake will try the following things in order to  locate your ASIO headers.
 
 **Look to see if the variable ASIO_HOME was deinfed via the cmake command line. If it is, the value will be added as an include path to the compiler.**
 
@@ -45,9 +45,8 @@ them on the command line:
 | DEMO           | build the example programs                        |
 | TEST           | build the unit test suites                        |
 | DNP3_TLS       | build support for TLS channels (requires openssl) |
-| SECAUTH        | build support for SA (requires openssl)           |
+| DNP3_DECODER   | build the dnp3decoder module                      |
 | FULL           | build ALL optional components                     |
-
 
 
 For example, to build the demos including TLS support:
@@ -58,7 +57,7 @@ For example, to build the demos including TLS support:
 ### Build Options
 
 Most of command-line options you can feed to CMake to generate your build environment are platform-independent.  This documentation can't tell you everything that
-CMake can do. We only document some of the more common flags here for your convenience. All of the following examples assume an out-of-source build folder in a 
+CMake can do. We only document some of the more common flags here for your convenience. All of the following examples assume an out-of-source build folder in a
 sibling directory to the opendnp3 distribution.
 
 **Static vs Dynamic Linking**

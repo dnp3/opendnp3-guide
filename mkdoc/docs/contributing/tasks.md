@@ -1,11 +1,11 @@
 
 ### Formatting the code
 
-There is an astyle configuration in the config folder
+There is an astyle configuration in the config folder. A shell script in
+the root directory is used to properly invoke the formatter:
 
 ```sh
-astyle -R ./cpp/*.h --options=./config/astyle.cfg
-astyle -R ./cpp/*.cpp --options=./config/astyle.cfg
+> ./format-cpp.sh
 ```
 
 ### Formatting the license
@@ -42,4 +42,3 @@ and then process this into html
 ```
 > genhtml coverage.info -o test_html
 ```
-
