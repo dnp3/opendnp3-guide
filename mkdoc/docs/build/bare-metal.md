@@ -15,4 +15,4 @@ classes that is appropriate for your target.
 
 Past releases have included [AVR](https://github.com/automatak/dnp3/tree/2.0.1/embedded/atmelavr) and
 [ARM](https://github.com/automatak/dnp3/tree/2.0.1/embedded/atmeldue) examples using the Atmel toolchain. These
-might be review at some point in an external repository.
+might be revived at some point in an external repository.
