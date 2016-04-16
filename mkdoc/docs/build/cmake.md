@@ -33,7 +33,7 @@ export ASIO_HOME=~/asio-asio-1-10-6/asio/include
 
 ### Optional Components
 
-By default, cmake will not build tests, demos, TLS support, or the experimental secure authentication extensions. You can enable each optional component individually by specifying
+By default, cmake will not build tests, demos, or TLS support. You can enable each optional component individually by specifying
 them on the command line:
 
 ```sh

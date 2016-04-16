@@ -4,8 +4,8 @@ All opendnp3 programs begin by creating a _DNP3Manager_.  Creating this object a
 to process events and callbacks to user code.
 
 ```c++
-// Create a root DNP3 manager with a single thread
-DNP3Manager manager(1);
+// Create a root DNP3 manager with a single thread that logs to the console
+DNP3Manager manager(1, ConsoleLogger::Create());
 ```
 
 If you're familiar with using ASIO in other contexts, than it should be no surprise that the DNP3Manager owns an _asio::io_context_.
@@ -18,17 +18,17 @@ want to scale your thread-pool to the number of logical processors on your machi
 
 ```c++
 // Create a root DNP3 manager as many threads as logical processors
-DNP3Manager manager(std::hardware_concurrency());
+DNP3Manager manager(std::hardware_concurrency(), ConsoleLogger::Create());
 ```
 
 **You should avoid blocking the stack during callbacks** made to user code.  This advice is especially critical for large systems where
-the number of communication channels (Nc) greatly outnumbers the number of threads in the pool (Nt). If all of your threads are blocked 
+the number of communication channels (Nc) greatly outnumbers the number of threads in the pool (Nt). If all of your threads are blocked
 then other channels can't do useful work like sending control requests to the field. If you must design your system to do some blocking,
 you can mitigate this problem by scaling the number of threads in the pool as a multiple of the number of cores.
 
 ```c++
 // Create a root DNP3 manager with twice as many threads as logical processors
-DNP3Manager manager(2*std::hardware_concurrency());
+DNP3Manager manager(2*std::hardware_concurrency(), ConsoleLogger::Create());
 ```
 
 Properly configuring your thread pool ensures optimal performance.
@@ -58,13 +58,13 @@ IOutstation*  outstation = pChannel->AddOutstation(...arguments...);
 
 ### High-level view
 
-Each channel and the sessions bound to it, are a single-threaded state-machine.  During excecution, ASIO guarantees that each channel 
-is only processing one event at a time from a single thread. This means that there is no explicit thread synchronization required any where in the stack. 
-When user code wants to communicate with a stack, e.g. load measurement data into an outstation or request that a command be initiated 
-on a master, it gets "posted" to the correct channel's executor. This ensures that each channel and all the sessions bound to it are 
+Each channel and the sessions bound to it, are a single-threaded state-machine.  During excecution, ASIO guarantees that each channel
+is only processing one event at a time from a single thread. This means that there is no explicit thread synchronization required any where in the stack.
+When user code wants to communicate with a stack, e.g. load measurement data into an outstation or request that a command be initiated
+on a master, it gets "posted" to the correct channel's executor. This ensures that each channel and all the sessions bound to it are
 only ever touched by a single thread at a time.
 
-User code, however, may need to worry about multi-threading. If you hand the same callback interface to multiple sessions, you will 
+User code, however, may need to worry about multi-threading. If you hand the same callback interface to multiple sessions, you will
 potentially receive callbacks from multiple threads simultaneously on the same interface.
 
 ![threading](../img/threading.svg)

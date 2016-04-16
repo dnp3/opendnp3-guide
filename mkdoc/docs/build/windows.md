@@ -18,12 +18,12 @@ Alternatively, you can just invoke msbuild.exe on the generated solution and bui
 
 ### Installing
 
-CMake creates a special project called "install" that you can run inside Visual Studio to install the headers and libraries to 
+CMake creates a special project called "install" that you can run inside Visual Studio to install the headers and libraries to
 the directory specified by CMAKE_INSTALL_PREFIX.
 
-### Secure authentication and openssl
+### TLS Support
 
-If you need to build the stack w/ SA support (or you're using .NET), then you need to install openssl on Windows.  Use the installers
+If you need to build the stack w/ TLS support (or you're using the .NET bindings), then you need to install openssl on Windows.  Use the installers
 from [ShiningLight](https://slproweb.com/products/Win32OpenSSL.html).
 
 ### .NET Bindings
@@ -42,7 +42,7 @@ PM> Install-Package opendnp3 -Pre
 
 **Manually building**
 
-Building the .NET bindings requires linking to openssl. As a result, you need to create and install an opendnp3 build 
+Building the .NET bindings requires linking to openssl. As a result, you need to create and install an opendnp3 build
 with SEC_AUTH=ON set when creating the SLN.
 
 The .NET bindings use a separate SLN located in the 'dotnet' folder (bindings.sln). They treat the C++ libraries as if they were a dependency. There are a few environment variables you need to define so that the SLN can find opendnp3.
@@ -55,4 +55,3 @@ Using the "static" directory of the openssl distribution will create .NET bindin
 the "lib/VC" directory instead.
 
 You don't need to define both the 32/64 bit library locations. Just define what you plan on building.
-

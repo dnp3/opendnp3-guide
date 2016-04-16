@@ -19,6 +19,7 @@ pages:
   - 'Architecture': 'api/architecture.md'
   - 'Logging': 'api/logging.md'
   - 'Channels': 'api/channels.md'
+  - 'TLS Support': 'api/tls.md'
   - 'Link-Layer': 'api/linklayer.md'
   - 'Masters': 'api/masters.md'
   - 'Outstations': 'api/outstations.md'
