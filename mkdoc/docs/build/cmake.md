@@ -3,7 +3,7 @@
 Opendnp3 uses a build system generator called [CMake](http://www.cmake.org/).  This means that the actual build files (e.g. a Makefile or Microsfot .SLN) are generated from a
 common artifact called **CMakeLists.txt**. You can see what one looks like [here](https://github.com/automatak/dnp3/blob/2.0.x/CMakeLists.txt).
 
-This allows the opendnp3 project to maintain a build file for all platforms, and greatly reduces per-platform maintainence. CMake also integrates nicely with
+This allows the opendnp3 project to maintain a build file for all platforms, and greatly reduces per-platform maintenance. CMake also integrates nicely with
 Linux C++ IDEs like [KDevelop](https://www.kdevelop.org/) or [CLion](https://www.jetbrains.com/clion/).
 
 One of the more attractive parts of CMake is that it supports [out-of-source builds](http://www.cmake.org/Wiki/CMake_FAQ#Out-of-source_build_trees).
@@ -13,14 +13,14 @@ One of the more attractive parts of CMake is that it supports [out-of-source bui
 The include sub-folder of the ASIO distribution (the folder that contains 'asio.hpp') needs to be on your include path, but there are several ways you can do this.
 You can choose the option that makes the most sense your particular build environment. CMake will try the following things in order to  locate your ASIO headers.
 
-**Look to see if the variable ASIO_HOME was deinfed via the cmake command line. If it is, the value will be added as an include path to the compiler.**
+**Look to see if the variable ASIO_HOME was defined via the cmake command line. If it is, the value will be added as an include path to the compiler.**
 
 ```sh
 > cmake ../dnp3 -DASIO_HOME=C:\libs\asio-asio-1-10-6\asio\include
 ```
 **Otherwise, it will check to see if it is defined as an environment variable. If it is, the value will be added as an include path to the compiler**
 
-For instance, on Windows you might define your enviroment variable to look like this.
+For instance, on Windows you might define your environment variable to look like this.
 ```sh
 ASIO_HOME=C:\libs\asio-asio-1-10-6\asio\include
 ```

@@ -15,4 +15,4 @@ way you normally would.
 CMake also supports cross-compiling to embedded-linux platforms. How to do this is outside the scope of this documentation, but is 
 explained [here](http://www.cmake.org/Wiki/CMake_Cross_Compiling).
 
-The prefered method is to create a toolchain file for each target platform.
+The preferred method is to create a toolchain file for each target platform.

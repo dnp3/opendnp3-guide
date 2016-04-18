@@ -58,7 +58,7 @@ IOutstation*  outstation = pChannel->AddOutstation(...arguments...);
 
 ### High-level view
 
-Each channel and the sessions bound to it, are a single-threaded state-machine.  During excecution, ASIO guarantees that each channel
+Each channel and the sessions bound to it, are a single-threaded state-machine.  During execution, ASIO guarantees that each channel
 is only processing one event at a time from a single thread. This means that there is no explicit thread synchronization required any where in the stack.
 When user code wants to communicate with a stack, e.g. load measurement data into an outstation or request that a command be initiated
 on a master, it gets "posted" to the correct channel's executor. This ensures that each channel and all the sessions bound to it are
