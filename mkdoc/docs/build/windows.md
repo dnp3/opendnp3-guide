@@ -43,7 +43,7 @@ PM> Install-Package opendnp3 -Pre
 **Manually building**
 
 Building the .NET bindings requires linking to openssl. As a result, you need to create and install an opendnp3 build
-with SEC_AUTH=ON set when creating the SLN.
+with -DFULL=ON set when creating the SLN.
 
 The .NET bindings use a separate SLN located in the 'dotnet' folder (bindings.sln). They treat the C++ libraries as if they were a dependency. There are a few environment variables you need to define so that the SLN can find opendnp3.
 
