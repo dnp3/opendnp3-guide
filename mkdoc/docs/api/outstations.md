@@ -34,7 +34,7 @@ outstation->Enable();
 ### MeasUpdate
 
 When a new measurement is read from an input or a new value is received from a downstream protocol, you need to update the corresponding
-value in the outstaion. This is accomplished with the _MeasUpdate_ helper class.
+value in the outstation. This is accomplished with the _MeasUpdate_ helper class.
 
 
 ```c++

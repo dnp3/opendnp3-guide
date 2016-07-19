@@ -31,7 +31,7 @@ Then run the test suites to output coverage information.
 > ./testopendnp3
 > ./testopenpal
 ```
-Then generage an info file with lcov
+Then generate an info file with lcov
 
 ```sh
 > lcov -c -d ./ -b ./ -o coverage.info

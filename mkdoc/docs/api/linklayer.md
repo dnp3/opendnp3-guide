@@ -25,13 +25,13 @@ stackConfig.link.RemoteAddr = 10;   // the address of the remote outstation
 ```
 
 **Not having the link-layer Local/Remote addresses configured correctly is the most frequent source of communication problems.** Opendnp3 example applications
-automatically talk to eachother using a master address of 1 and an outstation address of 1024. There is no standard default address.
+automatically talk to each other using a master address of 1 and an outstation address of 1024. There is no standard default address.
 
 ### Keep-alives
 
 The link-layer will send a keep-alive request whenever it hasn't received a message from the other side of the link within the __LinkConfig.KeepAliveTimeout__ parameter. 
 This configurable parameter defaults to 1 minute.  It is generally only needed for quiescent TCP operations, and can be disabled for other types of configurations. It is an 
-indispensible parameter for polled outstations that act as TCP servers. Writing to a socket is the only way to detect dead/half-open sockets.
+indispensable parameter for polled outstations that act as TCP servers. Writing to a socket is the only way to detect dead/half-open sockets.
 
 ### ILinkListener
 
