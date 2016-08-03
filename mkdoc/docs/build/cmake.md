@@ -13,7 +13,7 @@ One of the more attractive parts of CMake is that it supports [out-of-source bui
 The include sub-folder of the ASIO distribution (the folder that contains 'asio.hpp') needs to be on your include path, but there are several ways you can do this.
 You can choose the option that makes the most sense your particular build environment. CMake will try the following things in order to locate your ASIO.
 
-**1) Look to see if you checked out ASIO as a gitsubmodule when clong opendnp3 **
+**1) Look to see if you checked out ASIO as a git submodule when cloning opendnp3 **
 
 ```sh
 > git clone --recursive https://github.com/automatak/dnp3.git
