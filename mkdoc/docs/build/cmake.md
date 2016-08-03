@@ -11,14 +11,21 @@ One of the more attractive parts of CMake is that it supports [out-of-source bui
 ### Locating ASIO
 
 The include sub-folder of the ASIO distribution (the folder that contains 'asio.hpp') needs to be on your include path, but there are several ways you can do this.
-You can choose the option that makes the most sense your particular build environment. CMake will try the following things in order to  locate your ASIO headers.
+You can choose the option that makes the most sense your particular build environment. CMake will try the following things in order to locate your ASIO.
 
-**Look to see if the variable ASIO_HOME was defined via the cmake command line. If it is, the value will be added as an include path to the compiler.**
+**1) Look to see if you checked out ASIO as a gitsubmodule when clong opendnp3 **
+
+```sh
+> git clone --recursive https://github.com/automatak/dnp3.git
+```
+
+**2) If 1) fails, it will look to see if the variable ASIO_HOME was defined via the cmake command line.**
 
 ```sh
 > cmake ../dnp3 -DASIO_HOME=C:\libs\asio-asio-1-10-6\asio\include
 ```
-**Otherwise, it will check to see if it is defined as an environment variable. If it is, the value will be added as an include path to the compiler**
+
+**3) If 1) and 2) fail, it will check to see if it is defined as an environment variable.**
 
 For instance, on Windows you might define your environment variable to look like this.
 ```sh
