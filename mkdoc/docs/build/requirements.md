@@ -1,28 +1,15 @@
 ### Platforms
 
-Opendnp3 is a cross-platform C++ library. It targets all major operating systems including Linux, Windows, and OSX. In theory, it should work on 
-any platform with a C++11 compiler that is also supported by [ASIO](http://think-async.com/Asio/asio-1.10.6/doc/asio/using.html).
+Opendnp3 is a cross-platform C++ library. It targets all major operating systems including Linux, Windows, and OSX.
 
-There has been some experimentation with using parts of the library on bare-metal microcontrollers like AVR/ARM, but this is outside the scope
-of this documentation.
+### C++14
 
-### Compilers
+Opendnp3 uses the following C++11/14 features:
 
-The following compilers are known to work.
-
-* MSVC++ - Visual Studio 2013 and above
-* g++ >= 4.8.x 
-* clang >= 3.3 
-
-### C++11
-
-C++11 introduced a standard library with lots of cross-platform goodies that had been platform-dependent for ages. The following C++11 items
-are used in opendnp3.
-
+* **std::unique_ptr / std::shared_ptr** - smart pointers are used for automatic memory management
 * **std::thread** - platform-independent threading using to manage the thread pool
-* **std::chrono** - platform-independent time operations including wall-clock and steady-clock used to manage timers
-
-The final piece required to build a useful protocol stack is a cross-platform networking library.
+* **std::chrono** - platform-independent time operations including steady-clock used to manage timers
+* **variadic templates** - used in to simplify parsing routines.
 
 ### ASIO
 
@@ -33,8 +20,10 @@ The final piece required to build a useful protocol stack is a cross-platform ne
 * A multi-core event loop
 * Abstract timers on top of std::chrono
 
+### Compilers
 
+The following compilers are known to work, and are tested frequently.
 
-
-
-
+* MSVC++ - Visual Studio 2015 and above
+* g++ >= 4.9.x
+* clang >= 3.5

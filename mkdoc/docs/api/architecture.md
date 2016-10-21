@@ -22,7 +22,7 @@ DNP3Manager manager(std::hardware_concurrency(), ConsoleLogger::Create());
 ```
 
 **You should avoid blocking the stack during callbacks** made to user code.  This advice is especially critical for large systems where
-the number of communication channels (Nc) greatly outnumbers the number of threads in the pool (Nt). If all of your threads are blocked
+the number of communication channels greatly outnumbers the number of threads in the pool. If all of your threads are blocked
 then other channels can't do useful work like sending control requests to the field. If you must design your system to do some blocking,
 you can mitigate this problem by scaling the number of threads in the pool as a multiple of the number of cores.
 
@@ -38,11 +38,11 @@ Properly configuring your thread pool ensures optimal performance.
 Communication channels are created from the root DNP3Manager class.
 
 ```c++
-// Create TCP client channel to which we can bind masters or outstations
-IChannel* channel = manager.AddTCPClient(...arguments...);
+// Create a TCP client channel to which we can bind masters or outstations
+auto channel = manager.AddTCPClient(...arguments...);
 ```
 
-There is a unique method for adding each supported channel type, TCPClient, TCPServer, or Serial. You should refer to code documentation
+There is a unique method for adding each supported channel type, TCPClient, TCPServer, TLSClient, TLSServer, or Serial. You should refer to code documentation
 for a description of the parameters.
 
 With your channels created you can now bind master or outstations sessions to your them.  Binding multiple master or outstations sessions to a single channel
@@ -50,13 +50,13 @@ is a _multi-drop_ configuration.
 
 ```c++
 // Create a master bound to a particular channel
-IMaster* master = channel->AddMaster(...arguments...);
+auto master = channel->AddMaster(...arguments...);
 
 // Create an outstation bound to particular channel
-IOutstation*  outstation = pChannel->AddOutstation(...arguments...);
+auto  outstation = channel->AddOutstation(...arguments...);
 ```
 
-### High-level view
+### Architecture
 
 Each channel and the sessions bound to it, are a single-threaded state-machine.  During execution, ASIO guarantees that each channel
 is only processing one event at a time from a single thread. This means that there is no explicit thread synchronization required any where in the stack.

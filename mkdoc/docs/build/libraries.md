@@ -10,10 +10,10 @@ not an exhaustive list of every folder in the project.
   /libs
     /src
       /openpal       // interfaces, containers, and parsers (Platform Abstraction Layer)
-	    /opendnp3      // the core dnp3 library w/ no external dependencies other than openpal
-	    /asiopal       // provides ASIO-based implementations of things in openpal
-	    /asiodnp3      // high-level dnp3 interface that leverage asiopal
-      /dnp3decode    // a dnp3 decoder based on the opendnp3 parsers 
+      /opendnp3      // the core dnp3 library w/ no external dependencies other than openpal
+      /asiopal       // provides ASIO-based implementations of things in openpal
+      /asiodnp3      // high-level dnp3 interface that leverage asiopal
+      /dnp3decode    // a dnp3 decoder based on the opendnp3 parsers
 
   /examples         // various example programs of using opendnp3
   /tests            // unit tests and shared helper libraries  
@@ -42,4 +42,17 @@ When building an external application on Linux for instance, you need to link ag
   /bindings
 	/CLRInterface   // Pure CLR interfaces and classes that comprise the API
     /CLRAdapter		// a C++/CLI project that adapters the underlying C++ libraries to C#
+```
+
+### Java Bindings
+
+```sh
+# Java bindings built using CMake (native) and Maven (pom.xml)
+
+/java
+  /api            // pure Java classes
+  /bindings       // Java w/ native stubs
+  /codegen        // Code generator written in Scala that generates C++ JNI boilerplate
+  /cpp            // C++ compiled to libopendnp3java.dll/so
+  /example        // Java example programs that depend on api/bindings Jars
 ```

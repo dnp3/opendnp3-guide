@@ -14,7 +14,6 @@ pages:
   - 'CMake': 'build/cmake.md'
   - 'Linux': 'build/linux.md'
   - 'Windows': 'build/windows.md'
-  - 'Bare Metal': 'build/bare-metal.md'
 - API:
   - 'Architecture': 'api/architecture.md'
   - 'Logging': 'api/logging.md'
