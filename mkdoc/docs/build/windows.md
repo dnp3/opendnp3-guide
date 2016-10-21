@@ -3,7 +3,9 @@
 On windows, CMake is used to generate a SLN and associated project files.
 
 ```sh
-> cmake ../dnp3 <options>
+> mkdir build
+> cd build
+> cmake .. <options>
 ```
 
 Once you've generated your SLN, you can just open it and use Visual Studio to build the project for you just like any other project.

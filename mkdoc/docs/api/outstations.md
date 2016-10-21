@@ -1,18 +1,18 @@
 ### Creating an outstation
 
-An outstation in opendnp3 is a component that communicates with a single master via a communication channel. It makes measurements of the physical world and then 
-sends them to a master upon request (solicited) or on its own accord (unsolicited). Occasionally a master requests that it do something by sending it a control. 
+An outstation in opendnp3 is a component that communicates with a single master via a communication channel. It makes measurements of the physical world and then
+sends them to a master upon request (solicited) or on its own accord (unsolicited). Occasionally a master requests that it do something by sending it a control.
 Just like a master, an outstation can be attached to any communication channel that opendnp3 supports.
 
 To add an outstation to a communication channel you call the *AddOutstation* method on the channel interface:
 
 ```c++
-SlaveStackConfig stackConfig;
-	
+OutstationStackConfig stackConfig;
+
 // You must specify the shape of your database and the size of the event buffers
 stackConfig.dbTemplate = DatabaseTemplate::AllTypes(10);
 stackConfig.outstation.eventBufferConfig = EventBufferConfig::AllTypes(10);
-	
+
 // you can override an default outstation parameters here
 stackConfig.outstation.params.allowUnsolicited = true;
 
@@ -21,35 +21,34 @@ stackConfig.outstation.params.allowUnsolicited = true;
 stackConfig.link.LocalAddr = 10;
 stackConfig.link.RemoteAddr = 1;
 
-IOutstation* outstation = channel->AddOutstation(
-    "outstation",								// alias for logging
-    SuccessCommandHandler::Instance(),			// ICommandHandler (interface)
-	DefaultOutstationApplication::Instance(),	// IOutstationApplication (interface)
-    stackConfig									// static stack configuration
+auto outstation = channel->AddOutstation(
+  "outstation",                             // alias for logging
+  SuccessCommandHandler::Create(),          // ICommandHandler (interface)
+  DefaultOutstationApplication::Create(),   // IOutstationApplication (interface)
+  stackConfig                               // static stack configuration
 );
 
 outstation->Enable();
 ```
 
-### MeasUpdate
+### ChangeSet
 
 When a new measurement is read from an input or a new value is received from a downstream protocol, you need to update the corresponding
-value in the outstation. This is accomplished with the _MeasUpdate_ helper class.
+value in the outstation. This is accomplished with the _ChangeSet_ class.
 
 
 ```c++
-// start a measurement update transaction
-MeasUpdate tx(outstation);
-tx.Update(Counter(123), 0);		// change a counter value at index 0
-tx.Update(Analog(-7.4), 8);		// change an analog value at index 8
+
+ChangeSet changes;                 // start a measurement update transaction
+changes.Update(Counter(123), 0);   // change a counter value at index 0
+changes.Update(Analog(-7.4), 8);   // change an analog value at index 8
+outstation->Apply(changes);        // apply the change set to the outstation
 ```
 
-The update is applied to the outstation when the _MeasUpdate_ instance destructs. This means that the update is atomic.
-All of the updated values are applied to the outstation database and event buffers at the same time.
+The update is atomic. All of the updated values are applied to the outstation database and event buffers at the same time.
 
-The outstation automatically decides if these update produce _events_. If the value or measurment _flags_ haven't changed, an event is never produced.
-How events are detected are defined within the DNP3 standard, and varies from type to type. Analogs and counters can use _deadbands_ to ensure that
-unimportant changes are not reported. Opendnp3 supports deadbanding via database configuration covered in a section below.
+The outstation automatically decides if these update produce _events_. How events are detected are defined within the DNP3 standard,
+and varies from type to type. Analogs and counters can use _deadbands_ to ensure that unimportant changes are not reported.
 
 ### ICommandHandler
 
@@ -69,12 +68,12 @@ You'll notice that the interface is _transactable_ meaning that it has Start()/E
 can contain multiple controls in a single object header, and possibly multiple headers. The Start()/End() methods tell you when an ASDU containing
 commands begins and ends. Many applications probably don't care, but this knowledge is there if you need it for some reason.
 
-The _Select_ operation shouldn't actually perform the command. Think of it as a question along the lines of _"Is this operation supported?"_. 
-_Select-Before-Operate_ (SBO) is an artifact of the days before the SCADA community really trusted CRCs. It's a 2-pass control scheme where the 
+The _Select_ operation shouldn't actually perform the command. Think of it as a question along the lines of _"Is this operation supported?"_.
+_Select-Before-Operate_ (SBO) is an artifact of the days before the SCADA community really trusted CRCs. It's a 2-pass control scheme where the
 outstation verifies that the select/operate are identical. It was intended as an additional protection against data corruption on noisy networks.
 
-The _Operate_ method is called from a successful SBO sequence or from a _DirectOperate_ or _DirectOperateNoAck_ request. Many applications don't care how the 
-request came in, but the _OperateType optype_ parameter provides an enumeration that can be used to reject certain operations or to forward the same mode downstream in 
+The _Operate_ method is called from a successful SBO sequence or from a _DirectOperate_ or _DirectOperateNoAck_ request. Many applications don't care how the
+request came in, but the _OperateType optype_ parameter provides an enumeration that can be used to reject certain operations or to forward the same mode downstream in
 gateway applications.
 
 ```
@@ -110,6 +109,6 @@ The enumeration contains about ~18 different values, and you should refer to 181
 you'll be choosing _SUCCESS_ or some kind of error code.
 
 It's important to understand that _SUCCESS_ doesn't imply that the command was synchronously executed. It really just means that the command
-was received and queued. Some devices can synchronously process a command, e.g. quickly writing to memory mapped I/O, but you'd never 
+was received and queued. Some devices can synchronously process a command, e.g. quickly writing to memory mapped I/O, but you'd never
 want to block in a gateway application to perform a downstream Modbus transaction. You'd pass the control of to another thread or queue the operation
 in some way for subsequent processing.

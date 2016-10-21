@@ -22,18 +22,18 @@ You can choose the option that makes the most sense your particular build enviro
 **2) If 1) fails, it will look to see if the variable ASIO_HOME was defined via the cmake command line.**
 
 ```sh
-> cmake ../dnp3 -DASIO_HOME=C:\libs\asio-asio-1-10-6\asio\include
+> cmake ../dnp3 -DASIO_HOME=C:\libs\asio-asio-1-10-8\asio\include
 ```
 
 **3) If 1) and 2) fail, it will check to see if it is defined as an environment variable.**
 
 For instance, on Windows you might define your environment variable to look like this.
 ```sh
-ASIO_HOME=C:\libs\asio-asio-1-10-6\asio\include
+ASIO_HOME=C:\libs\asio-asio-1-10-8\asio\include
 ```
 On Ubuntu Linux, you might add a line to ~/.bashrc as follows:
 ```sh
-export ASIO_HOME=~/asio-asio-1-10-6/asio/include
+export ASIO_HOME=~/asio-asio-1-10-8/asio/include
 ```
 
 **Lastly, cmake will just assume the headers are installed on the system. No checks are performed, so the build will fail is this isn't true**
@@ -49,16 +49,16 @@ them on the command line:
 
 | Option Name    | Comments                                          |
 | -------------- | ------------------------------------------------- |
-| DEMO           | build the example programs                        |
-| TEST           | build the unit test suites                        |
+| DNP3_ALL       | build all optional components below               |
+| DNP3_DEMO      | build the example programs                        |
+| DNP3_TEST      | build the unit test suites                        |
 | DNP3_TLS       | build support for TLS channels (requires openssl) |
 | DNP3_DECODER   | build the dnp3decoder module                      |
-| FULL           | build ALL optional components                     |
 
 
 For example, to build the demos including TLS support:
 ```sh
-> cmake ../dnp3 -DDEMO=ON -DDNP3_TLS=ON
+> cmake ../dnp3 -DDNP3_DEMO=ON -DDNP3_TLS=ON
 ```
 
 ### Build Options
@@ -93,9 +93,11 @@ By default, CMake will pick a generator to use if you don't tell it which one. Y
 ```sh
 > cmake --help
 ```
-You can then specify a specific generator, i.e.
+You can then specify a specific generator, e.g. to do a full 64-bit build on Windows:
+
 ```sh
-> cmake ../dnp3 -G "Visual Studio 12 2013"
+> mkdir build64
+> cmake .. -DDNP3_ALL=ON -G "Visual Studio 14 2015 Win64"
 ```
 
 **Setting the install prefix**
@@ -104,19 +106,19 @@ The default install prefix probably won't be right for your platform. You can co
 
 On Debian-based systems this should probably be:
 ```sh
-> cmake ../dnp3 -DCMAKE_INSTALL_PREFIX=/usr
+> cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 ```
 
 On windows, you might put your libraries and headers somewhere like:
 ```sh
-> cmake ../dnp3 -DCMAKE_INSTALL_PREFIX=C:\libs\opendnp3
+> cmake .. -DCMAKE_INSTALL_PREFIX=C:\libs\opendnp3
 ```
 
 ### Building on Linux
 
 On Linux, the easiest way to use CMake is just to let it create a makefile for you. You can then use this makefile in the same way you normally would.
 ```sh
-> cmake ../dnp3 <options>
+> cmake .. <options>
 > make
 > sudo make install
 ```

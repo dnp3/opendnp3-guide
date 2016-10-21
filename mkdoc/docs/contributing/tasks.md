@@ -1,12 +1,8 @@
 
 ### Formatting the code
 
-There is an astyle configuration in the config folder. A shell script in
-the root directory is used to properly invoke the formatter:
-
-```sh
-> ./format-cpp.sh
-```
+There is a cmake "format" task available in every build system. It requires
+having [Astyle](http://astyle.sourceforge.net/) on your path.
 
 ### Formatting the license
 
@@ -21,7 +17,7 @@ There is a maven POM with a plugin to do this. From the root directory:
 You can build the libraries and exes with gcov support
 
 ```sh
-> cmake -DSTATICLIBS=ON -DCOVERAGE=ON
+> cmake -DSTATICLIBS=ON -DCOVERAGE=ON -DCMAKE_BUILD_TYPE=Debug
 > make
 ```
 

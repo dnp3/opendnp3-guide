@@ -1,9 +1,9 @@
 ### Creating a master
 
-A master in opendnp3 is a component that communicates with a single outstation via a communication channel. You may see this term used in other places to refer to a 
-collection of such components communicating with multiple outstations. When more than one master is bound to a single communication channel, it is called a 
-_multi-drop configuration_.  This refers to the way in which an RS-485 serial network is chained from device to device. Opendnp3 will let you add multiple 
-masters / outstations to any communication channel, regardless of he underlying transport. You could even bind a master to a TCP server and reverse the 
+A master in opendnp3 is a component that communicates with a single outstation via a communication channel. You may see this term used in other places to refer to a
+collection of such components communicating with multiple outstations. When more than one master is bound to a single communication channel, it is called a
+_multi-drop configuration_.  This refers to the way in which an RS-485 serial network is chained from device to device. Opendnp3 will let you add multiple
+masters / outstations to any communication channel, regardless of he underlying transport. You could even bind a master to a TCP server and reverse the
 normal connection direction.
 
 To add a master to a communication channel you call the *AddMaster(...)* method on the channel interface:
@@ -16,16 +16,16 @@ MasterStackConfig stackConfig;
 // or change behaviors on the master
 stackConfig.master.responseTimeout = TimeDuration::Seconds(2);
 stackConfig.master.disableUnsolOnStartup = true;
-	
-// ... or you can override the default link layer settings 
+
+// ... or you can override the default link layer settings
 stackConfig.link.LocalAddr = 1;
 stackConfig.link.RemoteAddr = 10;
-   
-IMaster* master = channel->AddMaster(
-	"master",											// alias for logging
-	PrintingSOEHandler::Instance(),						// ISOEHandler (interface)
-	asiodnp3::DefaultMasterApplication::Instance(),		// IMasterApplication (interface)
-	stackConfig											// static stack configuration
+
+auto master = channel->AddMaster(
+  "master",                                       // alias for logging
+  PrintingSOEHandler::Create(),                   // ISOEHandler (interface)
+  asiodnp3::DefaultMasterApplication::Create(),   // IMasterApplication (interface)
+  stackConfig                                     // static stack configuration
 );
 
 // enable the master - you can also Disable() it or Shutdown() permanently
@@ -43,9 +43,9 @@ that is synonymous with "the order in which things happened".
 class ISOEHandler : public ITransactable
 {
 public:
-	
+
 	virtual void Process(const HeaderInfo& info, const ICollection<Indexed<Binary>>& values) = 0;
-	
+
 	// more Process methods for types like Analog, Counter, etc ....
 }
 ```
@@ -55,13 +55,13 @@ _Start()_ and _End()_ methods from ITransactable. This allows you tell when the 
 ASDU that contains measurement data. You'll see this Start/End pattern with other interfaces in opendnp3.
 
 The _PrintingSOEHandler_ in the snippet where we added the master is just a singleton that prints measurement values to the console.
-You'll definitely want to write your own implementation so that you can write to file, database, or display on your application in some 
+You'll definitely want to write your own implementation so that you can write to file, database, or display on your application in some
 fashion. The PrintingSOEHandler just extracts the measurement values from the ICollection like the following:
 
 ```
-void Process(const HeaderInfo& info, const ICollection<Indexed<Binary>>& values) 
+void Process(const HeaderInfo& info, const ICollection<Indexed<Binary>>& values)
 {
-	auto print = [](const Indexed<Binary>& pair) { 
+	auto print = [](const Indexed<Binary>& pair) {
 		std::cout << "[" << pair.index << "] : " << pair.value << std::endl;
 	};
 	values.ForeachItem(print);
@@ -129,8 +129,8 @@ This is a sub-interface that allows you to perform _select-before-operate_ and _
 class ICommandProcessor
 {
 public:
-	virtual void SelectAndOperate(...params...) = 0;	
-	virtual void DirectOperate(...params...) = 0;	
+	virtual void SelectAndOperate(...params...) = 0;
+	virtual void DirectOperate(...params...) = 0;
 };
 ```
 
@@ -141,17 +141,17 @@ methods to issue a single command of each type . You can use these overloads or 
 CommandSet commands;
 ```
 
-The easiest way to define headers is to use initializer_lists, but you can also create a specific header type 
+The easiest way to define headers is to use initializer_lists, but you can also create a specific header type
 and then add entries in a loop.
 
 ```c++
 // CROB to be sent to two indices
 ControlRelayOutputBlock crob(ControlCode::LATCH_ON);
 
-// Use initializer list to create a header in a single call - Send LATCH_ON to indices 0 and 1 
+// Use initializer list to create a header in a single call - Send LATCH_ON to indices 0 and 1
 commands.Add<ControlRelayOutputBlock>({ WithIndex(crob, 0), WithIndex(crob, 1) });
 
-/// Add two analog outputs to the set using the header method. 
+/// Add two analog outputs to the set using the header method.
 /// Note that the 'header' is captured as a reference.
 auto& header = commands.StartHeader<AnalogOutputInt16>();
 header.Add(AnalogOutputInt16(7), 3);
@@ -161,7 +161,7 @@ header.Add(AnalogOutputInt16(9), 4);
 You pass the command set into the master using one of the ICommandProcessor methods.
 
 ```c++
-pMaster->SelectAndOperate(std::move(commands), callback);	
+pMaster->SelectAndOperate(std::move(commands), callback);
 ```
 
 But what is the **callback**? It's just a lambda expression or std::function that accepts _ICommandTaskResult_
@@ -173,7 +173,7 @@ auto callback = [](const ICommandTaskResult& result) -> void
 	std::cout << "Summary: " << TaskCompletionToString(result.summary) << std::endl;
 	auto print = [](const CommandPointResult& res)
 	{
-		std::cout 
+		std::cout
 			<< "Header: " << res.headerIndex
 			<< " Index: " << res.index
 			<< " State: " << CommandPointStateToString(res.state)
@@ -219,10 +219,6 @@ Refer to the Doxygen docs for detailed information about each enum type:
 * CommandPointState - The various result states for each command point.
 * CommandStatus - The command status enumeration defined in the spec. Only valid for some states.
 
-
-
 ### Cleaning Up
 
-Masters are automatically destroyed when their channel is shutdown or when the underlying DNP3Manager is destroyed. If you want to clean them up 
-manually w/o de-allocated the underlying channel, you can call Shutdown(). When you do this the IMaster pointer is deleted so don't use it after being
-shutdown!
+Calls to Shutdown() are idempotent. The master will be permanently deleted once all references to the shared_ptr<IMaster> have been dropped.
