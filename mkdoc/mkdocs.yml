@@ -14,6 +14,7 @@ pages:
   - 'CMake': 'build/cmake.md'
   - 'Linux': 'build/linux.md'
   - 'Windows': 'build/windows.md'
+  - 'Java': 'build/java.md'
 - API:
   - 'Architecture': 'api/architecture.md'
   - 'Logging': 'api/logging.md'
