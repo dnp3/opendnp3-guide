@@ -31,24 +31,29 @@ auto outstation = channel->AddOutstation(
 outstation->Enable();
 ```
 
-### ChangeSet
+### UpdateBuilder
 
 When a new measurement is read from an input or a new value is received from a downstream protocol, you need to update the corresponding
-value in the outstation. This is accomplished with the _ChangeSet_ class.
+value in the outstation. This is accomplished with the _UpdateBuilder_ and corresponding _Updates_ class.
 
 
 ```c++
+UpdateBuilder builder;
+builder.Update(Counter(state.count), 0);
+builder.Update(Analog(state.value), 0);
+// ... update more types and indices
 
-ChangeSet changes;                 // start a measurement update transaction
-changes.Update(Counter(123), 0);   // change a counter value at index 0
-changes.Update(Analog(-7.4), 8);   // change an analog value at index 8
-outstation->Apply(changes);        // apply the change set to the outstation
+// finalize the set of updates
+auto updates = builder.Build();
+
+// apply the updates to one or more outstations
+outstation->apply(updates);
 ```
 
-The update is atomic. All of the updated values are applied to the outstation database and event buffers at the same time.
-
-The outstation automatically decides if these update produce _events_. How events are detected are defined within the DNP3 standard,
-and varies from type to type. Analogs and counters can use _deadbands_ to ensure that unimportant changes are not reported.
+The update is atomic. All of the updated values are applied to the outstation database and event buffers at the same time. The _Updates_ instance
+returned from UpdateBuilder::Build() can be safely sent to any number of outstation instances. The outstation automatically decides if these updates 
+produce _events_. How events are detected are defined within the DNP3 standard, and varies from type to type. Analogs and counters can use 
+_deadbands_ to ensure that unimportant changes are not reported.
 
 ### ICommandHandler
 
