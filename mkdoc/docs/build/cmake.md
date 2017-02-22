@@ -50,10 +50,11 @@ them on the command line:
 | Option Name    | Comments                                          |
 | -------------- | ------------------------------------------------- |
 | DNP3_ALL       | build all optional components below               |
-| DNP3_DEMO      | build the example programs                        |
-| DNP3_TEST      | build the unit test suites                        |
-| DNP3_TLS       | build support for TLS channels (requires openssl) |
-| DNP3_DECODER   | build the dnp3decoder module                      |
+| DNP3_DEMO      | example programs                                  |
+| DNP3_JAVA      | java bindings shared library                      |
+| DNP3_TEST      | unit test suites                                  |
+| DNP3_TLS       | support for TLS channels (requires openssl)       |
+| DNP3_DECODER   | decoder module                                    |
 
 
 For example, to build the demos including TLS support:
