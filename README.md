@@ -7,3 +7,5 @@ This is the official guide to the [opendnp3 project](http://www.automatak.com/op
 It uses the wonderful [Mkdocs](http://www.mkdocs.org/) project to build markdown into a static site.
 
 It follows the standard Mkdocs procedure for building, so just read about it on the mkdocs site.
+
+Requires python packages mkdocs, mkdocs-bootstrap, mkdocs-bootswatch.
