@@ -5,14 +5,15 @@ repo_url: https://github.com/dnp3/opendnp3
 theme:
   name: 'material'  
   palette:
-    primary: 'brown'
+    primary: 'blue'
     accent: 'orange'
   font:
     text: 'Ubuntu'
     code: 'Ubuntu Mono'
-
+markdown_extensions:
+  - admonition
 nav:
-- Home: 'index.md'
+- Introduction: 'index.md'
 - Features: 'features/features.md'
 - Build:
   - 'Requirements': 'build/requirements.md'
