@@ -1,8 +1,15 @@
 site_name: opendnp3 2.3.0
 copyright: 'Copyright Automatak LLC 2015-2019'
 site_description: 'dnp3 scada opendnp3 library documentation'
-repo_url: https://github.com/dnp3/opendnp3-guide
-theme:  readthedocs
+repo_url: https://github.com/dnp3/opendnp3
+theme:
+  name: 'material'  
+  palette:
+    primary: 'brown'
+    accent: 'orange'
+  font:
+    text: 'Ubuntu'
+    code: 'Ubuntu Mono'
 
 nav:
 - Home: 'index.md'

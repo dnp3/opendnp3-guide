@@ -23,7 +23,7 @@ If the library does not contain a feature that you need for your device or appli
 
 DNP3 (IEEE-1815, latest revision 2012) is am open, standardized SCADA protocol with a large feature set.  This guide (or the opendnp3 project in general)
 cannot teach you everything about DNP3. To successfully use opendnp3 or develop a product based on it, you will almost certainly need a copy of the specification.
-The opendnp3 project recommends that your organization joins [DNP.org](www.dnp.org) to obtain a copy.
+The opendnp3 project recommends that your organization joins [DNP.org](https://www.dnp.org) to obtain a copy.
 
 Forget everything you know about Modbus. **DNP3 is event-oriented**. The master doesn't have to constantly scan the outstation for every single point.
 Instead it requests changes in one of two modes:
