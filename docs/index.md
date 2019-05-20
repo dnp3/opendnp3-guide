@@ -4,13 +4,13 @@ Welcome to opendnp3, a portable, rigorously-tested, Apache-licensed implementati
 
 ### Important Links
 
-* [Project Homepage](https://www.automatak.com/opendnp3) - The official project homepage has older documentation links and other items.
+* [Project Homepage](https://dnp3.github.io) - The official project homepage.
 
-* [Github Repository](https://www.github.com/automatak/dnp3) - You'll find the tagged releases here as well as the development branches.
+* [Github Repository](https://www.github.com/dnp3/opendnp3) - You'll find the tagged releases here as well as the development branches.
 
-* [Google Group](http://groups.google.com/group/automatak-dnp3) - Post questions and receive updates. Help there is provided on a "as time permits" basis.
+* [Google Group](https://groups.google.com/group/automatak-dnp3) - Post questions and receive updates. Help there is provided on a "as time permits" basis.
 
-* [DNP Users Group](http://www.dnp.org) - The official DNP user group. Your organization should join and get a copy of the standard.
+* [DNP Users Group](https://www.dnp.org) - The official DNP user group. Your organization should join and get a copy of the standard.
 
 ### Support options
 
