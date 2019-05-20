@@ -1,11 +1,13 @@
-Copyright (c) 2014-2015 Automatak LLC
+Copyright (c) 2014-2019 Automatak LLC
 
 ## About
 
-This is the official guide to the [opendnp3 project](http://www.automatak.com/opendnp3).
+This is the official guide to the [opendnp3 project](http://dnp3.github.io).
 
-It uses the wonderful [Mkdocs](http://www.mkdocs.org/) project to build markdown into a static site.
+It uses the wonderful [Mkdocs](http://www.mkdocs.org/) documentation generator and the [Material](https://squidfunk.github.io/mkdocs-material/) theme.
 
-It follows the standard Mkdocs procedure for building, so just read about it on the mkdocs site.
+Required python packages:
 
-Requires python packages mkdocs, mkdocs-bootstrap, mkdocs-bootswatch.
+```
+pip install mkdocs mkdocs-material
+```
