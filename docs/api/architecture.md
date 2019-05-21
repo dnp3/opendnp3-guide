@@ -1,6 +1,5 @@
-### DNP3Manager
 
-All opendnp3 programs begin by creating a _DNP3Manager_.  Creating this object allocates a thread pool used
+All opendnp3 programs begin by creating a `DNP3Manager`.  Creating this object allocates a thread pool used
 to process events and callbacks to user code.
 
 ```c++
@@ -8,8 +7,8 @@ to process events and callbacks to user code.
 DNP3Manager manager(1, ConsoleLogger::Create());
 ```
 
-If you're familiar with using ASIO in other contexts, than it should be no surprise that the DNP3Manager owns an _asio::io_context_.
-It also has a thread pool for calling _asio::io_context::run()_, but this is an internal detail that most opendnp3 programmers do
+If you're familiar with using ASIO in other contexts, than it should be no surprise that the DNP3Manager owns an `asio::io_context`.
+It also has a thread pool for calling `asio::io_context::run()`, however, this is an internal detail that most opendnp3 programmers do
 not need to know to use the stack.
 
 How many threads you allocate to your thread pool can be a subtle matter. On simple systems like a small outstation that only
@@ -21,10 +20,14 @@ want to scale your thread-pool to the number of logical processors on your machi
 DNP3Manager manager(std::hardware_concurrency(), ConsoleLogger::Create());
 ```
 
-**You should avoid blocking the stack during callbacks** made to user code.  This advice is especially critical for large systems where
-the number of communication channels greatly outnumbers the number of threads in the pool. If all of your threads are blocked
-then other channels can't do useful work like sending control requests to the field. If you must design your system to do some blocking,
-you can mitigate this problem by scaling the number of threads in the pool as a multiple of the number of cores.
+!!! warning
+    You should **avoid blocking** the stack during callbacks made to user code, as there are a limited
+	number of threads in the thread pool.
+	
+This advice is especially critical for large systems where the number of communication channels greatly outnumbers the number of threads
+in the pool. If all of your threads are blocked then other channels can't do useful work like sending control requests to the field. If
+you must design your system to do some blocking, you can mitigate this problem by scaling the number of threads in the pool as a multiple
+of the number of cores.
 
 ```c++
 // Create a root DNP3 manager with twice as many threads as logical processors
@@ -42,7 +45,7 @@ Communication channels are created from the root DNP3Manager class.
 auto channel = manager.AddTCPClient(...arguments...);
 ```
 
-There is a unique method for adding each supported channel type, TCPClient, TCPServer, TLSClient, TLSServer, or Serial. You should refer to code documentation
+There is a unique method for adding each supported channel type, `TCPClient`, `TCPServer`, `TLSClient`, `TLSServer`, or `Serial`. You should refer to code documentation
 for a description of the parameters.
 
 With your channels created you can now bind master or outstations sessions to your them.  Binding multiple master or outstations sessions to a single channel
@@ -53,7 +56,7 @@ is a _multi-drop_ configuration.
 auto master = channel->AddMaster(...arguments...);
 
 // Create an outstation bound to particular channel
-auto  outstation = channel->AddOutstation(...arguments...);
+auto outstation = channel->AddOutstation(...arguments...);
 ```
 
 ### Architecture

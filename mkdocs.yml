@@ -12,6 +12,7 @@ theme:
     code: 'Ubuntu Mono'
 markdown_extensions:
   - admonition
+  - codehilite
 nav:
 - Introduction: 'index.md'
 - Features: 'features/features.md'
