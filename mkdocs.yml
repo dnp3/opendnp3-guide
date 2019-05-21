@@ -32,5 +32,4 @@ nav:
   - 'Masters': 'api/masters.md'
   - 'Outstations': 'api/outstations.md'
 - Troubleshooting: 'troubleshooting/troubleshooting.md'
-- Contributing:
-  - 'Common Tasks': 'contributing/tasks.md'
+

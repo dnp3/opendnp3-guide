@@ -1,7 +1,4 @@
-
-### Common Problems
-
-This section serves as a bit of a FAQ for common issues and their resolutions.
+This section serves as a FAQ for common issues and their resolutions.
 
 **Unable to find "asio.hpp"**
 
