@@ -1,10 +1,11 @@
 ### Transport Layer Security (TLS)
 
-TLS support as provided by added two additional channel types, TLSServer and TLSClient.
+TLS support provides two additional channel types: TLSServer and TLSClient.
 
-These overloaded methods on _DNP3Manager_ take an additional configuration parameter TLSConfig.
+These overloaded methods on `DNP3Manager` take an additional configuration structure called `TLSConfig`.
 
-The opendnp3 TLS implementation only allows mutually authenticated connections using client certificates. Each side must provide 3 items:
+The opendnp3 TLS implementation only allows mutually authenticated connections using client certificates. Each side
+must provide 3 items:
 
 * A certificate (either self-signed or root certificate) that will be used to authenticate the peer certificate.
 * A local certificate to send to the peer.
