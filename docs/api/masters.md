@@ -2,11 +2,11 @@
 
 A master in opendnp3 is a component that communicates with a single outstation via a communication channel. You may see this term used in other places to refer to a
 collection of such components communicating with multiple outstations. When more than one master is bound to a single communication channel, it is called a
-_multi-drop configuration_.  This refers to the way in which an RS-485 serial network is chained from device to device. Opendnp3 will let you add multiple
+`multi-drop` configuration.  This refers to the way in which an RS-485 serial network is chained from device to device. Opendnp3 will let you add multiple
 masters / outstations to any communication channel, regardless of he underlying transport. You could even bind a master to a TCP server and reverse the
 normal connection direction.
 
-To add a master to a communication channel you call the *AddMaster(...)* method on the channel interface:
+To add a master to a communication channel you call the `AddMaster(...)` method on the channel interface:
 
 ```c++
 // Contains static configuration for the master, and transport/link layers
@@ -35,8 +35,8 @@ master->Enable();
 
 ### ISOEHandler
 
-Note the 2nd parameter in the call to _AddMaster(...)_. This is the user-defined interface used to receive measurement data
-that the master has received from the outstation. SOE stands for _Sequence of Events_. SOE is a common term in SCADA circles
+Note the 2nd parameter in the call to `AddMaster(...)`. This is the user-defined interface used to receive measurement data
+that the master has received from the outstation. SOE stands for "Sequence of Events". SOE is a common term in SCADA circles
 that is synonymous with "the order in which things happened".
 
 ```c++
@@ -50,13 +50,13 @@ public:
 }
 ```
 
-An ISOEHandler is just an interface with an overloaded _Process_ method for every measurement type in DNP3. It also inherits
-_Start()_ and _End()_ methods from ITransactable. This allows you tell when the master begins and ends parsing a received
+An ISOEHandler is just an interface with an overloaded `Process` method for every measurement type in DNP3. It also inherits
+`Start()` and `End()` methods from `ITransactable`. This allows you tell when the master begins and ends parsing a received
 ASDU that contains measurement data. You'll see this Start/End pattern with other interfaces in opendnp3.
 
-The _PrintingSOEHandler_ in the snippet where we added the master is just a singleton that prints measurement values to the console.
+The `PrintingSOEHandler` in the snippet where we added the master is just a singleton that prints measurement values to the console.
 You'll definitely want to write your own implementation so that you can write to file, database, or display on your application in some
-fashion. The PrintingSOEHandler just extracts the measurement values from the ICollection like the following:
+fashion. The `PrintingSOEHandler` just extracts the measurement values from the ICollection like the following:
 
 ```
 void Process(const HeaderInfo& info, const ICollection<Indexed<Binary>>& values)
@@ -68,37 +68,38 @@ void Process(const HeaderInfo& info, const ICollection<Indexed<Binary>>& values)
 }
 ```
 
-There's also a wealth of information in the _HeaderInfo_ object including:
+There's also a wealth of information in the `HeaderInfo` object including:
 
 * The specific group/variation associated with this ASDU header
 * The QualifierCode associated with this header
 * An enumeration describing the validity of the time-stamp for convenience to the programmer.
 * The index of the header within the ASDU
 
-**Remember that the callbacks for the ISOEHandler methods come from the thread-pool.** Depending on the number of sessions, you may not
-want to block the stack in these callbacks. You might consider allocating some kind of object that is passed to a worker thread
-to actually write the data to disk/database.
+!!! important
+    Remember that the callbacks for the ISOEHandler methods come from the thread-pool. Depending on the
+	number of sessions, you may not want to block the stack in these callbacks. You might consider allocating
+	some kind of object that is passed to a worker thread to actually write the data to disk/database.
 
 
 ### IMasterApplication
 
-The 3rd parameter in the call to _AddMaster(...)_ is a user-defined interface called _IMasterApplication_. It contains
-inherits from two sub-interfaces _ILinkListener_ and _IUTCTimeSource_ as well as adding a number of methods that are
+The 3rd parameter in the call to `AddMaster(...)` is a user-defined interface called `IMasterApplication`. It contains
+inherits from two sub-interfaces `ILinkListener` and `IUTCTimeSource` as well as adding a number of methods that are
 master specific.
 
 You can see all the methods you can override in the code documentation, but the most important ones are:
 
-* _void IOnReceiveIIN(const IINField& iin)_ - Notifies you whenever an ASDU is received containing an internal indication field
+* `void IOnReceiveIIN(const IINField& iin)` - Notifies you whenever an ASDU is received containing an internal indication field
  (IIN field). This allow you to log and react to specific error bits returned by the device.
 
-* _void OnTaskComplete(const TaskInfo& info)_ - Tell you about tasks that are built into the master succeeding/failing. This callback
+* `void OnTaskComplete(const TaskInfo& info)` - Tell you about tasks that are built into the master succeeding/failing. This callback
 is usually used to assess the "health" of the session.
 
 The ILinkListener interface is also used on IOutstationApplication and is described in its own section.
 
 ### MasterStackConfig
 
-The final parameter passed into _AddMaster(...)_ is configuration struct that consists of link-layer configuration
+The final parameter passed into `AddMaster(...)` is configuration struct that consists of link-layer configuration
 information and static configuration that defines that masters behavior. The link-layer config is also used for outstations,
 and is described in its own section.
 
@@ -114,16 +115,16 @@ for complete descriptions. This struct controls behaviors like:
 
 ### IMaster
 
-When you added a master to the channel, the channel returned an _IMaster_ interface. This interface provides all access to a number of operations
+When you added a master to the channel, the channel returned an `IMaster` interface. This interface provides all access to a number of operations
 on the master. Refer to the code documentation for specifics. Some examples are:
 
 * Add periodic scans to the master like exception (Class 1/2/3) and integrity scans (Class 1/2/3/0)
 * Scanning for specific ranges or event counts
-* The _ICommandProcessor_ sub-interface allow you to do _SelectBeforeOperate_ and _DirectOperate_ requests w/ CROBs and Analog Outputs
+* The `ICommandProcessor` sub-interface allow you to do `SelectBeforeOperate` and `DirectOperate` requests w/ CROBs and Analog Outputs
 
 ### ICommandProcessor
 
-This is a sub-interface that allows you to perform _select-before-operate_ and _direct-operate_ commands.
+This is a sub-interface that allows you to perform "select-before-operate" and "direct operate" commands.
 
 ```c++
 class ICommandProcessor
@@ -135,7 +136,7 @@ public:
 ```
 
 Opendnp3 supports multiple commands per request on both the master and the outstation, however, for convenience there are overloaded
-methods to issue a single command of each type . You can use these overloads or build a _CommandSet_, which is a collection of headers.
+methods to issue a single command of each type . You can use these overloads or build a `CommandSet`, which is a collection of headers.
 
 ```c++
 CommandSet commands;
@@ -164,7 +165,7 @@ You pass the command set into the master using one of the ICommandProcessor meth
 pMaster->SelectAndOperate(std::move(commands), callback);
 ```
 
-But what is the **callback**? It's just a lambda expression or std::function that accepts _ICommandTaskResult_
+The callback is a lambda expression or `std::function` that accepts `ICommandTaskResult`
 as its single argument.
 
 ```
@@ -193,7 +194,11 @@ Header: 1 Index: 3 State: SUCCESS Status: SUCCESS
 Header: 1 Index: 4 State: SUCCESS Status: SUCCESS
 ```
 
-**Imporant:** Even if the summary _TaskCompletion_ value is SUCCESS, this doesn't mean that every command you sent was successful. It just means that the master got back some response that was parsed successfully. You must check the result for each command you sent individually. DNP3 allows for truncated responses if the outstation doesn't understand everything you sent. A possible response might be:
+!!! imporant
+    Even if the summary `TaskCompletion` value is SUCCESS, this doesn't mean that every command you sent was successful.
+	It just means that the master got back some response that was parsed successfully. You must check the result for each
+	command you sent individually. DNP3 allows for truncated responses if the outstation doesn't understand everything you
+	sent. A possible response might be:
 
 ```sh
 Summary: SUCCESS
@@ -203,7 +208,7 @@ Header: 1 Index: 3 State: SUCCESS Status: NOT_SUPPORTED
 Header: 1 Index: 4 State: INIT Status: UNDEFINED
 ```
 
-Note that you **always** get an entry for every command you specified, even if there's no response at all because the connection is down.
+Note that you always get an entry for every command you specified, even if there's no response at all because the connection is down.
 
 ```sh
 Summary: FAILURE_NO_COMMS
@@ -215,10 +220,10 @@ Header: 1 Index: 4 State: INIT Status: UNDEFINED
 
 Refer to the Doxygen docs for detailed information about each enum type:
 
-* TaskCompletion - The summary value for the task
-* CommandPointState - The various result states for each command point.
-* CommandStatus - The command status enumeration defined in the spec. Only valid for some states.
+* `TaskCompletion` - The summary value for the task
+* `CommandPointState` - The various result states for each command point.
+* `CommandStatus` - The command status enumeration defined in the spec. Only valid for some states.
 
 ### Cleaning Up
 
-Calls to Shutdown() are idempotent. The master will be permanently deleted once all references to the shared_ptr<IMaster> have been dropped.
+Calls to `Shutdown()` are idempotent. The master will be permanently deleted once all references to the `shared_ptr<IMaster>` have been dropped.
