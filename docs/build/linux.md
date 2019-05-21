@@ -2,8 +2,6 @@ On linux, the easiest way to use CMake is just to let it create a makefile for y
 way you normally would:
 
 ```sh
-> git clone --recursive --branch <tag-name> https://github.com/dnp3/opendnp3.git
-> cd opendnp3
 > mkdir build; cd build
 > cmake .. <options>
 > make -j

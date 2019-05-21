@@ -1,15 +1,18 @@
-## Components
+The Java bindings are built as two separate pieces:
 
-The opendnp3 Java bindings are built as two separate pieces: a normal Java JAR file and a native shared library
-built from the companion C++ source. Java 1.8 or greater is required.
+* standard JAR file
+* native shared library built from the C++ source
 
-## C++ bindings
+!!! important 
+    Java 1.8 or greater is required because of features used in Java bindings
 
-Use the '-DDNP3_JAVA=ON' option when invoking CMake. CMake will locate your JNI headers using the JAVA_HOME environment variable. The shared
+### Building the C++ bindings
+
+Use the '-DDNP3_JAVA=ON' option when configuring CMake. CMake will locate your JNI headers using the JAVA_HOME environment variable. The shared
 library must be installed in a system location or the path specified using the 'system.library.path' VM option.
 
 
-## Java library
+### Building the JAR
 
 The java library is built and installed locally using Maven.
 
