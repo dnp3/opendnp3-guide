@@ -1,8 +1,6 @@
-### About
-
 The DNP3 link-layer is the lowest level of the DNP3 stack, and provides a number of services for DNP3 communications:
 
-* Addressing - Each DNP3 frame contains both a 16-bit *source* and *destination* address field.
+* Addressing - Each DNP3 frame contains both a 16-bit `source` and `destination` address field.
 * Keep-alive - The ability to periodically send "keep-alive" requests (REQUEST_LINK_STATUS)
 * Error-checking - Interleaved CRC values that can separately detect data corruption in the header and payload.
 
@@ -10,10 +8,10 @@ The DNP3 link-layer is the lowest level of the DNP3 stack, and provides a number
 
 Both master and outstation sessions require link-layer configuration.
 
-The *MasterStackConfig* and *OutstationStackConfig* configuration structures each contain a *LinkConfig* structure. 
+The `MasterStackConfig` and `OutstationStackConfig` configuration structures each contain a `LinkConfig` structure. 
 This gives you access to the link-layer parameters when creating a master or outstation session.
 
-```cpp
+```c++
 MasterStackConfig stackConfig;		// could also be OutstationStackConfig for an outstation
 
 // configure master specific parameters
@@ -24,21 +22,23 @@ stackConfig.link.LocalAddr = 1;		// the address of the master
 stackConfig.link.RemoteAddr = 10;   // the address of the remote outstation
 ```
 
-**Not having the link-layer Local/Remote addresses configured correctly is the most frequent source of communication problems.** Opendnp3 example applications
-automatically talk to each other using a master address of 1 and an outstation address of 1024. There is no standard default address.
+!!! important
+    Not having the link-layer Local/Remote addresses configured correctly is the most frequent source of communication problems.
+	Opendnp3 example applications automatically talk to each other using a master address of 1 and an outstation address of 1024.
+	There is no standard default address.
 
 ### Keep-alives
 
-The link-layer will send a keep-alive request whenever it hasn't received a message from the other side of the link within the __LinkConfig.KeepAliveTimeout__ parameter. 
-This configurable parameter defaults to 1 minute.  It is generally only needed for quiescent TCP operations, and can be disabled for other types of configurations. It is an 
+The link-layer will send a keep-alive request whenever it hasn't received a message from the other side of the link within the `LinkConfig.KeepAliveTimeout` parameter. 
+This configurable parameter defaults to 1 minute. It is generally only needed for quiescent TCP operations, and can be disabled for other types of configurations. It is an 
 indispensable parameter for polled outstations that act as TCP servers. Writing to a socket is the only way to detect dead/half-open sockets.
 
 ### ILinkListener
 
-The _IMasterApplication_ and _IOutstationApplication_ interfaces inherit from _ILinkListener_. You can monitor important events at the link-layer by overriding the 
+The `IMasterApplication` and `IOutstationApplication` interfaces inherit from `ILinkListener`. You can monitor important events at the link-layer by overriding the 
 default methods on this interface.
 
-```
+```c++
 class ILinkListener
 {
 public:
