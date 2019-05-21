@@ -1,10 +1,11 @@
-### Make / install
-
 On linux, the easiest way to use CMake is just to let it create a makefile for you. You can then use this makefile in the same
-way you normally would.
+way you normally would:
 
 ```sh
-> cmake ../dnp3 <options>
+> git clone --recursive --branch <tag-name> https://github.com/dnp3/opendnp3.git
+> cd opendnp3
+> mkdir build; cd build
+> cmake .. <options>
 > make -j
 > sudo make install
 ```
