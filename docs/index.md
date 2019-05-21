@@ -2,7 +2,7 @@ Welcome to opendnp3, a portable, rigorously-tested, Apache-licensed implementati
 
 !!! warning
 
-    DNP3 is a complicated protocol, with many subtle rules. This guide and the [opendnp3](https://dnp3.github.io) project cannot cover everything about
+    DNP3 is a complex protocol with many subtle rules. This guide and the [opendnp3](https://dnp3.github.io) project cannot cover everything about
 	the protocol. To successfully use opendnp3 or develop a product based on it, you will almost certainly need a copy of the specification.
 	We recommend that your organization joins [DNP.org](https://www.dnp.org) to obtain a copy.
 

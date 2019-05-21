@@ -6,10 +6,10 @@ Opendnp3 is a cross-platform C++ library. It targets all major operating systems
 
 Opendnp3 uses the following C++11/14 features:
 
-* **std::unique_ptr / std::shared_ptr** - smart pointers are used for automatic memory management
-* **std::thread** - platform-independent threading using to manage the thread pool
-* **std::chrono** - platform-independent time operations including steady-clock used to manage timers
-* **variadic templates** - used in to simplify parsing routines.
+* **`std::unique_ptr`** & **`std::shared_ptr`** - smart pointers are used for automatic memory management
+* **`std::thread`** - platform-independent threading using to manage the thread pool
+* **`std::chrono`** - platform-independent time operations including steady-clock used to manage timers
+* **`variadic templates`** - used to simplify parsing routines.
 
 ### ASIO
 
@@ -20,10 +20,13 @@ Opendnp3 uses the following C++11/14 features:
 * A multi-core event loop
 * Abstract timers on top of std::chrono
 
+!!! info
+    OpenDNP3 is currently using **ASIO v1.12.2**
+
 ### Compilers
 
 The following compilers are known to work, and are tested frequently.
 
-* MSVC++ - Visual Studio 2015 and above
+* MSVC++ - Visual Studio >= 2015
 * g++ >= 4.9.x
 * clang >= 3.5

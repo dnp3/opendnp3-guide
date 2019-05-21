@@ -29,7 +29,7 @@ Conformance tests only exist for subset levels 1 & 2. Opendnp3 is routinely test
 you can also configure the  library to act as a simple level 1 device. The stack currently meets all the level 2 subset requirements
 with the notable except of support BROADCAST messages.
 
-#### Levels 1-4
+#### Subset Levels 1-4
 
 | Level   | Support | Missing Features                              |
 |---------|---------|-----------------------------------------------|
@@ -38,7 +38,7 @@ with the notable except of support BROADCAST messages.
 |    3    | FULL    |                                               |
 |    4    | PARTIAL | Analog dead-bands (group 34), device attributes (group 0), command events (groups 13 & 43) |
 
-#### Level 4+
+#### Subset Level 4+
 
 | Feature                         | Support | Comment                                       |
 |---------------------------------|---------|-----------------------------------------------|
