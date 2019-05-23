@@ -1,4 +1,4 @@
-On windows, CMake is used to generate a Visual Studio Solution (SLN) and associated project files.
+On Windows, CMake is used to generate a Visual Studio Solution (SLN) and associated project files.
 
 ```sh
 > mkdir build; cd build
@@ -13,6 +13,8 @@ Alternatively, you can just invoke msbuild.exe on the generated solution and bui
 
 ```sh
 > msbuild opendnp3.sln
+or
+> cmake --build .
 ```
 
 ### Installing
@@ -22,7 +24,7 @@ the directory specified by `CMAKE_INSTALL_PREFIX`.
 
 ### TLS Support
 
-If you need to build the stack w/ TLS support (or you're using the .NET bindings), then you need to install openssl on Windows.  Use the installers
+If you need to build the stack w/ TLS support (or you're using the .NET bindings), then you need to install OpenSSL on Windows. Use the installers
 from [ShiningLight](https://slproweb.com/products/Win32OpenSSL.html).
 
 ### .NET Bindings

@@ -11,7 +11,7 @@ OutstationStackConfig stackConfig;
 stackConfig.dbTemplate = DatabaseTemplate::AllTypes(10);
 stackConfig.outstation.eventBufferConfig = EventBufferConfig::AllTypes(10);
 
-// you can override an default outstation parameters here
+// you can override a default outstation parameters here
 stackConfig.outstation.params.allowUnsolicited = true;
 
 // You can override the default link layer settings here
@@ -93,7 +93,7 @@ enum class OperateType : uint8_t
 
 ### CommandStatus
 
-You must immediately return a `CommandStatus` enumeration value in response to each callback. This callback should never block.
+You must immediately return a `CommandStatus` enumeration value in response to each callback. **This callback should never block**.
 
 ```c++
 enum class CommandStatus : uint8_t

@@ -12,7 +12,7 @@ not an exhaustive list of every folder in the project.
       /openpal       // interfaces, containers, and parsers (Platform Abstraction Layer)
       /opendnp3      // the core dnp3 library w/ no external dependencies other than openpal
       /asiopal       // provides ASIO-based implementations of things in openpal
-      /asiodnp3      // high-level dnp3 interface that leverage asiopal
+      /asiodnp3      // high-level dnp3 interface that leverages asiopal and opendnp3
       /dnp3decode    // a dnp3 decoder based on the opendnp3 parsers
 ```
 
@@ -33,11 +33,11 @@ When building an external application on Linux for instance, you need to link ag
 ### CLR Bindings
 
 ```sh
-# CLR bindings built using external SLN
+# CLR bindings built using CMake
 
 /dotnet 
   /CLRInterface   // Pure CLR interfaces and classes that comprise the API
-  /CLRAdapter     // a C++/CLI project that adapters the underlying C++ libraries to C#
+  /CLRAdapter     // a C++/CLI project that adapts the underlying C++ libraries to C#
   /examples       // C# example applications
 ```
 

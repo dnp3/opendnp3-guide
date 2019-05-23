@@ -25,9 +25,9 @@ DNP3Manager manager(std::hardware_concurrency(), ConsoleLogger::Create());
 	number of threads in the thread pool.
 	
 This advice is especially critical for large systems where the number of communication channels greatly outnumbers the number of threads
-in the pool. If all of your threads are blocked then other channels can't do useful work like sending control requests to the field. If
-you must design your system to do some blocking, you can mitigate this problem by scaling the number of threads in the pool as a multiple
-of the number of cores.
+in the pool. If all of your threads are blocked then other channels can't do useful work like sending control requests to the field. Blocking
+operations should be done in separate threads. If you must design your system to do some blocking operations without handling other threads,
+you can mitigate this problem by scaling the number of threads in the pool as a multiple of the number of cores.
 
 ```c++
 // Create a root DNP3 manager with twice as many threads as logical processors
@@ -62,7 +62,7 @@ auto outstation = channel->AddOutstation(...arguments...);
 ### Architecture
 
 Each channel and the sessions bound to it, are a single-threaded state-machine.  During execution, ASIO guarantees that each channel
-is only processing one event at a time from a single thread. This means that there is no explicit thread synchronization required any where in the stack.
+is only processing one event at a time from a single thread. This means that there is no explicit thread synchronization required anywhere in the stack.
 When user code wants to communicate with a stack, e.g. load measurement data into an outstation or request that a command be initiated
 on a master, it gets "posted" to the correct channel's executor. This ensures that each channel and all the sessions bound to it are
 only ever touched by a single thread at a time.

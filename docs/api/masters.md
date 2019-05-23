@@ -2,7 +2,7 @@
 
 A master in opendnp3 is a component that communicates with a single outstation via a communication channel. You may see this term used in other places to refer to a
 collection of such components communicating with multiple outstations. When more than one master is bound to a single communication channel, it is called a
-`multi-drop` configuration.  This refers to the way in which an RS-485 serial network is chained from device to device. Opendnp3 will let you add multiple
+*multi-drop* configuration.  This refers to the way in which an RS-485 serial network is chained from device to device. Opendnp3 will let you add multiple
 masters / outstations to any communication channel, regardless of he underlying transport. You could even bind a master to a TCP server and reverse the
 normal connection direction.
 
@@ -83,7 +83,7 @@ There's also a wealth of information in the `HeaderInfo` object including:
 
 ### IMasterApplication
 
-The 3rd parameter in the call to `AddMaster(...)` is a user-defined interface called `IMasterApplication`. It contains
+The 3rd parameter in the call to `AddMaster(...)` is a user-defined interface called `IMasterApplication`. It
 inherits from two sub-interfaces `ILinkListener` and `IUTCTimeSource` as well as adding a number of methods that are
 master specific.
 
@@ -95,13 +95,13 @@ You can see all the methods you can override in the code documentation, but the 
 * `void OnTaskComplete(const TaskInfo& info)` - Tell you about tasks that are built into the master succeeding/failing. This callback
 is usually used to assess the "health" of the session.
 
-The ILinkListener interface is also used on IOutstationApplication and is described in its own section.
+The `ILinkListener` interface is also used on IOutstationApplication and is described in its own [section](../api/linklayer.md#ilinklistener).
 
 ### MasterStackConfig
 
-The final parameter passed into `AddMaster(...)` is configuration struct that consists of link-layer configuration
-information and static configuration that defines that masters behavior. The link-layer config is also used for outstations,
-and is described in its own section.
+The final parameter passed into `AddMaster(...)` is a configuration struct that consists of link-layer configuration
+information and static configuration that defines the masters behavior. The link-layer config is also used for outstations,
+and is described in its own [section](../api/linklayer.md#configuration).
 
 ### MasterParams
 
@@ -115,7 +115,7 @@ for complete descriptions. This struct controls behaviors like:
 
 ### IMaster
 
-When you added a master to the channel, the channel returned an `IMaster` interface. This interface provides all access to a number of operations
+When a master is added to a channel, the channel returns an `IMaster` interface. This interface provides all access to a number of operations
 on the master. Refer to the code documentation for specifics. Some examples are:
 
 * Add periodic scans to the master like exception (Class 1/2/3) and integrity scans (Class 1/2/3/0)

@@ -4,11 +4,11 @@ Opendnp3 uses a build system generator called [CMake](http://www.cmake.org/).  T
 from a artifact.
 
 This allows the opendnp3 project to maintain a single project file for all platforms, minimizing per-platform maintenance. CMake also integrates nicely with
-Linux C++ IDEs like [KDevelop](https://www.kdevelop.org/) or [CLion](https://www.jetbrains.com/clion/).
+C++ IDEs like [KDevelop](https://www.kdevelop.org/) or [CLion](https://www.jetbrains.com/clion/).
 
 ### Optional Components
 
-By default, cmake will not build tests, demos, or TLS support. You can enable each optional component individually by specifying
+By default, CMake will not build tests, demos, or TLS support. You can enable each optional component individually by specifying
 them on the command line:
 
 ```sh
@@ -19,11 +19,12 @@ them on the command line:
 | -------------- | ------------------------------------------------- |
 | DNP3_ALL       | build all optional components below               |
 | DNP3_DEMO      | build the example programs                        |
-| DNP3_DOTNET    | build the .NET bindings (windows only)            |
+| DNP3_DOTNET    | build the .NET bindings (Windows only)            |
 | DNP3_JAVA      | build the java bindings                           |
 | DNP3_TEST      | build the unit test suites                        |
 | DNP3_TLS       | build support for TLS channels (requires openssl) |
 | DNP3_DECODER   | build the decoder module                          |
+| DNP3_FUZZING   | build Google OSS-Fuzz integration                 |
 
 For example, to build the demos including TLS support:
 ```sh
@@ -49,8 +50,8 @@ On Windows, static libs are the default. On Linux, dynamic libs are the default.
 
 #### Debug vs Release
 
-You can configure release vs debug builds using the CMAKE_BUILD_TYPE flag
-Note that on windows, the generated SLN contains debug and release build targets already
+You can configure release vs debug builds using the CMAKE_BUILD_TYPE flag.
+Note that on Windows, the generated SLN contains debug and release build targets already
 ```sh
 > cmake ../dnp3 -DCMAKE_BUILD_TYPE=Debug
 > cmake ../dnp3 -DCMAKE_BUILD_TYPE=Release
@@ -85,7 +86,7 @@ On windows, you might put your libraries and headers somewhere like:
 
 ### Locating ASIO
 
-The include sub-folder of the ASIO distribution (the folder that contains 'asio.hpp') needs to be on your include path, but there are several ways you can do this.
+The included sub-folder of the ASIO distribution (the folder that contains 'asio.hpp') needs to be on your include path, but there are several ways you can do this.
 You can choose the option that makes the most sense your particular build environment. CMake will try the following things in order to locate your ASIO.
 
 1) Look to see if you checked out ASIO as a git submodule when cloning opendnp3
@@ -97,21 +98,21 @@ You can choose the option that makes the most sense your particular build enviro
 2) look to see if the variable `ASIO_HOME` was defined via the cmake command line.
 
 ```sh
-> cmake ../dnp3 -DASIO_HOME=C:\libs\asio-asio-1-10-8\asio\include
+> cmake ../dnp3 -DASIO_HOME=C:/libs/asio-asio-1-12-2/asio/include
 ```
 
 3) Check if `ASIO_HOME` is defined as an environment variable.
 
 For instance, on Windows you might define your environment variable to look like this.
 ```sh
-ASIO_HOME=C:\libs\asio-asio-1-10-8\asio\include
+ASIO_HOME=C:/libs/asio-asio-1-12-2/asio/include
 ```
 On Ubuntu Linux, you might add a line to ~/.bashrc as follows:
 ```sh
-export ASIO_HOME=~/asio-asio-1-10-8/asio/include
+export ASIO_HOME=~/asio-asio-1-12-2/asio/include
 ```
 
 !!! tip
-    If CMake can't find asio using one of the mechanisms above, it will just assume the headers are installed on the system.
+    If CMake can't find ASIO using one of the mechanisms above, it will just assume the headers are installed on the system.
 	No checks are performed, so the build will fail is this isn't true
 

@@ -1,7 +1,7 @@
 The DNP3 link-layer is the lowest level of the DNP3 stack, and provides a number of services for DNP3 communications:
 
 * Addressing - Each DNP3 frame contains both a 16-bit `source` and `destination` address field.
-* Keep-alive - The ability to periodically send "keep-alive" requests (REQUEST_LINK_STATUS)
+* Keep-alive - The ability to periodically send "keep-alive" requests (`REQUEST_LINK_STATUS`)
 * Error-checking - Interleaved CRC values that can separately detect data corruption in the header and payload.
 
 ### Configuration

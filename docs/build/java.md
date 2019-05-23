@@ -9,7 +9,7 @@ The Java bindings are built as two separate pieces:
 ### Building the C++ bindings
 
 Use the '-DDNP3_JAVA=ON' option when configuring CMake. CMake will locate your JNI headers using the JAVA_HOME environment variable. The shared
-library must be installed in a system location or the path specified using the 'system.library.path' VM option.
+library must be installed in a system location or the path specified using the `system.library.path` JVM option.
 
 
 ### Building the JAR
