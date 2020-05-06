@@ -1,27 +1,31 @@
 ### Platforms
 
-Opendnp3 is a cross-platform C++ library. It targets all major operating systems including Linux, Windows, and OSX.
+OpenDNP3 is a cross-platform C++ library. It is tested on Linux and Windows.
 
 ### C++14
 
-Opendnp3 uses the following C++11/14 features:
+OpenDNP3 uses the following C++11/14 features:
 
-* **`std::unique_ptr`** & **`std::shared_ptr`** (including **`std::make_unique`**, part of C++14) - smart pointers are used for automatic memory management
-* **`std::thread`** - platform-independent threading used to manage the thread pool
-* **`std::chrono`** - platform-independent time operations including steady-clock used to manage timers
+* **`std::unique_ptr`** & **`std::shared_ptr`** (including
+  **`std::make_unique`**, part of C++14) - smart pointers are used for automatic
+  memory management
+* **`std::thread`** - platform-independent threading used to manage the thread
+  pool
+* **`std::chrono`** - platform-independent time operations including
+  steady-clock used to manage timers
 * **`variadic templates`** - used to simplify parsing routines.
 
 ### ASIO
 
-[ASIO](https://think-async.com/Asio/) is a header-only library that provides asynchronous I/O (ASIO). Opendnp3 uses ASIO for several things.
+[ASIO](https://think-async.com/Asio/) is a header-only library that provides
+asynchronous I/O (ASIO). OpenDNP3 uses ASIO for several things.
 
 * Cross-platform sockets
 * Cross-platform serial ports
 * A multi-core event loop
-* Abstract timers on top of std::chrono
+* Abstract timers on top of `std::chrono`
 
-!!! info
-    OpenDNP3 is currently using **ASIO v1.12.2**
+!!! info OpenDNP3 is currently using **ASIO v1.16**
 
 ### Compilers
 
