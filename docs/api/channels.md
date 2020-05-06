@@ -1,8 +1,8 @@
 The library uses abstract communication channels to send and receive bytes "over the wire". Opendnp3 supports TCP client/server,
-TLS client/server, and serial communications. UDP may be added in the future.
+TLS client/server, UDP, and serial communications.
 
 The manager that you created previously is now ready to have some channels bound to it. Adding a channel to the manager
-does not make it attempt to open immediately. If it's a TCP socket or serial port it won't try to open until you bind at least one outstation
+does not make it attempt to open the channel immediately. If it's a TCP socket or serial port it won't try to open until you bind at least one outstation
 or master session and enable it. Here's an example of how you go about adding a TCP client. Assume we have a `DNP3Manager` called 'manager':
 
 ```c++
