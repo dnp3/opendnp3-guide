@@ -58,7 +58,7 @@ currently meets all the Subset Level 2 requirements.
 |---------|---------|-----------------------------------------------|
 |    1    | FULL    |                                               |
 |    2    | FULL    |                                               |
-|    3    | PARTIAL | Read/write some group 0 (Device Attributes), read g50v1 (Absolute Time and Date), read g80v1 (Internal Indications) |
+|    3    | PARTIAL | read g50v1 (Absolute Time and Date), read g80v1 (Internal Indications) |
 |    4    | PARTIAL | Self-address, analog dead-bands (group 34), device attributes (group 0), command events (groups 13 & 43) |
 
 #### Subset Level 4+
@@ -81,8 +81,9 @@ integration pipeline validates that it compiles on both platforms with various
 compilers.
 
 Connections can be established using TCP/IP, a serial link, or a UDP connection.
-Note that we do not recommend using UDP for DNP3 connections, and that serial
-communications should only be used if TCP/IP is not available.
+Note that we do not recommend using UDP for DNP3 connections, as it places
+additional requirements on how DNP3 is used, e.g. requests and responses must fit
+in a single datagram.
 
 To ease usage in existing codebases, C# and Java bindings are also available.
 They expose a complete and easy-to-use interface to interact with the library.

@@ -14,11 +14,17 @@ library must be installed in a system location or the path specified using the `
 
 ### Building the JAR
 
-The java library is built and installed locally using Maven.
+The pure Java part of the bindings is built and installed locally using Maven:
 
 ```
 > cd java
 > mvn install
+```
+
+You can optionally suppress the integration tests during the build (e.g. if you don't have library installed):
+
+```
+> mvn install -DskipTests
 ```
 
 You can now use it in your Maven based Java projects using 

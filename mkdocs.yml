@@ -19,7 +19,7 @@ nav:
 - Changes to 3.x release: 'features/3.0.md'
 - Build:
   - 'Requirements': 'build/requirements.md'
-  - 'Libraries': 'build/libraries.md'
+  - 'Source Tree': 'build/source.md'
   - 'CMake': 'build/cmake.md'
   - 'Linux': 'build/linux.md'
   - 'Windows': 'build/windows.md'
