@@ -25,11 +25,6 @@ asynchronous I/O (ASIO). OpenDNP3 uses ASIO for several things.
 * A multi-core event loop
 * Abstract timers on top of `std::chrono`
 
-!!! info 
-    OpenDNP3 is currently using **ASIO v1.16**. ASIO has made breaking changes in recent releases
-    to tracking the emerging C++ networking API standardizations. Using the version of ASIO tagged
-    in the git submodule ensures you always are on a compatible version.
-
 ### Compilers
 
 The following compilers are known to work, and are tested frequently.

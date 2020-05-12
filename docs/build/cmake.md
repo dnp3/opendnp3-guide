@@ -12,7 +12,7 @@ By default, CMake will not build tests, demos, or TLS support. You can enable ea
 them on the command line:
 
 ```sh
-> cmake ../dnp3 -D<option>=ON
+> cmake -D<option>=ON
 ```
 
 | Option Name    | Comments                                          |
@@ -28,8 +28,47 @@ them on the command line:
 
 For example, to build the demos including TLS support:
 ```sh
-> cmake ../dnp3 -DDNP3_DEMO=ON -DDNP3_TLS=ON
+> cmake -DDNP3_DEMO=ON -DDNP3_TLS=ON
 ```
+
+### Locating ASIO
+
+!!! warning
+    ASIO has made breaking changes in recent releases to tracking the emerging C++ networking API standardizations. 
+    Using the version of ASIO tagged in the git submodule ensures you always are on a compatible version. OpenDNP3 is
+    currently using **ASIO v1.16**.
+
+The included sub-folder of the ASIO distribution (the folder that contains 'asio.hpp') needs to be on your include path, but there are several ways you can do this.
+You can choose the option that makes the most sense your particular build environment. CMake will try the following things in order to locate your ASIO.
+
+1) Look to see if you checked out ASIO as a git submodule when cloning opendnp3
+
+```sh
+> git clone --recursive https://github.com/automatak/dnp3.git
+```
+
+2) look to see if the variable `ASIO_HOME` was defined via the cmake command line.
+
+```sh
+> cmake -DASIO_HOME=C:/libs/asio/include
+```
+
+3) Check if `ASIO_HOME` is defined as an environment variable.
+
+For instance, on Windows you might define your environment variable to look like this.
+```sh
+ASIO_HOME=C:/libs/asio/include
+```
+On Ubuntu Linux, you might add a line to ~/.bashrc as follows:
+```sh
+export ASIO_HOME=~/asio/include
+```
+
+!!! tip
+    If CMake can't find ASIO using one of the mechanisms above, it will just assume the headers are installed on the system.
+	No checks are performed, so the build will fail is this isn't true
+
+
 
 ### Build Options
 
@@ -44,8 +83,8 @@ You can switch between building static or dynamic linking using the STATICLIBS f
 On Windows, static libs are the default. On Linux, dynamic libs are the default.
 
 ```
-> cmake ../dnp3 STATICLIBS=ON	# build static libraries
-> cmake ../dnp3 STATICLIBS=OFF	# build dynamic libraries
+> cmake STATICLIBS=ON	# build static libraries
+> cmake STATICLIBS=OFF	# build dynamic libraries
 ```
 
 #### Debug vs Release
@@ -53,8 +92,8 @@ On Windows, static libs are the default. On Linux, dynamic libs are the default.
 You can configure release vs debug builds using the CMAKE_BUILD_TYPE flag.
 Note that on Windows, the generated SLN contains debug and release build targets already
 ```sh
-> cmake ../dnp3 -DCMAKE_BUILD_TYPE=Debug
-> cmake ../dnp3 -DCMAKE_BUILD_TYPE=Release
+> cmake -DCMAKE_BUILD_TYPE=Debug
+> cmake -DCMAKE_BUILD_TYPE=Release
 ```
 
 #### Non-default generators
@@ -83,36 +122,4 @@ On windows, you might put your libraries and headers somewhere like:
 ```sh
 > cmake .. -DCMAKE_INSTALL_PREFIX=C:\libs\opendnp3
 ```
-
-### Locating ASIO
-
-The included sub-folder of the ASIO distribution (the folder that contains 'asio.hpp') needs to be on your include path, but there are several ways you can do this.
-You can choose the option that makes the most sense your particular build environment. CMake will try the following things in order to locate your ASIO.
-
-1) Look to see if you checked out ASIO as a git submodule when cloning opendnp3
-
-```sh
-> git clone --recursive https://github.com/automatak/dnp3.git
-```
-
-2) look to see if the variable `ASIO_HOME` was defined via the cmake command line.
-
-```sh
-> cmake ../dnp3 -DASIO_HOME=C:/libs/asio-asio-1-12-2/asio/include
-```
-
-3) Check if `ASIO_HOME` is defined as an environment variable.
-
-For instance, on Windows you might define your environment variable to look like this.
-```sh
-ASIO_HOME=C:/libs/asio-asio-1-12-2/asio/include
-```
-On Ubuntu Linux, you might add a line to ~/.bashrc as follows:
-```sh
-export ASIO_HOME=~/asio-asio-1-12-2/asio/include
-```
-
-!!! tip
-    If CMake can't find ASIO using one of the mechanisms above, it will just assume the headers are installed on the system.
-	No checks are performed, so the build will fail is this isn't true
 
