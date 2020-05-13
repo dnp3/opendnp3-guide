@@ -21,8 +21,8 @@ DNP3Manager manager(std::hardware_concurrency(), ConsoleLogger::Create());
 ```
 
 !!! warning
-    You should **avoid blocking** the stack during callbacks made to user code, as there are a limited
-	number of threads in the thread pool.
+    You should **avoid blocking** the during callbacks made to user code, as there are a limited
+	number of threads in the thread pool and this can drastically decrease performance.
 	
 This advice is especially critical for large systems where the number of communication channels greatly outnumbers the number of threads
 in the pool. If all of your threads are blocked then other channels can't do useful work like sending control requests to the field. Blocking

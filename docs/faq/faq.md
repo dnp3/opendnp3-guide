@@ -1,4 +1,4 @@
-This section serves as a FAQ for common issues and their resolutions.
+# Frequently Asked Questions
 
 ### Unable to find `asio.hpp`
 
@@ -17,8 +17,8 @@ these linked statically. The solution is to make sure openssl is installed in th
 ### My master and outstation don't communicate
 
 The most common mistake when configuring a master to talk to an outstation is neglecting to set the correct addresses.
-DNP3 was originally designed to communicate on a shared serial bus, so **components ignore messages with addresses
-not intended for them**. Outstations expect to receive messages from a particular master, and will only respond to that
+DNP3 was originally designed to communicate on a shared serial bus, so **components ignore messages sent to addresses
+other than their own**. Outstations expect to receive messages from a particular master, and will only respond to that
 master if both the source and destination link-layer addresses are set correctly.
 
 ### Master or Outstation doesn't detect an ethernet cable being unplugged
