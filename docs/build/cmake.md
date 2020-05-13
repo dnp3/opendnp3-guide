@@ -15,16 +15,16 @@ them on the command line:
 > cmake -D<option>=ON
 ```
 
-| Option Name    | Comments                                          |
-| -------------- | ------------------------------------------------- |
-| DNP3_ALL       | build all optional components below               |
-| DNP3_DEMO      | build the example programs                        |
-| DNP3_DOTNET    | build the .NET bindings (Windows only)            |
-| DNP3_JAVA      | build the java bindings                           |
-| DNP3_TEST      | build the unit test suites                        |
-| DNP3_TLS       | build support for TLS channels (requires openssl) |
-| DNP3_DECODER   | build the decoder module                          |
-| DNP3_FUZZING   | build Google OSS-Fuzz integration                 |
+| Option Name    | Comments                                                   |
+| -------------- | ---------------------------------------------------------- |
+| DNP3_ALL       | build all optional components below                        |
+| DNP3_DEMO      | build the example programs                                 |
+| DNP3_DOTNET    | build the .NET bindings (Windows only)                     |
+| DNP3_JAVA      | build the java bindings                                    |
+| DNP3_TEST      | build the unit test suites                                 |
+| DNP3_TLS       | build support for TLS channels (requires openssl >= 1.1.1) |
+| DNP3_DECODER   | build the decoder module                                   |
+| DNP3_FUZZING   | build Google OSS-Fuzz integration                          |
 
 For example, to build the demos including TLS support:
 ```sh

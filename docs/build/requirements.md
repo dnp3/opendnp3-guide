@@ -29,6 +29,6 @@ asynchronous I/O (ASIO). OpenDNP3 uses ASIO for several things.
 
 The following compilers are known to work, and are tested frequently.
 
-* MSVC++ - Visual Studio >= 2015
+* MSVC++ - Visual Studio >= 2019
 * g++ >= 4.9.x
 * clang >= 3.5
