@@ -24,8 +24,9 @@ the directory specified by `CMAKE_INSTALL_PREFIX`.
 
 ### TLS Support
 
-If you need to build the stack w/ TLS support (or you're using the .NET bindings), then you need to install OpenSSL on Windows. Use the installers
-from [ShiningLight](https://slproweb.com/products/Win32OpenSSL.html).
+If you need to build the stack w/ TLS support (or you're using the .NET bindings), then you need to install OpenSSL on Windows. Use the full
+development pacakge installers from [ShiningLight](https://slproweb.com/products/Win32OpenSSL.html). Cmake is able to find the openssl libraries
+and headers in the default install locations used by the installer.
 
 ### .NET Bindings
 
@@ -42,7 +43,7 @@ PM> Install-Package opendnp3 -Pre
 ```
 #### Building
 
-Enable the building of the .NET bindings when configuring CMake, e.g.:
+If you need to build them from scratch, you can enable it when configuring CMake, e.g.:
 
 ```
 > cmake .. -DDNP3_DOTNET=ON

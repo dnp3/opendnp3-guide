@@ -15,5 +15,3 @@ CMake also supports cross-compiling to embedded-linux platforms. How to do this 
 explained [here](http://www.cmake.org/Wiki/CMake_Cross_Compiling).
 
 The preferred method is to create a toolchain file for each target platform.
-
-An example integration on a TI MSP432 is available [here](https://github.com/emgre/opendnp3msp432), although it's quite old.

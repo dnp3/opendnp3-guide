@@ -24,7 +24,7 @@ stackConfig.link.RemoteAddr = 10;
 auto master = channel->AddMaster(
   "master",                                       // alias for logging
   PrintingSOEHandler::Create(),                   // ISOEHandler (interface)
-  asiodnp3::DefaultMasterApplication::Create(),   // IMasterApplication (interface)
+  DefaultMasterApplication::Create(),             // IMasterApplication (interface)
   stackConfig                                     // static stack configuration
 );
 
@@ -37,24 +37,27 @@ master->Enable();
 
 Note the 2nd parameter in the call to `AddMaster(...)`. This is the user-defined interface used to receive measurement data
 that the master has received from the outstation. SOE stands for "Sequence of Events". SOE is a common term in SCADA circles
-that is synonymous with "the order in which things happened".
+that is synonymous with "the order in which things occured".
 
 ```c++
-class ISOEHandler : public ITransactable
+class ISOEHandler
 {
 public:
 
-	virtual void Process(const HeaderInfo& info, const ICollection<Indexed<Binary>>& values) = 0;
+	virtual void BeginFragment(const ResponseInfo& info) = 0;
+    virtual void EndFragment(const ResponseInfo& info) = 0;
+
+    virtual void Process(const HeaderInfo& info, const ICollection<Indexed<Binary>>& values) = 0;
 
 	// more Process methods for types like Analog, Counter, etc ....
 }
 ```
 
-An ISOEHandler is just an interface with an overloaded `Process` method for every measurement type in DNP3. It also inherits
-`Start()` and `End()` methods from `ITransactable`. This allows you tell when the master begins and ends parsing a received
-ASDU that contains measurement data. You'll see this Start/End pattern with other interfaces in opendnp3.
+An ISOEHandler is just an interface with an overloaded `Process` method for every measurement type in DNP3
+It also includes `BeginFragment` and `EndFragment` methods which can be used to tell when the processing
+of a response starts and ends.
 
-The `PrintingSOEHandler` in the snippet where we added the master is just a singleton that prints measurement values to the console.
+The `PrintingSOEHandler` in the snippet where we added the master is just a simple instance which prints values to the console.
 You'll definitely want to write your own implementation so that you can write to file, database, or display on your application in some
 fashion. The `PrintingSOEHandler` just extracts the measurement values from the ICollection like the following:
 
@@ -162,7 +165,7 @@ header.Add(AnalogOutputInt16(9), 4);
 You pass the command set into the master using one of the ICommandProcessor methods.
 
 ```c++
-pMaster->SelectAndOperate(std::move(commands), callback);
+master->SelectAndOperate(std::move(commands), callback);
 ```
 
 The callback is a lambda expression or `std::function` that accepts `ICommandTaskResult`

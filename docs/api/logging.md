@@ -7,12 +7,21 @@ just has a single method:
 class ILogHandler
 {
 public:
-	virtual void Log( const LogEntry& entry ) = 0;
+   /**
+     * Callback method for log messages
+     *
+     * @param module ModuleId of the logger
+     * @param id string id of the logger
+     * @param level bitfield LogLevel of the logger
+     * @param location location in the source of the log call
+     * @param message message of the log call
+     */
+	void log(ModuleId module, const char* id, LogLevel level, char const* location, char const* message) = 0;
 };
 ```
 If you need to send log messages to more than one location, create your own proxy `ILogHandler`. Keep in mind that this is a callback from the
 thread-pool and will block that thread from executing. A good strategy for a file-logger in a big system would be to send a message
-to a worker thread to write the message to disk.
+to a worker thread to write the message to disk using a synchronized queue that only blocks when it reaches a maximum size.
 
 ### Individual loggers
 

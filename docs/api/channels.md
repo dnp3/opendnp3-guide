@@ -1,25 +1,37 @@
-The library uses abstract communication channels to send and receive bytes "over the wire". Opendnp3 supports TCP client/server,
-TLS client/server, and serial communications. UDP may be added in the future.
+The library uses abstract communication channels to send and receive bytes "over the wire". The following
+channel types are supported:
+
+* TCP client / server
+* TLS client / server
+* UDP
+* Serial
 
 The manager that you created previously is now ready to have some channels bound to it. Adding a channel to the manager
-does not make it attempt to open immediately. If it's a TCP socket or serial port it won't try to open until you bind at least one outstation
+does not make it attempt to open the channel immediately. If it's a TCP socket or serial port it won't try to open until you bind at least one outstation
 or master session and enable it. Here's an example of how you go about adding a TCP client. Assume we have a `DNP3Manager` called 'manager':
 
 ```c++
 auto channel = manager.AddTCPClient(
-  "tcpclient",                            // alias used in log messages
-  levels::NORMAL,                         // bitfield used to filter what gets logged
-  ChannelRetry::Default(),	              // determines how connections will be retried
-  "127.0.0.1",                            // host name (DNS resolved) or IP address of remote endpoint
-  "0.0.0.0",                              // adapter on which to attempt the connection (any adapter)
-  20000,                                  // port remote endpoint is listening on
-  nullptr                                 // optional listener interface for monitoring the channel
+  // alias used in log messages
+  "tcpclient",
+  // bitfield used to filter what gets logged
+  levels::NORMAL | levels::ALL_APP_COMMS,
+  // determines how connections will be retried
+  ChannelRetry::Default(),
+  // List of endpoints or DNS host names to cycle through
+  { IPEndpoint("127.0.0.1", 20000) },
+  // IP address of the local ethernet adapter (0.0.0.0 == any adapter)
+  "0.0.0.0",
+  // optional listener interface for monitoring the channel
+  PrintingChannelListener::Create(),
 );
 ```
 
-The API for creating TCPServer channels or Serial channels is very similar. Just refer to the code documentation.
+There is a `Add<channel type>` method on `DNP3Manager` for each channel type. Refer to the C++ doxygen documentation
+for details.
+ 
 
-### Exponential backoff
+### Exponential back-off
 
 The `ChannelRetry` configuration specifies two timing parameters for the minimum and maximum connection retry times using an exponential back-off strategy. If you don't want
 exponential back-off, just set the minimum and maximum to the same value for a consistent delay. Exponential back-off really only makes sense for initiating TCP connections.

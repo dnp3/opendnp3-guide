@@ -21,8 +21,8 @@ DNP3Manager manager(std::hardware_concurrency(), ConsoleLogger::Create());
 ```
 
 !!! warning
-    You should **avoid blocking** the stack during callbacks made to user code, as there are a limited
-	number of threads in the thread pool.
+    You should **avoid blocking** during callbacks made to user code, as there are a limited
+	number of threads in the thread pool and this can drastically decrease performance.
 	
 This advice is especially critical for large systems where the number of communication channels greatly outnumbers the number of threads
 in the pool. If all of your threads are blocked then other channels can't do useful work like sending control requests to the field. Blocking
@@ -61,11 +61,11 @@ auto outstation = channel->AddOutstation(...arguments...);
 
 ### Architecture
 
-Each channel and the sessions bound to it, are a single-threaded state-machine.  During execution, ASIO guarantees that each channel
-is only processing one event at a time from a single thread. This means that there is no explicit thread synchronization required anywhere in the stack.
-When user code wants to communicate with a stack, e.g. load measurement data into an outstation or request that a command be initiated
-on a master, it gets "posted" to the correct channel's executor. This ensures that each channel and all the sessions bound to it are
-only ever touched by a single thread at a time.
+Each channel and the sessions bound to it are asynchronous state-machines.  During execution, ASIO guarantees that each channel
+is only processing one event at a time from a single thread. This means that there is no explicit thread synchronization required 
+anywhere in the stack. When user code wants to communicate with a stack, e.g. load measurement data into an outstation or request that a 
+command be initiated on a master, it gets "posted" to the correct channel's executor. This ensures that each channel and all the sessions
+bound to it are only ever touched by a single thread at a time.
 
 User code, however, may need to worry about multi-threading. If you hand the same callback interface to multiple sessions, you will
 potentially receive callbacks from multiple threads simultaneously on the same interface.
