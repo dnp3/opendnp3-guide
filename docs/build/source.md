@@ -1,9 +1,11 @@
+The core C++ library lives in `cpp/lib/`. Public headers are in
+`cpp/lib/include/opendnp3`.
 
-The core C++ library lives in `cpp/lib/`. Public headers are in `cpp/lib/include/opendnp3`.
+The library has no public external dependencies. ASIO is completely hidden from
+the public API.
 
-The library has no public external dependencies. ASIO is completely hidden from the public API.
-
-When building an external application on Linux without TLS support, you need only need to link against opendnp3:
+When building an external application on Linux without TLS support, you need
+only need to link against opendnp3:
 
 ```
 -lopendnp3
@@ -11,8 +13,8 @@ When building an external application on Linux without TLS support, you need onl
 
 ### CLR Bindings
 
-The .NET bindings live in the `dotnet` folder. CMake can optionally generate the projects for them as part of the
-SLN file during build configuration.
+The .NET bindings live in the `dotnet` folder. CMake can optionally generate the
+projects for them as part of the SLN file during build configuration.
 
 ```sh
 # CLR bindings built using CMake
@@ -25,8 +27,8 @@ SLN file during build configuration.
 
 ### Java Bindings
 
-The java bindings live in the `java` folder. CMake can optionally generate the projects for them as part of the
-SLN or makefile during build configuration.
+The java bindings live in the `java` folder. CMake can optionally generate the
+projects for them as part of the SLN or Makefile during build configuration.
 
 ```sh
 # Java bindings built using CMake (native) and Maven (pom.xml)

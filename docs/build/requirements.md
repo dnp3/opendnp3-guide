@@ -15,6 +15,14 @@ OpenDNP3 uses the following C++11/14 features:
   steady-clock used to manage timers
 * **`variadic templates`** - used to simplify parsing routines.
 
+### CMake
+
+[CMake](http://www.cmake.org/) is a cross-platform tool to build and test C++
+software. OpenDNP3 requires CMake 3.11 or higher to build.
+
+During the build process, it will automatically download or locate the
+dependencies required to build the library.
+
 ### ASIO
 
 [ASIO](https://think-async.com/Asio/) is a header-only library that provides
@@ -24,6 +32,8 @@ asynchronous I/O (ASIO). OpenDNP3 uses ASIO for several things.
 * Cross-platform serial ports
 * A multi-core event loop
 * Abstract timers on top of `std::chrono`
+
+This dependency is automatically fetched by CMake on compilation.
 
 ### Compilers
 

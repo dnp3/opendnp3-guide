@@ -1,15 +1,18 @@
 ### CMake
 
-Opendnp3 uses a build system generator called [CMake](http://www.cmake.org/).  This means that the actual build files (e.g. a Makefile or Visual Studio .SLN) are generated
-from a artifact.
+OpenDNP3 uses a build system generator called [CMake](http://www.cmake.org/).
+This means that the actual build files (e.g. a Makefile or Visual Studio .SLN)
+are generated from a artifact.
 
-This allows the opendnp3 project to maintain a single project file for all platforms, minimizing per-platform maintenance. CMake also integrates nicely with
-C++ IDEs like [KDevelop](https://www.kdevelop.org/) or [CLion](https://www.jetbrains.com/clion/).
+This allows the opendnp3 project to maintain a single project file for all
+platforms, minimizing per-platform maintenance. CMake also integrates nicely
+with C++ IDEs like [KDevelop](https://www.kdevelop.org/) or
+[CLion](https://www.jetbrains.com/clion/).
 
 ### Optional Components
 
-By default, CMake will not build tests, demos, or TLS support. You can enable each optional component individually by specifying
-them on the command line:
+By default, CMake will not build tests, demos, or TLS support. You can enable
+each optional component individually by specifying them on the command line:
 
 ```sh
 > cmake -D<option>=ON
@@ -31,66 +34,47 @@ For example, to build the demos including TLS support:
 > cmake -DDNP3_DEMO=ON -DDNP3_TLS=ON
 ```
 
-### Locating ASIO
+### OpenSSL
 
-!!! warning
-    ASIO has made breaking changes in recent releases to tracking the emerging C++ networking API standardizations. 
-    Using the version of ASIO tagged in the git submodule ensures you always are on a compatible version. OpenDNP3 is
-    currently using **ASIO v1.16**.
+When compiling with `DNP3_TLS` set, you must have OpenSSL 1.1.1 installed on
+your system. The `libcrypto.dll|so` and `libssl.dll|so` must also be available
+in your path.
 
-The included sub-folder of the ASIO distribution (the folder that contains 'asio.hpp') needs to be on your include path, but there are several ways you can do this.
-You can choose the option that makes the most sense your particular build environment. CMake will try the following things in order to locate your ASIO.
+On Windows, the easiest way is to download the precompiled binaries available
+here at [ShiningLight](https://slproweb.com/products/Win32OpenSSL.html). For
+building OpenDNP3, you will need the full version of the target architecture.
+For simply executing an application, you can only download the "light" version.
 
-1) Look to see if you checked out ASIO as a git submodule when cloning opendnp3
-
-```sh
-> git clone --recursive https://github.com/automatak/dnp3.git
-```
-
-2) look to see if the variable `ASIO_HOME` was defined via the cmake command line.
-
-```sh
-> cmake -DASIO_HOME=C:/libs/asio/include
-```
-
-3) Check if `ASIO_HOME` is defined as an environment variable.
-
-For instance, on Windows you might define your environment variable to look like this.
-```sh
-ASIO_HOME=C:/libs/asio/include
-```
-On Ubuntu Linux, you might add a line to ~/.bashrc as follows:
-```sh
-export ASIO_HOME=~/asio/include
-```
-
-!!! tip
-    If CMake can't find ASIO using one of the mechanisms above, it will just assume the headers are installed on the system.
-	No checks are performed, so the build will fail is this isn't true
-
-
+On Unix systems, use the package manager to install the developer version of
+OpenSSL. On Debian-based distribution, run `sudo apt-get install libssl-dev`
+(you will need `buster` or higher).
 
 ### Build Options
 
-Most of command-line options you can feed to CMake to generate your build environment are platform-independent.  This documentation can't tell you everything that
-CMake can do. We only document some of the more common flags here for your convenience. All of the following examples assume an out-of-source build folder in a
-sibling directory to the opendnp3 distribution.
+Most of command-line options you can feed to CMake to generate your build
+environment are platform-independent. This documentation can't tell you
+everything that CMake can do. We only document some of the more common flags
+here for your convenience. All of the following examples assume an out-of-source
+build folder in a sibling directory to the opendnp3 distribution.
 
 #### Static vs Dynamic Linking
 
-You can switch between building static or dynamic linking using the STATICLIBS flag. Note that this flag is provided by the project and is not a CMake flag.
+You can switch between building static or dynamic linking using the
+`DNP3_STATIC_LIBS` flag. Note that this flag is provided by the project and is
+not a CMake flag.
 
 On Windows, static libs are the default. On Linux, dynamic libs are the default.
 
 ```
-> cmake STATICLIBS=ON	# build static libraries
-> cmake STATICLIBS=OFF	# build dynamic libraries
+> cmake DNP3_STATIC_LIBS=ON   # build static libraries
+> cmake DNP3_STATIC_LIBS=OFF  # build dynamic libraries
 ```
 
 #### Debug vs Release
 
-You can configure release vs debug builds using the CMAKE_BUILD_TYPE flag.
-Note that on Windows, the generated SLN contains debug and release build targets already
+You can configure release vs debug builds using the CMAKE_BUILD_TYPE flag. Note
+that on Windows, the generated SLN contains debug and release build targets
+already
 ```sh
 > cmake -DCMAKE_BUILD_TYPE=Debug
 > cmake -DCMAKE_BUILD_TYPE=Release
@@ -98,11 +82,13 @@ Note that on Windows, the generated SLN contains debug and release build targets
 
 #### Non-default generators
 
-By default, CMake will pick a generator to use if you don't tell it which one. You can see a list of all available generators using the help flag.
+By default, CMake will pick a generator to use if you don't tell it which one.
+You can see a list of all available generators using the help flag.
 ```sh
 > cmake --help
 ```
-You can then specify a specific generator, e.g. to do a full 64-bit build on Windows:
+You can then specify a specific generator, e.g. to do a full 64-bit build on
+Windows:
 
 ```sh
 > mkdir build64
@@ -111,7 +97,8 @@ You can then specify a specific generator, e.g. to do a full 64-bit build on Win
 
 #### Setting the install prefix
 
-If the default install location isn't where you want it to be, you can configure it using `CMAKE_INSTALL_PREFIX`.
+If the default install location isn't where you want it to be, you can configure
+it using `CMAKE_INSTALL_PREFIX`.
 
 On Debian-based systems this should probably be:
 ```sh
