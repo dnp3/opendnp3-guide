@@ -36,7 +36,7 @@ For example, to build the demos including TLS support:
 
 ### OpenSSL
 
-When compiling with `DNP3_TLS` set, you must have OpenSSL 1.1.1 installed on
+When compiling with `DNP3_TLS` set, you must have OpenSSL >= 1.1.1 installed on
 your system. The `libcrypto.dll|so` and `libssl.dll|so` must also be available
 in your path.
 
