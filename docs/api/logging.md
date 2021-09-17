@@ -1,6 +1,6 @@
 ### Listening
 
-You can bind to the opendnp3 log stream by calling passing a `shared_ptr<ILogHandler>` into the  `DNP3Manager` constructor. This interface
+You can bind to the opendnp3 log stream by passing a `shared_ptr<ILogHandler>` into the  `DNP3Manager` constructor. This interface
 just has a single method:
 
 ```c++
