@@ -44,7 +44,7 @@ time gaps between attempts.
 
 ### Monitoring channels
 
-Most of the time your communication channel is open and passing dnp3 traffic back and forth. Sometimes, however, things can go wrong with your network or you have mis-configured your connection. when
+Most of the time your communication channel is open and passing dnp3 traffic back and forth. Sometimes, however, things can go wrong with your network or you have mis-configured your connection. When
 creating your channel, you can pass in a `shared_ptr<IChannelListener>` to monitor the state of channel. This interface provides a method returning an enumeration of the states of the channel:
 
 ```c++
